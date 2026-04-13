@@ -36,3 +36,5 @@ Recommended settings:
 - Output Directory: `dist`
 
 `vercel.json` already defines the output directory.
+
+Integration check updated on 2026-04-13.
