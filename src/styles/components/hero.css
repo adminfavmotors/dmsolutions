@@ -1,6 +1,5 @@
 .hero {
   position: relative;
-  padding-top: var(--header-height);
 }
 
 .hero__carousel {
