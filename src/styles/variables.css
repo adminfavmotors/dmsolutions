@@ -37,6 +37,10 @@
 
   --container-max: 72rem;
   --header-height: 4.5rem;
+  --hero-stage-height-desktop: clamp(30rem, 52svh, 38rem);
+  --hero-stage-height-tablet: clamp(28rem, 58svh, 35rem);
+  --hero-stage-height-mobile: clamp(26rem, 64svh, 32rem);
+  --hero-content-max-width: 48rem;
 
   --transition-fast: 180ms ease;
   --transition-base: 240ms ease;
