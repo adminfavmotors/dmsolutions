@@ -1,0 +1,117 @@
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-accent-soft);
+  border-radius: var(--radius-sm);
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.service-card__icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.service-card h3 {
+  margin-bottom: 0.6rem;
+  font-size: 1.35rem;
+}
+
+.service-card p {
+  color: var(--color-text-muted);
+  line-height: 1.72;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.tag-list li {
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--color-accent-soft);
+  border-radius: 999px;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.services-note {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--color-accent-soft);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgba(235, 240, 251, 0.9), rgba(240, 244, 255, 0.9));
+}
+
+.services-note__badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.services-note p {
+  color: var(--color-text-muted);
+  line-height: 1.72;
+}
+
+@media (max-width: 48rem) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}

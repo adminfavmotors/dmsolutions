@@ -35,14 +35,28 @@
   line-height: 1.72;
 }
 
-.hero-shell {
-  min-height: calc(100svh - var(--header-height));
-  display: flex;
-  align-items: center;
-  background:
-    radial-gradient(circle at top right, rgba(195, 207, 234, 0.4), transparent 35%),
-    linear-gradient(180deg, #f7f9ff 0%, #ffffff 60%);
+.section-heading {
+  margin-bottom: clamp(2rem, 4vw, 3.25rem);
 }
+
+.section-heading--center {
+  text-align: center;
+}
+
+.section-heading--center .section-copy {
+  margin-inline: auto;
+}
+
+.section-heading h2 {
+  margin-top: 0.9rem;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+.section-copy {
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   html {

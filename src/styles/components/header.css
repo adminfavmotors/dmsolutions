@@ -18,27 +18,12 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
   min-height: 2.75rem;
-}
-
-.brand__mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.75rem;
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.brand__name {
-  font-family: var(--font-heading);
-  font-size: 1.125rem;
   color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .menu-toggle {

@@ -13,13 +13,21 @@
       content="rolety Olsztyn, żaluzje Olsztyn, plisy Olsztyn, moskitiery Olsztyn, osłony okienne na wymiar"
     />
     <meta name="theme-color" content="#1b3a6b" />
+    <meta name="robots" content="index,follow" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DMSolutions" />
     <meta property="og:title" content="DMSolutions — Osłony okienne na wymiar w Olsztynie" />
     <meta
       property="og:description"
       content="Rolety, żaluzje, plisy i moskitiery na wymiar. Darmowy pomiar i dojazd na terenie Olsztyna oraz powiatu olsztyńskiego."
     />
     <meta property="og:locale" content="pl_PL" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DMSolutions — Osłony okienne na wymiar w Olsztynie" />
+    <meta
+      name="twitter:description"
+      content="Rolety, żaluzje, plisy i moskitiery na wymiar. Darmowy pomiar i dojazd na terenie Olsztyna oraz powiatu olsztyńskiego."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,6 +35,31 @@
       rel="stylesheet"
     />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "DMSolutions",
+        "description": "Rolety, żaluzje, plisy i moskitiery na wymiar z dojazdem do klienta na terenie Olsztyna i powiatu olsztyńskiego.",
+        "telephone": "+48 883 028 324",
+        "email": "dmsolutions.olsztyn@gmail.com",
+        "areaServed": [
+          "Olsztyn",
+          "Powiat olsztyński"
+        ],
+        "serviceType": [
+          "Rolety na wymiar",
+          "Żaluzje na wymiar",
+          "Plisy okienne",
+          "Moskitiery"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Olsztyn",
+          "addressCountry": "PL"
+        }
+      }
+    </script>
     <script type="module" src="/src/js/main.js"></script>
   </head>
   <body>
@@ -35,10 +68,7 @@
     <header class="site-header">
       <div class="container">
         <nav class="site-nav" aria-label="Główna nawigacja">
-          <a class="brand" href="#start" aria-label="DMSolutions — strona główna">
-            <span class="brand__mark" aria-hidden="true">DM</span>
-            <span class="brand__name">DMSolutions</span>
-          </a>
+          <a class="brand" href="#start" aria-label="DMSolutions — strona główna">DMSolutions</a>
 
           <button
             class="menu-toggle"
@@ -65,65 +95,476 @@
     </header>
 
     <main id="main-content">
-      <section class="hero-shell" id="start" aria-labelledby="hero-heading">
-        <div class="container">
-          <div class="section-placeholder">
-            <span class="eyebrow">Etap 1</span>
-            <h1 id="hero-heading">Szkielet sekcji hero zostanie zbudowany w następnym kroku.</h1>
-            <p>
-              Na tym etapie przygotowujemy semantyczną strukturę, bazę stylów, responsywne kontenery
-              i fundament pod SEO oraz czysty rozwój projektu.
-            </p>
+      <section class="hero" id="start" aria-labelledby="hero-heading">
+        <div class="hero__carousel" aria-label="Pokaz slajdów" aria-roledescription="carousel">
+          <div class="hero__track" id="heroTrack">
+            <article
+              class="hero__slide hero__slide--1"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slajd 1 — Rolety"
+            >
+              <div class="hero__slide-overlay" aria-hidden="true"></div>
+              <div class="hero__slide-hint" aria-hidden="true">Zdjęcie produktu w przygotowaniu</div>
+              <div class="hero__content">
+                <span class="hero__tag">
+                  <span class="hero__tag-dot" aria-hidden="true"></span>
+                  Olsztyn i powiat olsztyński
+                </span>
+                <h1 class="hero__heading" id="hero-heading">
+                  Rolety na wymiar
+                  <span>dla domu, mieszkania i biura</span>
+                </h1>
+                <p class="hero__lead">
+                  Dobieramy rolety do konkretnego wnętrza i światła w pomieszczeniu. Przyjeżdżamy z
+                  próbkami, mierzymy na miejscu i pomagamy wybrać rozwiązanie bez zgadywania.
+                </p>
+                <div class="hero__actions">
+                  <a href="#kontakt" class="button button--light">Umów bezpłatny pomiar</a>
+                  <a href="#uslugi" class="button button--ghost-light">Zobacz ofertę</a>
+                </div>
+                <ul class="hero__facts" role="list">
+                  <li>4 główne grupy produktów</li>
+                  <li>Dojazd i pomiar na miejscu</li>
+                  <li>Dobór rozwiązania do wnętrza</li>
+                </ul>
+              </div>
+            </article>
+
+            <article
+              class="hero__slide hero__slide--2"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slajd 2 — Żaluzje i plisy"
+            >
+              <div class="hero__slide-overlay" aria-hidden="true"></div>
+              <div class="hero__slide-hint" aria-hidden="true">Zdjęcie aranżacji w przygotowaniu</div>
+              <div class="hero__content">
+                <span class="hero__tag">
+                  <span class="hero__tag-dot" aria-hidden="true"></span>
+                  Żaluzje · Plisy
+                </span>
+                <h2 class="hero__heading">
+                  Żaluzje i plisy
+                  <span>kontrola światła i prywatności</span>
+                </h2>
+                <p class="hero__lead">
+                  Dobieramy system do stylu wnętrza i sposobu użytkowania okna. Pomagamy zdecydować,
+                  co będzie wygodne na co dzień i dobrze wyglądać przez lata.
+                </p>
+                <div class="hero__actions">
+                  <a href="#kontakt" class="button button--light">Umów bezpłatny pomiar</a>
+                  <a href="#uslugi" class="button button--ghost-light">Zobacz ofertę</a>
+                </div>
+                <ul class="hero__facts" role="list">
+                  <li>Pomoc w wyborze systemu</li>
+                  <li>Estetyka dopasowana do wnętrza</li>
+                  <li>Komfort na co dzień</li>
+                </ul>
+              </div>
+            </article>
+
+            <article
+              class="hero__slide hero__slide--3"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slajd 3 — Obsługa"
+            >
+              <div class="hero__slide-overlay" aria-hidden="true"></div>
+              <div class="hero__slide-hint" aria-hidden="true">Zdjęcie wizyty u klienta w przygotowaniu</div>
+              <div class="hero__content">
+                <span class="hero__tag">
+                  <span class="hero__tag-dot" aria-hidden="true"></span>
+                  Darmowy dojazd · Doradztwo na miejscu
+                </span>
+                <h2 class="hero__heading">
+                  Przyjeżdżamy do Ciebie
+                  <span>mierzymy, doradzamy i zamawiamy razem</span>
+                </h2>
+                <p class="hero__lead">
+                  Nie musisz zgadywać wymiarów ani wybierać w ciemno. Wszystko ustalamy podczas
+                  wizyty, dzięki czemu łatwiej uniknąć pomyłek i dobrać właściwy system.
+                </p>
+                <div class="hero__actions">
+                  <a href="#kontakt" class="button button--light">Umów bezpłatny pomiar</a>
+                  <a href="#jak-dzialamy" class="button button--ghost-light">Jak działamy</a>
+                </div>
+                <ul class="hero__facts" role="list">
+                  <li>Spokojne doradztwo bez presji</li>
+                  <li>Mniej ryzyka pomyłki przy zamówieniu</li>
+                  <li>Obsługa od pomiaru po montaż</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <button class="hero__control hero__control--prev" id="heroPrev" aria-label="Poprzedni slajd">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button class="hero__control hero__control--next" id="heroNext" aria-label="Następny slajd">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+
+          <div class="hero__dots" role="tablist" aria-label="Nawigacja slajdów">
+            <button class="hero__dot is-active" type="button" role="tab" aria-selected="true" aria-label="Slajd 1" data-hero="0"></button>
+            <button class="hero__dot" type="button" role="tab" aria-selected="false" aria-label="Slajd 2" data-hero="1"></button>
+            <button class="hero__dot" type="button" role="tab" aria-selected="false" aria-label="Slajd 3" data-hero="2"></button>
           </div>
         </div>
       </section>
 
-      <section class="section section--alt" id="trust" aria-labelledby="trust-heading">
+      <section class="trust-bar" aria-label="Najważniejsze przewagi">
         <div class="container">
-          <div class="section-placeholder">
-            <span class="eyebrow">Zaufanie</span>
-            <h2 id="trust-heading">Miejsce na trust bar</h2>
-            <p>Tu pojawi się pasek z najważniejszymi przewagami i argumentami zaufania.</p>
-          </div>
+          <ul class="trust-bar__list" role="list">
+            <li class="trust-bar__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              </svg>
+              Darmowy dojazd i pomiar
+            </li>
+            <li class="trust-bar__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              Sprawdzone systemy i materiały
+            </li>
+            <li class="trust-bar__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              Zamówienie ustalane na miejscu
+            </li>
+            <li class="trust-bar__item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Olsztyn i okolice
+            </li>
+          </ul>
         </div>
       </section>
 
       <section class="section" id="uslugi" aria-labelledby="services-heading">
         <div class="container">
-          <div class="section-placeholder">
+          <header class="section-heading section-heading--center">
             <span class="eyebrow">Oferta</span>
-            <h2 id="services-heading">Miejsce na sekcję usług</h2>
-            <p>Układ i treści usług zostaną przeniesione z wybranego mockupu w następnym etapie.</p>
+            <h2 id="services-heading">Osłony okienne dobierane do wnętrza i potrzeb domowników</h2>
+            <p class="section-copy">
+              Każdy system zamawiany jest pod konkretny wymiar i sposób użytkowania okna. Na miejscu
+              pomagamy wybrać rozwiązanie, które będzie wygodne, trwałe i estetyczne.
+            </p>
+          </header>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <line x1="12" y1="3" x2="12" y2="21" />
+                  <line x1="12" y1="8" x2="21" y2="8" />
+                  <line x1="12" y1="13" x2="21" y2="13" />
+                  <line x1="12" y1="18" x2="21" y2="18" />
+                </svg>
+              </div>
+              <h3>Rolety</h3>
+              <p>
+                Rolety to uniwersalne rozwiązanie do codziennej kontroli światła i prywatności.
+                Pomagamy dobrać tkaninę, system montażu i wariant najlepiej dopasowany do okna.
+              </p>
+              <ul class="tag-list" role="list">
+                <li>Wolnowiszące</li>
+                <li>Przyszybowe</li>
+                <li>Dzień i noc</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <div class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <line x1="3" y1="7" x2="21" y2="7" />
+                  <line x1="3" y1="11" x2="21" y2="11" />
+                  <line x1="3" y1="15" x2="21" y2="15" />
+                  <line x1="3" y1="19" x2="21" y2="19" />
+                </svg>
+              </div>
+              <h3>Żaluzje</h3>
+              <p>
+                Żaluzje dobrze sprawdzają się tam, gdzie liczy się precyzyjna regulacja światła i
+                czysta forma. Dobieramy je do wnętrz nowoczesnych, klasycznych i biurowych.
+              </p>
+              <ul class="tag-list" role="list">
+                <li>Aluminiowe</li>
+                <li>Drewniane</li>
+                <li>Pionowe</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <div class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <line x1="3" y1="8" x2="21" y2="8" />
+                  <line x1="3" y1="13" x2="21" y2="13" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                  <line x1="8" y1="8" x2="8" y2="21" />
+                </svg>
+              </div>
+              <h3>Plisy</h3>
+              <p>
+                Plisy łączą elegancję z dużą swobodą ustawienia. To dobre rozwiązanie do mieszkań,
+                łazienek, okien dachowych i wszędzie tam, gdzie liczy się elastyczność.
+              </p>
+              <ul class="tag-list" role="list">
+                <li>Standardowe</li>
+                <li>Góra-dół</li>
+                <li>Dachowe</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <div class="service-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M7 7h10M7 12h10M7 17h5" />
+                </svg>
+              </div>
+              <h3>Moskitiery</h3>
+              <p>
+                Moskitiery chronią wnętrze przed owadami, nie zabierając dostępu do świeżego
+                powietrza. Dobieramy typ do okna, drzwi balkonowych lub wejściowych.
+              </p>
+              <ul class="tag-list" role="list">
+                <li>Ramkowe</li>
+                <li>Rolowane</li>
+                <li>Drzwiowe</li>
+              </ul>
+            </article>
           </div>
+
+          <aside class="services-note" aria-label="Dodatkowa informacja o ofercie">
+            <div class="services-note__badge">Dobrze wiedzieć</div>
+            <p>
+              Jeśli nie wiesz, jaki system będzie najlepszy, nie musisz wybierać samodzielnie przed
+              kontaktem. Podczas wizyty pomagamy porównać rozwiązania pod kątem wygody, estetyki i
+              poziomu zaciemnienia.
+            </p>
+          </aside>
         </div>
       </section>
 
       <section class="section section--alt" id="jak-dzialamy" aria-labelledby="process-heading">
         <div class="container">
-          <div class="section-placeholder">
-            <span class="eyebrow">Proces</span>
-            <h2 id="process-heading">Miejsce na sekcję jak działamy</h2>
-            <p>Tu zbudujemy czytelny proces od kontaktu po montaż.</p>
-          </div>
+          <header class="section-heading section-heading--center">
+            <span class="eyebrow">Jak działamy</span>
+            <h2 id="process-heading">Prosty proces od pierwszego kontaktu do gotowego montażu</h2>
+            <p class="section-copy">
+              Prowadzimy klienta krok po kroku, bez chaosu i bez zostawiania ważnych decyzji na
+              później. Dzięki temu cały proces jest prosty i przewidywalny.
+            </p>
+          </header>
+
+          <ol class="process-grid" role="list">
+            <li class="process-step">
+              <span class="process-step__number">1</span>
+              <h3>Kontakt</h3>
+              <p>Umawiamy termin wizyty i krótko rozmawiamy o tym, czego potrzebujesz.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-step__number">2</span>
+              <h3>Pomiar i dobór</h3>
+              <p>Przyjeżdżamy z próbkami, mierzymy okna i pokazujemy możliwe warianty wykonania.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-step__number">3</span>
+              <h3>Zamówienie</h3>
+              <p>Na miejscu ustalamy szczegóły i składamy zamówienie pod konkretny wymiar.</p>
+            </li>
+            <li class="process-step">
+              <span class="process-step__number">4</span>
+              <h3>Montaż</h3>
+              <p>Po przygotowaniu produktu wracamy i montujemy wszystko sprawnie oraz schludnie.</p>
+            </li>
+          </ol>
         </div>
       </section>
 
       <section class="section" id="dlaczego-my" aria-labelledby="why-heading">
         <div class="container">
-          <div class="section-placeholder">
-            <span class="eyebrow">Dlaczego my</span>
-            <h2 id="why-heading">Miejsce na blok przewag i zdjęć</h2>
-            <p>Ta sekcja będzie odpowiadać za wiarygodność i indywidualny charakter marki.</p>
+          <div class="why-grid">
+            <div class="why-media" aria-hidden="true">
+              <div class="why-media__main">Zdjęcie główne w przygotowaniu</div>
+            </div>
+
+            <div class="why-content">
+              <span class="eyebrow">Dlaczego my</span>
+              <h2 id="why-heading">Obsługa, która daje spokój i pewność wyboru</h2>
+              <p class="section-copy">
+                Stawiamy na osobisty kontakt, spokojne doradztwo i rozwiązania dopasowane do wnętrza.
+                Dzięki temu klient nie zostaje sam z katalogiem i listą technicznych decyzji.
+              </p>
+
+              <ul class="benefit-list" role="list">
+                <li class="benefit-item">
+                  <div class="benefit-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Darmowy przyjazd i pomiar</h3>
+                    <p>Przyjeżdżamy do klienta i bierzemy odpowiedzialność za poprawny pomiar.</p>
+                  </div>
+                </li>
+                <li class="benefit-item">
+                  <div class="benefit-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" />
+                      <path d="M8 21h8M12 17v4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Dobór na miejscu</h3>
+                    <p>Próbki i warianty omawiamy podczas wizyty, a nie na podstawie samych zdjęć.</p>
+                  </div>
+                </li>
+                <li class="benefit-item">
+                  <div class="benefit-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Sprawdzone systemy</h3>
+                    <p>Stawiamy na rozwiązania, które dobrze wyglądają i sprawdzają się w codziennym użyciu.</p>
+                  </div>
+                </li>
+                <li class="benefit-item">
+                  <div class="benefit-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>Indywidualne podejście</h3>
+                    <p>Każde wnętrze i każdy klient są inni, dlatego doradzamy bez szablonowego podejścia.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="photo-strip" aria-hidden="true">
+            <div class="photo-strip__item">Zdjęcie 1</div>
+            <div class="photo-strip__item">Zdjęcie 2</div>
+            <div class="photo-strip__item">Zdjęcie 3</div>
+            <div class="photo-strip__item">Zdjęcie 4</div>
           </div>
         </div>
       </section>
 
       <section class="section section--alt" id="kontakt" aria-labelledby="contact-heading">
         <div class="container">
-          <div class="section-placeholder">
-            <span class="eyebrow">Kontakt</span>
-            <h2 id="contact-heading">Miejsce na kontakt i formularz</h2>
-            <p>Formularz, dane kontaktowe i mapa zostaną podpięte po zbudowaniu warstwy wizualnej.</p>
+          <div class="contact-shell">
+            <header class="section-heading section-heading--center">
+              <span class="eyebrow">Kontakt</span>
+              <h2 id="contact-heading">Umów bezpłatny pomiar i spokojnie wybierz najlepsze rozwiązanie</h2>
+              <p class="section-copy">
+                Napisz lub zadzwoń. Na start wystarczy krótka wiadomość i informacja, czego mniej
+                więcej szukasz.
+              </p>
+            </header>
+
+            <ul class="contact-info" role="list">
+              <li class="contact-info__item">
+                <div class="contact-info__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.81 19.79 19.79 0 0 1 .22 1.18 2 2 0 0 1 2.22 0h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11l-.56.45a16 16 0 0 0 6 6l.66-.66a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </div>
+                <a href="tel:+48883028324">883 028 324</a>
+              </li>
+              <li class="contact-info__item">
+                <div class="contact-info__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </div>
+                <a href="mailto:dmsolutions.olsztyn@gmail.com">dmsolutions.olsztyn@gmail.com</a>
+              </li>
+              <li class="contact-info__item">
+                <div class="contact-info__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                <span>Olsztyn i powiat olsztyński</span>
+              </li>
+            </ul>
+
+            <form class="contact-form" action="#" method="post" novalidate>
+              <div class="contact-form__row">
+                <div class="form-field">
+                  <label for="name">Imię i nazwisko</label>
+                  <input type="text" id="name" name="name" placeholder="Jan Kowalski" autocomplete="name" required />
+                </div>
+                <div class="form-field">
+                  <label for="phone">Telefon</label>
+                  <input type="tel" id="phone" name="phone" placeholder="883 028 324" autocomplete="tel" required />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="product">Interesuje mnie</label>
+                <select id="product" name="product">
+                  <option value="">Wybierz produkt…</option>
+                  <option>Rolety</option>
+                  <option>Żaluzje</option>
+                  <option>Plisy</option>
+                  <option>Moskitiery</option>
+                  <option>Potrzebuję porady</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="message">Wiadomość</label>
+                <textarea id="message" name="message" placeholder="Napisz, czego szukasz lub zostaw kontakt do oddzwonienia."></textarea>
+              </div>
+
+              <button type="submit" class="button button--primary contact-form__submit">Wyślij zapytanie</button>
+              <p class="contact-form__note">
+                Wystarczy krótka wiadomość. Jeśli nie znasz dokładnych wymiarów lub nie wiesz, który
+                produkt wybrać, ustalimy to podczas wizyty.
+              </p>
+            </form>
+
+            <div class="map-placeholder" role="img" aria-label="Mapa Google Maps — Olsztyn i okolice">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Mapa Google Maps zostanie podpięta w następnym etapie</span>
+            </div>
+
+            <div class="contact-reassurance" aria-label="Informacja organizacyjna">
+              <div class="contact-reassurance__item">
+                <strong>Kontakt bez zobowiązań</strong>
+                <span>Najpierw rozmawiamy i doradzamy, dopiero później przechodzimy do szczegółów zamówienia.</span>
+              </div>
+              <div class="contact-reassurance__item">
+                <strong>Realna pomoc w wyborze</strong>
+                <span>Nie musisz znać systemów ani nazw technicznych. Wystarczy powiedzieć, czego potrzebujesz.</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
