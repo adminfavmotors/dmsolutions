@@ -37,4 +37,12 @@ Recommended settings:
 
 `vercel.json` already defines the output directory.
 
-Integration check updated on 2026-04-13.
+## GitHub Actions deployment
+
+Automatic production deployment is configured in `.github/workflows/vercel-production.yml`.
+
+Required one-time repository secret:
+
+- `VERCEL_TOKEN`
+
+The workflow already includes the correct Vercel project ID and team ID for this repository.
