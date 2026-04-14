@@ -31,7 +31,9 @@
 }
 
 .hero__slide--2 {
-  background: linear-gradient(160deg, #1b3a6b 0%, #243558 60%, #1b2a45 100%);
+  background:
+    linear-gradient(180deg, rgba(27, 42, 69, 0.45) 0%, rgba(27, 42, 69, 0.62) 100%),
+    url('../../assets/images/hero-zaluzje.jpg') center center / cover no-repeat;
 }
 
 .hero__slide--3 {
