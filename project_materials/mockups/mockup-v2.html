@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DMSolutions — Rolety, Żaluzje, Plisy | Olsztyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens — Wariant 2: Klasyczny Antracyt ── */
+    :root {
+      --white:       #FFFFFF;
+      --bg-light:    #F5F5F5;
+      --bg-section:  #EEEEEE;
+      --charcoal:    #1F1F1F;
+      --charcoal-mid:#3D3D3D;
+      --charcoal-lt: #EFEFEF;
+      --muted:       #ABABAB;
+      --text:        #111111;
+      --text-mid:    #555555;
+      --text-light:  #999999;
+      --border:      #DEDEDE;
+
+      --font-h: 'Playfair Display', Georgia, serif;
+      --font-b: 'Inter', system-ui, sans-serif;
+
+      --r:   6px;
+      --r2:  12px;
+      --sh:  0 1px 4px rgba(0,0,0,.08);
+      --sh2: 0 6px 24px rgba(0,0,0,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); color: var(--text); background: var(--white); font-size: 16px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+    .sec  { padding: 80px 0; }
+    .sec--alt { background: var(--bg-section); }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--charcoal-mid);
+      background: var(--bg-section);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-bottom: 14px;
+    }
+    .eyebrow--dark {
+      color: rgba(255,255,255,.6);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.12);
+    }
+    .h2 {
+      font-family: var(--font-h);
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.2;
+      color: var(--text);
+    }
+    .h2--white { color: var(--white); }
+    .lead {
+      font-size: .95rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      max-width: 560px;
+      margin-top: 10px;
+    }
+    .lead--white { color: rgba(255,255,255,.6); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px;
+      border-radius: var(--r);
+      font-family: var(--font-b);
+      font-size: .9rem; font-weight: 600;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: background .18s, color .18s, border-color .18s;
+      white-space: nowrap;
+    }
+    .btn--dark    { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
+    .btn--dark:hover { background: var(--charcoal-mid); border-color: var(--charcoal-mid); }
+    .btn--outline { background: transparent; color: var(--charcoal); border-color: var(--charcoal); }
+    .btn--outline:hover { background: var(--charcoal); color: var(--white); }
+    .btn--white   { background: var(--white); color: var(--charcoal); border-color: var(--white); }
+    .btn--white:hover { background: var(--bg-light); }
+
+    /* ── NAVBAR ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav__brand {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav__icon {
+      width: 34px; height: 34px;
+      background: var(--charcoal);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav__icon svg { width: 16px; height: 16px; color: var(--white); }
+    .nav__name { font-family: var(--font-h); font-size: 1.1rem; color: var(--text); }
+    .nav__links {
+      display: flex; align-items: center; gap: 28px;
+    }
+    .nav__links a {
+      font-size: .88rem; font-weight: 500; color: var(--text-mid);
+      transition: color .15s;
+    }
+    .nav__links a:hover { color: var(--text); }
+    .nav__cta { margin-left: 8px; padding: 9px 20px; font-size: .88rem; }
+
+    /* ── HERO — split ── */
+    .hero {
+      padding-top: 64px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 60px;
+      align-items: center;
+      padding: 72px 0 80px;
+    }
+    .hero__tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+    .hero__tag-dot { width: 5px; height: 5px; background: var(--charcoal); border-radius: 50%; }
+    .hero__h1 {
+      font-family: var(--font-h);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    .hero__h1 em { font-style: normal; color: var(--charcoal-mid); }
+    .hero__p {
+      font-size: 1rem; color: var(--text-mid); line-height: 1.8;
+      max-width: 460px; margin-bottom: 36px;
+    }
+    .hero__btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
+    .hero__stats {
+      display: flex; gap: 36px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .hero__stat-n { font-family: var(--font-h); font-size: 1.9rem; font-weight: 700; color: var(--text); }
+    .hero__stat-l { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-top: 2px; }
+
+    /* Hero photo carousel */
+    .hero__photo-wrap {
+      position: relative;
+    }
+    .hero__pc {
+      border-radius: var(--r2);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      position: relative;
+    }
+    .hero__pc-track {
+      display: flex;
+      height: 100%;
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+    }
+    .hero__pc-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+    }
+    .hero__pc-slide--1 { background: linear-gradient(160deg, #D4E0F0 0%, #B8C8E0 40%, #C8BBA8 70%, #BEB090 100%); }
+    .hero__pc-slide--2 { background: linear-gradient(160deg, #E8DDD0 0%, #D0BEA0 40%, #B8A888 80%, #C0B098 100%); }
+    .hero__pc-slide--3 { background: linear-gradient(160deg, #C5D4E8 0%, #B0C4E0 35%, #D4E0F0 70%, #BEC8D8 100%); }
+    .hero__pc-slide--4 { background: linear-gradient(160deg, #D8E8F4 0%, #B8CDE0 40%, #C0D0E4 70%, #A8BDD0 100%); }
+    .hero__pc-slide::after {
+      content: attr(data-label);
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(0,0,0,.22);
+      pointer-events: none;
+    }
+    /* prev/next arrows */
+    .hero__pc-prev,
+    .hero__pc-next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 5;
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .15s;
+      backdrop-filter: blur(4px);
+    }
+    .hero__pc-prev:hover,
+    .hero__pc-next:hover { background: var(--white); }
+    .hero__pc-prev { left: 12px; }
+    .hero__pc-next { right: 12px; }
+    .hero__pc-prev svg,
+    .hero__pc-next svg { width: 16px; height: 16px; color: var(--charcoal); }
+    /* dots */
+    .hero__pc-dots {
+      position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 5px; z-index: 5;
+    }
+    .hero__pc-dot {
+      width: 6px; height: 6px; border-radius: 100px;
+      background: rgba(255,255,255,.5);
+      border: none; cursor: pointer; padding: 0;
+      transition: background .2s, width .2s;
+    }
+    .hero__pc-dot.active { background: var(--white); width: 18px; }
+    /* label tag on slide */
+    .hero__pc-tag {
+      position: absolute; bottom: 40px; left: 16px;
+      background: rgba(255,255,255,.88);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: .68rem; font-weight: 700; letter-spacing: .06em;
+      color: var(--charcoal);
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      z-index: 4;
+    }
+    .hero__photo-badge {
+      position: absolute; bottom: -16px; left: -20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: var(--sh2);
+    }
+    .hero__photo-badge-ico {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--charcoal);
+      border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero__photo-badge-ico svg { width: 18px; height: 18px; color: var(--white); }
+    .hero__photo-badge-title { font-weight: 700; font-size: .88rem; color: var(--text); }
+    .hero__photo-badge-sub   { font-size: .72rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── TRUST ── */
+    .trust { background: var(--charcoal); padding: 18px 0; }
+    .trust__list {
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .trust__item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: .83rem; font-weight: 600; color: rgba(255,255,255,.7);
+    }
+    .trust__item svg { width: 15px; height: 15px; color: rgba(255,255,255,.45); flex-shrink: 0; }
+
+    /* ── SERVICES — cards with photo top + carousel ── */
+    .services__head { text-align: center; margin-bottom: 48px; }
+    .services__head .lead { margin: 10px auto 0; }
+
+    /* Carousel wrapper */
+    .sc-wrap { overflow: hidden; }
+    .sc-track {
+      display: flex; gap: 24px;
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    .sc-card {
+      flex: 0 0 calc(25% - 18px);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .sc-card:hover { box-shadow: var(--sh2); transform: translateY(-3px); }
+    .sc-card__photo {
+      aspect-ratio: 16/9;
+      position: relative;
+      overflow: hidden;
+    }
+    .sc-card__photo--1 { background: linear-gradient(135deg, #D4E0F0 0%, #A8BDD8 50%, #D4C4A8 100%); }
+    .sc-card__photo--2 { background: linear-gradient(135deg, #E8DDD0 0%, #C0B898 50%, #B8A888 100%); }
+    .sc-card__photo--3 { background: linear-gradient(135deg, #C5D4E8 0%, #B8C8E0 40%, #D0C8B8 100%); }
+    .sc-card__photo--4 { background: linear-gradient(135deg, #D8E8F4 0%, #B8CDE0 50%, #C8B8A8 100%); }
+    .sc-card__photo::after {
+      content: 'foto';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(0,0,0,.2);
+    }
+    .sc-card__body { padding: 20px; }
+    .sc-card__title { font-family: var(--font-h); font-size: 1.1rem; color: var(--text); margin-bottom: 8px; }
+    .sc-card__desc  { font-size: .83rem; color: var(--text-mid); line-height: 1.65; }
+    .sc-card__tags  { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+    .sc-tag {
+      background: var(--bg-section); color: var(--text-mid);
+      font-size: .68rem; font-weight: 600;
+      padding: 3px 9px; border-radius: 3px;
+    }
+
+    .sc-dots {
+      display: flex; justify-content: center; gap: 6px; margin-top: 24px;
+    }
+    .sc-dot {
+      width: 8px; height: 4px; border-radius: 2px;
+      border: none; cursor: pointer; padding: 0;
+      background: var(--border);
+      transition: background .2s, width .25s;
+    }
+    .sc-dot.active { width: 20px; background: var(--charcoal); }
+
+    /* ── HOW — steps left + photo right ── */
+    .how__grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 64px;
+      align-items: center;
+    }
+    .how__list { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+    .how__item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .how__item:last-child { border-bottom: none; }
+    .how__n {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--charcoal); color: var(--white);
+      border-radius: 50%;
+      font-family: var(--font-h);
+      font-size: 1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .how__title { font-weight: 700; font-size: .95rem; color: var(--text); margin-bottom: 4px; }
+    .how__desc  { font-size: .83rem; color: var(--text-mid); line-height: 1.6; }
+
+    .how__photo {
+      border-radius: var(--r2);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #E8DDD0 0%, #D8C8B0 30%, #C0B898 60%, #B8A888 100%);
+      position: relative;
+    }
+    .how__photo::after {
+      content: 'Zdjęcie montaż / wizyta';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(0,0,0,.2);
+    }
+
+    /* ── WHY — dark section, 3 cards ── */
+    .why { background: var(--charcoal); }
+    .why__head { text-align: center; margin-bottom: 40px; }
+    .why__head .lead { margin: 10px auto 0; }
+    .why__cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      margin-bottom: 28px;
+    }
+    .why-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r2);
+      padding: 24px 20px;
+    }
+    .why-card__ico {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,.1);
+      border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .why-card__ico svg { width: 18px; height: 18px; color: rgba(255,255,255,.7); }
+    .why-card__title { font-weight: 700; font-size: .93rem; color: var(--white); margin-bottom: 6px; }
+    .why-card__desc  { font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.65; }
+
+    .photo-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    }
+    .photo-strip__item {
+      border-radius: var(--r);
+      overflow: hidden;
+      aspect-ratio: 3/2;
+      position: relative;
+    }
+    .photo-strip__item--1 { background: linear-gradient(135deg, #D4E0F0 0%, #A8BDD8 100%); }
+    .photo-strip__item--2 { background: linear-gradient(135deg, #C5D4E8 0%, #B0C4E0 100%); }
+    .photo-strip__item--3 { background: linear-gradient(135deg, #E8DDD0 0%, #C0B898 100%); }
+    .photo-strip__item--4 { background: linear-gradient(135deg, #D4E0F0 0%, #C0D0E8 100%); }
+    .photo-strip__item::after {
+      content: 'foto';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .55rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(0,0,0,.2);
+    }
+
+    /* ── CONTACT — form left, info+map right ── */
+    .contact__grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+    }
+    .fg { margin-bottom: 14px; }
+    .fg label {
+      display: block; font-size: .75rem; font-weight: 600;
+      color: var(--text-mid); letter-spacing: .05em; text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .fg input, .fg textarea, .fg select {
+      width: 100%;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      padding: 11px 14px;
+      font-family: var(--font-b); font-size: .93rem; color: var(--text);
+      outline: none;
+      transition: border-color .18s;
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color: var(--muted); }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--charcoal); }
+    .fg textarea { resize: vertical; min-height: 100px; }
+    .fg select option { background: var(--white); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .contact__info { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+    .contact__row  { display: flex; gap: 12px; align-items: flex-start; }
+    .contact__ico  {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: var(--bg-section);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact__ico svg { width: 16px; height: 16px; color: var(--charcoal); }
+    .contact__lbl { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 2px; }
+    .contact__val { font-size: .93rem; font-weight: 700; color: var(--text); }
+    .map-box {
+      height: 200px; margin-top: 20px;
+      border-radius: var(--r2);
+      background:
+        linear-gradient(90deg, rgba(180,195,210,.25) 1px, transparent 1px) 0 0 / 14px 14px,
+        linear-gradient(0deg,  rgba(180,195,210,.25) 1px, transparent 1px) 0 0 / 14px 14px,
+        #EAF0F6;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+      color: var(--muted); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .map-box svg { width: 28px; height: 28px; color: var(--charcoal); opacity: .35; }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--text); border-top: 1px solid rgba(255,255,255,.06); padding: 28px 0; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer__copy  { font-size: .8rem; color: rgba(255,255,255,.3); }
+    .footer__links { display: flex; gap: 20px; }
+    .footer__links a { font-size: .8rem; color: rgba(255,255,255,.3); transition: color .15s; }
+    .footer__links a:hover { color: rgba(255,255,255,.7); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero__inner  { grid-template-columns: 1fr; }
+      .hero__photo-wrap { display: none; }
+      .sc-card      { flex: 0 0 calc(50% - 12px); }
+      .how__grid    { grid-template-columns: 1fr; }
+      .how__photo   { display: none; }
+      .why__cards   { grid-template-columns: 1fr 1fr; }
+      .contact__grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 640px) {
+      .sec { padding: 56px 0; }
+      .wrap { padding: 0 20px; }
+      .nav__links { display: none; }
+      .sc-card    { flex: 0 0 calc(100% - 0px); }
+      .why__cards { grid-template-columns: 1fr; }
+      .photo-strip { grid-template-columns: repeat(2, 1fr); }
+      .form-row   { grid-template-columns: 1fr; }
+      .trust__list { gap: 20px; }
+      .hero__stats { gap: 20px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="nav">
+  <div class="wrap">
+    <nav class="nav__inner" aria-label="Główna nawigacja">
+      <a href="#" class="nav__brand" aria-label="DMSolutions — strona główna">
+        <div class="nav__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="3" y1="9" x2="21" y2="9"/>
+            <line x1="9" y1="9" x2="9" y2="21"/>
+          </svg>
+        </div>
+        <span class="nav__name">DMSolutions</span>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="#uslugi">Usługi</a></li>
+        <li><a href="#jak-dzialamy">Jak działamy</a></li>
+        <li><a href="#dlaczego-my">Dlaczego my</a></li>
+        <li><a href="#kontakt" class="btn btn--dark nav__cta">Bezpłatna wycena</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<!-- HERO — split -->
+<section class="hero" id="start" aria-labelledby="hero-h1">
+  <div class="wrap">
+    <div class="hero__inner">
+
+      <div>
+        <div class="hero__tag" aria-hidden="true">
+          <span class="hero__tag-dot"></span>
+          Olsztyn i powiat olsztyński
+        </div>
+        <h1 class="hero__h1" id="hero-h1">
+          Rolety, żaluzje<br />i plisy —<br /><em>szyte na wymiar</em>
+        </h1>
+        <p class="hero__p">
+          Przyjeżdżamy do Ciebie, mierzymy, doradzamy i składamy zamówienie na miejscu.
+          Produkty z certyfikowanego katalogu Dekorama — bez błędów, bez pośredników.
+        </p>
+        <div class="hero__btns">
+          <a href="#kontakt" class="btn btn--dark">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            Umów bezpłatny pomiar
+          </a>
+          <a href="#uslugi" class="btn btn--outline">Zobacz ofertę</a>
+        </div>
+        <div class="hero__stats" role="list" aria-label="Kluczowe informacje">
+          <div role="listitem">
+            <div class="hero__stat-n">0 zł</div>
+            <div class="hero__stat-l">Dojazd i pomiar</div>
+          </div>
+          <div role="listitem">
+            <div class="hero__stat-n">4</div>
+            <div class="hero__stat-l">Rodzaje osłon</div>
+          </div>
+          <div role="listitem">
+            <div class="hero__stat-n">100%</div>
+            <div class="hero__stat-l">Na wymiar</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo carousel right -->
+      <div class="hero__photo-wrap" aria-hidden="true">
+        <div class="hero__pc">
+          <div class="hero__pc-track" id="hpcTrack">
+            <div class="hero__pc-slide hero__pc-slide--1" data-label="Rolety — zdjęcie produktu">
+              <span class="hero__pc-tag">Rolety</span>
+            </div>
+            <div class="hero__pc-slide hero__pc-slide--2" data-label="Żaluzje — zdjęcie produktu">
+              <span class="hero__pc-tag">Żaluzje</span>
+            </div>
+            <div class="hero__pc-slide hero__pc-slide--3" data-label="Plisy — zdjęcie produktu">
+              <span class="hero__pc-tag">Plisy</span>
+            </div>
+            <div class="hero__pc-slide hero__pc-slide--4" data-label="Moskitiery — zdjęcie produktu">
+              <span class="hero__pc-tag">Moskitiery</span>
+            </div>
+          </div>
+
+          <button class="hero__pc-prev" id="hpcPrev" aria-label="Poprzednie zdjęcie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="hero__pc-next" id="hpcNext" aria-label="Następne zdjęcie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
+          <div class="hero__pc-dots" role="tablist">
+            <button class="hero__pc-dot active" role="tab" aria-selected="true"  aria-label="Zdjęcie 1" data-hpc="0"></button>
+            <button class="hero__pc-dot"        role="tab" aria-selected="false" aria-label="Zdjęcie 2" data-hpc="1"></button>
+            <button class="hero__pc-dot"        role="tab" aria-selected="false" aria-label="Zdjęcie 3" data-hpc="2"></button>
+            <button class="hero__pc-dot"        role="tab" aria-selected="false" aria-label="Zdjęcie 4" data-hpc="3"></button>
+          </div>
+        </div>
+
+        <div class="hero__photo-badge">
+          <div class="hero__photo-badge-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div>
+            <div class="hero__photo-badge-title">Darmowa wycena w domu</div>
+            <div class="hero__photo-badge-sub">Przyjeżdżam z katalogami próbek</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- TRUST -->
+<div class="trust" role="complementary" aria-label="Gwarancje">
+  <div class="wrap">
+    <ul class="trust__list" role="list">
+      <li class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        Darmowy dojazd i pomiar
+      </li>
+      <li class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Certyfikowany katalog Dekorama
+      </li>
+      <li class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Zamówienie na miejscu — zero pomyłek
+      </li>
+      <li class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Cały powiat olsztyński
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- SERVICES — carousel -->
+<section class="sec sec--alt" id="uslugi" aria-labelledby="uslugi-h">
+  <div class="wrap">
+    <div class="services__head">
+      <span class="eyebrow">Oferta</span>
+      <h2 class="h2" id="uslugi-h">Cztery rodzaje osłon okiennych</h2>
+      <p class="lead">Każdy produkt wykonujemy na wymiar. Przywozimy próbki tkanin — wybierasz na miejscu, my zamawiamy bez pomyłek.</p>
+    </div>
+
+    <div class="sc-wrap" aria-label="Karuzela usług">
+      <ul class="sc-track" id="scTrack" role="list">
+
+        <li class="sc-card">
+          <div class="sc-card__photo sc-card__photo--1" role="img" aria-label="Zdjęcie rolet"></div>
+          <div class="sc-card__body">
+            <h3 class="sc-card__title">Rolety</h3>
+            <p class="sc-card__desc">Wolnowiszące, przyszybowe i dzień&nbsp;&amp;&nbsp;noc. Setki tkanin — zaciemniające, półprzepuszczalne, transparentne.</p>
+            <ul class="sc-card__tags" role="list" aria-label="Warianty">
+              <li class="sc-tag">Wolnowiszące</li>
+              <li class="sc-tag">Przyszybowe</li>
+              <li class="sc-tag">Dzień i noc</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="sc-card">
+          <div class="sc-card__photo sc-card__photo--2" role="img" aria-label="Zdjęcie żaluzji"></div>
+          <div class="sc-card__body">
+            <h3 class="sc-card__title">Żaluzje</h3>
+            <p class="sc-card__desc">Aluminiowe lub drewniane lamele do precyzyjnej kontroli światła. Żaluzje pionowe z opcją motoryzacji.</p>
+            <ul class="sc-card__tags" role="list" aria-label="Warianty">
+              <li class="sc-tag">Aluminiowe</li>
+              <li class="sc-tag">Drewniane</li>
+              <li class="sc-tag">Pionowe</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="sc-card">
+          <div class="sc-card__photo sc-card__photo--3" role="img" aria-label="Zdjęcie plis"></div>
+          <div class="sc-card__body">
+            <h3 class="sc-card__title">Plisy</h3>
+            <p class="sc-card__desc">Harmonijkowa tkanina do salonu, łazienki i okien dachowych. Wersja góra-dół dla maksymalnej prywatności.</p>
+            <ul class="sc-card__tags" role="list" aria-label="Warianty">
+              <li class="sc-tag">Standardowe</li>
+              <li class="sc-tag">Góra-dół</li>
+              <li class="sc-tag">Dachowe</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="sc-card">
+          <div class="sc-card__photo sc-card__photo--4" role="img" aria-label="Zdjęcie moskitier"></div>
+          <div class="sc-card__body">
+            <h3 class="sc-card__title">Moskitiery</h3>
+            <p class="sc-card__desc">Ochrona przed owadami do każdego rodzaju stolarki — okna, drzwi balkonowe i wejściowe.</p>
+            <ul class="sc-card__tags" role="list" aria-label="Warianty">
+              <li class="sc-tag">Ramkowe</li>
+              <li class="sc-tag">Rolowane</li>
+              <li class="sc-tag">Drzwiowe</li>
+            </ul>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="sc-dots" role="tablist" aria-label="Wybierz kartę usługi">
+      <button class="sc-dot active" role="tab" aria-selected="true"  aria-label="Karta 1" data-sc="0"></button>
+      <button class="sc-dot"        role="tab" aria-selected="false" aria-label="Karta 2" data-sc="1"></button>
+      <button class="sc-dot"        role="tab" aria-selected="false" aria-label="Karta 3" data-sc="2"></button>
+      <button class="sc-dot"        role="tab" aria-selected="false" aria-label="Karta 4" data-sc="3"></button>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW — steps left + photo right -->
+<section class="sec" id="jak-dzialamy" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="how__grid">
+      <div>
+        <span class="eyebrow">Jak działamy</span>
+        <h2 class="h2" id="how-h">Cztery kroki<br />do gotowych osłon</h2>
+        <ol class="how__list" role="list">
+          <li class="how__item">
+            <div class="how__n" aria-label="Krok 1">1</div>
+            <div>
+              <div class="how__title">Kontakt</div>
+              <p class="how__desc">Dzwonisz lub piszesz — ustalamy termin wizyty dopasowany do Twojego grafiku.</p>
+            </div>
+          </li>
+          <li class="how__item">
+            <div class="how__n" aria-label="Krok 2">2</div>
+            <div>
+              <div class="how__title">Wizyta i pomiar</div>
+              <p class="how__desc">Przyjeżdżam z katalogami próbek. Mierzę okna, doradzam i wspólnie wybieramy produkt.</p>
+            </div>
+          </li>
+          <li class="how__item">
+            <div class="how__n" aria-label="Krok 3">3</div>
+            <div>
+              <div class="how__title">Zamówienie</div>
+              <p class="how__desc">Składam zamówienie na miejscu — każda osłona produkowana jest pod Twoje okno.</p>
+            </div>
+          </li>
+          <li class="how__item">
+            <div class="how__n" aria-label="Krok 4">4</div>
+            <div>
+              <div class="how__title">Montaż</div>
+              <p class="how__desc">Gdy produkt jest gotowy, wracam i montuję — szybko, schludnie, bez bałaganu.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="how__photo" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHY — dark, 3 cards + photo strip -->
+<section class="sec why" id="dlaczego-my" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="why__head">
+      <span class="eyebrow eyebrow--dark">Dlaczego my</span>
+      <h2 class="h2 h2--white" id="why-h">Obsługa, która daje pewność wyboru</h2>
+      <p class="lead lead--white">Nie wysyłamy paczek. Przyjeżdżamy osobiście — z próbkami, miarą i doradztwo na miejscu.</p>
+    </div>
+    <ul class="why__cards" role="list">
+      <li class="why-card">
+        <div class="why-card__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        </div>
+        <div class="why-card__title">Darmowy przyjazd i pomiar</div>
+        <p class="why-card__desc">Przyjeżdżamy do Twojego domu bez żadnych kosztów. Sami mierzymy i doradzamy — Ty tylko wybierasz.</p>
+      </li>
+      <li class="why-card">
+        <div class="why-card__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="why-card__title">Zamówienie na miejscu</div>
+        <p class="why-card__desc">Katalogi z próbkami tkanin mamy przy sobie. Zamawiamy razem — eliminując ryzyko pomyłek pomiarowych.</p>
+      </li>
+      <li class="why-card">
+        <div class="why-card__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="why-card__title">Certyfikowany Dekorama</div>
+        <p class="why-card__desc">Wszystkie produkty z certyfikowanego katalogu — sprawdzone tkaniny, trwałe mechanizmy, gwarancja jakości.</p>
+      </li>
+    </ul>
+    <div class="photo-strip" aria-hidden="true">
+      <div class="photo-strip__item photo-strip__item--1"></div>
+      <div class="photo-strip__item photo-strip__item--2"></div>
+      <div class="photo-strip__item photo-strip__item--3"></div>
+      <div class="photo-strip__item photo-strip__item--4"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT — 2 columns -->
+<section class="sec sec--alt" id="kontakt" aria-labelledby="contact-h">
+  <div class="wrap">
+    <span class="eyebrow">Kontakt</span>
+    <h2 class="h2" id="contact-h" style="margin-bottom:40px;">Umów bezpłatny<br />pomiar w domu</h2>
+    <div class="contact__grid">
+
+      <!-- Form left -->
+      <form action="#" method="post" novalidate>
+        <div class="form-row">
+          <div class="fg">
+            <label for="name">Imię i nazwisko <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Jan Kowalski" autocomplete="name" required />
+          </div>
+          <div class="fg">
+            <label for="phone">Telefon <span aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="883 028 324" autocomplete="tel" required />
+          </div>
+        </div>
+        <div class="fg">
+          <label for="product">Interesuje mnie</label>
+          <select id="product" name="product">
+            <option value="">Wybierz produkt…</option>
+            <option>Rolety</option>
+            <option>Żaluzje</option>
+            <option>Plisy</option>
+            <option>Moskitiery</option>
+            <option>Nie wiem — potrzebuję porady</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="msg">Wiadomość</label>
+          <textarea id="msg" name="msg" placeholder="Opisz czego szukasz lub podaj adres…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--dark" style="width:100%;justify-content:center;">
+          Wyślij zapytanie
+        </button>
+      </form>
+
+      <!-- Info + map right -->
+      <div>
+        <ul class="contact__info" role="list">
+          <li class="contact__row">
+            <div class="contact__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact__lbl">Telefon</div>
+              <div class="contact__val"><a href="tel:+48883028324" style="color:inherit">883 028 324</a></div>
+            </div>
+          </li>
+          <li class="contact__row">
+            <div class="contact__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact__lbl">E-mail</div>
+              <div class="contact__val"><a href="mailto:dmsolutions.olsztyn@gmail.com" style="color:inherit">dmsolutions.olsztyn@gmail.com</a></div>
+            </div>
+          </li>
+          <li class="contact__row">
+            <div class="contact__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact__lbl">Obszar obsługi</div>
+              <div class="contact__val">Olsztyn i powiat olsztyński</div>
+            </div>
+          </li>
+        </ul>
+        <div class="map-box" role="img" aria-label="Mapa — Google Maps zostanie osadzony tutaj">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Google Maps — Olsztyn
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__inner">
+      <span class="footer__copy">© 2025 DMSolutions — Damian Macur, Olsztyn</span>
+      <nav class="footer__links" aria-label="Linki stopki">
+        <a href="#">Polityka prywatności</a>
+        <a href="#">Regulamin</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* Hero photo carousel */
+  (function () {
+    const track = document.getElementById('hpcTrack');
+    const dots  = document.querySelectorAll('[data-hpc]');
+    const total = dots.length;
+    let cur = 0, timer;
+
+    function goTo(n) {
+      cur = (n + total) % total;
+      track.style.transform = `translateX(-${cur * 100}%)`;
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === cur);
+        d.setAttribute('aria-selected', i === cur);
+      });
+    }
+    function start() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(cur + 1), 3500);
+    }
+
+    document.getElementById('hpcPrev').addEventListener('click', () => { goTo(cur - 1); start(); });
+    document.getElementById('hpcNext').addEventListener('click', () => { goTo(cur + 1); start(); });
+    dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.hpc); start(); }));
+
+    let sx = 0;
+    track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+      if (Math.abs(e.changedTouches[0].clientX - sx) > 40) { goTo(e.changedTouches[0].clientX < sx ? cur + 1 : cur - 1); start(); }
+    });
+    track.addEventListener('mouseenter', () => clearInterval(timer));
+    track.addEventListener('mouseleave', start);
+    start();
+  })();
+
+  /* Services carousel */
+  (function () {
+    const track = document.getElementById('scTrack');
+    const dots  = document.querySelectorAll('.sc-dot');
+    let current = 0;
+
+    function getVisible() {
+      return window.innerWidth >= 1024 ? 4 : window.innerWidth >= 640 ? 2 : 1;
+    }
+
+    function goTo(n) {
+      const vis   = getVisible();
+      const max   = dots.length - vis;
+      current     = Math.max(0, Math.min(n, max));
+      const card  = track.children[0];
+      const gap   = 24;
+      const w     = card.offsetWidth + gap;
+      track.style.transform = `translateX(-${current * w}px)`;
+      dots.forEach((d, i) => {
+        const active = i === current;
+        d.classList.toggle('active', active);
+        d.setAttribute('aria-selected', active);
+      });
+    }
+
+    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.sc)));
+    window.addEventListener('resize', () => goTo(current));
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+.trust-bar {
+  background: var(--color-primary);
+  padding-block: 1.25rem;
+}
+
+.trust-bar__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 2rem;
+}
+
+.trust-bar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.trust-bar__item svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-accent-soft);
+  flex-shrink: 0;
+}

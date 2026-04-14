@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DMSolutions — Rolety, Żaluzje, Plisy | Olsztyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens — Wariant 3: Klasyczna Zieleń ── */
+    :root {
+      --green:       #1A4731;
+      --green-mid:   #2D6A4F;
+      --green-light: #E2F0E8;
+      --green-muted: #9ABFAA;
+      --bg-light:    #F4F8F5;
+      --bg-section:  #EAF2ED;
+      --white:       #FFFFFF;
+      --text:        #0F2818;
+      --text-mid:    #3A6050;
+      --text-light:  #7AAA90;
+      --border:      #C8E0D2;
+
+      --font-h: 'Playfair Display', Georgia, serif;
+      --font-b: 'Inter', system-ui, sans-serif;
+
+      --r:   8px;
+      --r2:  14px;
+      --sh:  0 2px 10px rgba(15,40,24,.08);
+      --sh2: 0 8px 28px rgba(15,40,24,.13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); color: var(--text); background: var(--white); font-size: 16px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+    .sec  { padding: 80px 0; }
+    .sec--alt { background: var(--bg-section); }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--green-mid);
+      background: var(--green-light);
+      border: 1px solid var(--green-muted);
+      padding: 3px 10px; border-radius: 3px;
+      margin-bottom: 14px;
+    }
+    .eyebrow--light {
+      color: rgba(154,191,170,.9);
+      background: rgba(154,191,170,.12);
+      border-color: rgba(154,191,170,.25);
+    }
+    .h2 { font-family: var(--font-h); font-size: clamp(1.75rem, 3.2vw, 2.4rem); line-height: 1.2; color: var(--text); }
+    .h2--white { color: var(--white); }
+    .lead { font-size: .95rem; color: var(--text-mid); line-height: 1.75; max-width: 560px; margin-top: 10px; }
+    .lead--white { color: rgba(255,255,255,.65); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: var(--r);
+      font-family: var(--font-b); font-size: .93rem; font-weight: 600;
+      border: 2px solid transparent; cursor: pointer;
+      transition: background .18s, color .18s, border-color .18s, box-shadow .18s;
+      white-space: nowrap;
+    }
+    .btn--green   { background: var(--green); color: var(--white); border-color: var(--green); }
+    .btn--green:hover { background: var(--green-mid); border-color: var(--green-mid); box-shadow: 0 4px 14px rgba(26,71,49,.3); }
+    .btn--outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,.4); }
+    .btn--outline:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.7); }
+    .btn--white   { background: var(--white); color: var(--green); border-color: var(--white); }
+    .btn--white:hover { background: var(--green-light); }
+
+    /* ── HERO — fullscreen, nav inside ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .hero__carousel {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__track {
+      display: flex; height: 100%;
+      transition: transform .55s cubic-bezier(.4,0,.2,1);
+    }
+    .hero__slide {
+      flex: 0 0 100%;
+      min-height: 100svh;
+      position: relative;
+      display: flex; flex-direction: column;
+    }
+    .hero__slide--1 { background: linear-gradient(155deg, #1A4731 0%, #2D6A4F 60%, #1A4731 100%); }
+    .hero__slide--2 { background: linear-gradient(155deg, #163D2A 0%, #245A40 60%, #1A4731 100%); }
+    .hero__slide--3 { background: linear-gradient(155deg, #1E5238 0%, #2D6A4F 55%, #163D2A 100%); }
+    .hero__slide-hint {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.1); pointer-events: none; z-index: 0;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: rgba(15,40,24,.45);
+      pointer-events: none;
+    }
+
+    /* Nav inside hero */
+    .hero__nav {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 68px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .hero__brand { display: flex; align-items: center; gap: 10px; }
+    .hero__brand-ico {
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero__brand-ico svg { width: 16px; height: 16px; color: var(--white); }
+    .hero__brand-name { font-family: var(--font-h); font-size: 1.1rem; color: var(--white); }
+    .hero__nav-links { display: flex; align-items: center; gap: 28px; }
+    .hero__nav-links a { font-size: .88rem; font-weight: 500; color: rgba(255,255,255,.7); transition: color .15s; }
+    .hero__nav-links a:hover { color: var(--white); }
+    .hero__nav-cta { margin-left: 8px; padding: 9px 20px; font-size: .88rem; }
+
+    /* Hero content */
+    .hero__body {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 2;
+      padding: 56px 32px 80px;
+    }
+    .hero__content { text-align: center; max-width: 720px; width: 100%; }
+    .hero__tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(154,191,170,.15);
+      border: 1px solid rgba(154,191,170,.3);
+      border-radius: 100px;
+      padding: 5px 16px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      color: var(--green-muted); text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .hero__tag-dot { width: 5px; height: 5px; background: var(--green-muted); border-radius: 50%; }
+    .hero__h1 {
+      font-family: var(--font-h);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.15; color: var(--white);
+      margin-bottom: 18px;
+    }
+    .hero__h1 em { font-style: italic; color: var(--green-muted); }
+    .hero__p { font-size: 1.05rem; color: rgba(255,255,255,.68); line-height: 1.78; max-width: 560px; margin: 0 auto 36px; }
+    .hero__btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* Controls */
+    .hero__prev, .hero__next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 10;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%; color: var(--white); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .18s;
+      backdrop-filter: blur(4px);
+    }
+    .hero__prev:hover, .hero__next:hover { background: rgba(255,255,255,.2); }
+    .hero__prev { left: 20px; }
+    .hero__next { right: 20px; }
+    .hero__prev svg, .hero__next svg { width: 19px; height: 19px; }
+    .hero__dots {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 7px; z-index: 10;
+    }
+    .hero__dot {
+      width: 7px; height: 7px; border-radius: 100px;
+      background: rgba(255,255,255,.3);
+      border: none; cursor: pointer; padding: 0;
+      transition: background .2s, width .25s;
+    }
+    .hero__dot.active { background: var(--white); width: 22px; }
+
+    /* ── TRUST ── */
+    .trust { background: var(--green); padding: 20px 0; }
+    .trust__list { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .trust__item { display: flex; align-items: center; gap: 10px; font-size: .83rem; font-weight: 600; color: rgba(255,255,255,.75); }
+    .trust__item svg { width: 15px; height: 15px; color: var(--green-muted); flex-shrink: 0; }
+
+    /* ── SERVICES — 4 cards in row, photo top ── */
+    .services__head { text-align: center; margin-bottom: 48px; }
+    .services__head .lead { margin: 10px auto 0; }
+    .services__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .s-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .s-card:hover { box-shadow: var(--sh2); transform: translateY(-3px); }
+    .s-card__photo {
+      aspect-ratio: 4/3;
+      position: relative; overflow: hidden;
+    }
+    .s-card__photo--1 { background: linear-gradient(135deg, #D4E8D4 0%, #A8C8A8 50%, #C8D4A8 100%); }
+    .s-card__photo--2 { background: linear-gradient(135deg, #E8DDD0 0%, #C0B898 50%, #B8C8A0 100%); }
+    .s-card__photo--3 { background: linear-gradient(135deg, #C8D8E8 0%, #A8C0D4 50%, #B8D0C0 100%); }
+    .s-card__photo--4 { background: linear-gradient(135deg, #D4E8D8 0%, #B0C8B8 50%, #C4D8C4 100%); }
+    .s-card__photo::after {
+      content: 'foto';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(0,0,0,.18);
+    }
+    .s-card__body { padding: 20px 18px; }
+    .s-card__title { font-family: var(--font-h); font-size: 1.1rem; color: var(--text); margin-bottom: 7px; }
+    .s-card__desc  { font-size: .83rem; color: var(--text-mid); line-height: 1.65; }
+    .s-card__tags  { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+    .s-tag {
+      background: var(--green-light); color: var(--green-mid);
+      font-size: .68rem; font-weight: 600;
+      padding: 3px 9px; border-radius: 3px;
+    }
+
+    /* ── HOW — timeline ── */
+    .how__head { margin-bottom: 52px; }
+    .timeline {
+      position: relative;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .timeline__line {
+      position: absolute;
+      top: 20px; left: 12.5%; right: 12.5%;
+      height: 2px; background: var(--border);
+    }
+    .timeline__line-fill {
+      height: 100%; width: 33%; background: var(--green); border-radius: 1px;
+    }
+    .tl-step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+    .tl-step__dot {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--green); color: var(--white);
+      font-family: var(--font-h); font-size: 1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--green-muted);
+    }
+    .tl-step__title { font-weight: 700; font-size: .93rem; color: var(--text); margin-bottom: 6px; }
+    .tl-step__desc  { font-size: .82rem; color: var(--text-mid); line-height: 1.65; }
+
+    /* ── WHY — text left + photo mosaic right ── */
+    .why__grid { display: grid; grid-template-columns: 1fr 440px; gap: 64px; align-items: center; }
+    .why__list { margin-top: 28px; display: flex; flex-direction: column; gap: 22px; }
+    .why__item { display: flex; gap: 14px; align-items: flex-start; }
+    .why__ico {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: var(--green-light); border: 1px solid var(--green-muted);
+      border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why__ico svg { width: 17px; height: 17px; color: var(--green); }
+    .why__title { font-weight: 700; font-size: .93rem; color: var(--text); margin-bottom: 3px; }
+    .why__desc  { font-size: .83rem; color: var(--text-mid); line-height: 1.65; }
+
+    /* Photo mosaic */
+    .mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 280px 180px;
+      gap: 10px;
+    }
+    .mosaic__item {
+      border-radius: var(--r2);
+      overflow: hidden; position: relative;
+    }
+    .mosaic__item--wide { grid-column: 1 / -1; }
+    .mosaic__item--1 { background: linear-gradient(155deg, #C8D8E8 0%, #A8C0D4 40%, #B8D4C0 100%); }
+    .mosaic__item--2 { background: linear-gradient(135deg, #D4E8D4 0%, #A8C8A8 100%); }
+    .mosaic__item--3 { background: linear-gradient(135deg, #E8DDD0 0%, #C8B898 100%); }
+    .mosaic__item::after {
+      content: 'foto';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(0,0,0,.18);
+    }
+
+    /* ── CONTACT — centered ── */
+    .contact__inner { max-width: 640px; margin: 0 auto; }
+    .contact__head  { text-align: center; margin-bottom: 32px; }
+    .contact__head .lead { margin: 10px auto 0; }
+    .contact__chips { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
+    .contact__chip {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 10px 16px;
+    }
+    .contact__chip svg { width: 16px; height: 16px; color: var(--green); flex-shrink: 0; }
+    .contact__chip-val { font-size: .9rem; font-weight: 700; color: var(--text); }
+
+    .fg { margin-bottom: 14px; }
+    .fg label { display: block; font-size: .75rem; font-weight: 600; color: var(--text-mid); letter-spacing: .05em; text-transform: uppercase; margin-bottom: 6px; }
+    .fg input, .fg textarea, .fg select {
+      width: 100%; background: var(--white);
+      border: 1.5px solid var(--border); border-radius: var(--r);
+      padding: 11px 14px; font-family: var(--font-b); font-size: .93rem; color: var(--text);
+      outline: none; transition: border-color .18s;
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color: var(--green-muted); }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--green); }
+    .fg textarea { resize: vertical; min-height: 96px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .map-box {
+      height: 220px; margin-top: 28px;
+      border-radius: var(--r2);
+      background:
+        linear-gradient(90deg, rgba(154,191,170,.2) 1px, transparent 1px) 0 0 / 14px 14px,
+        linear-gradient(0deg,  rgba(154,191,170,.2) 1px, transparent 1px) 0 0 / 14px 14px,
+        #EAF4EE;
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; color: var(--text-light); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .map-box svg { width: 28px; height: 28px; color: var(--green); opacity: .4; }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--text); border-top: 1px solid rgba(255,255,255,.06); padding: 28px 0; }
+    .footer__inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer__copy  { font-size: .8rem; color: rgba(255,255,255,.3); }
+    .footer__links { display: flex; gap: 20px; }
+    .footer__links a { font-size: .8rem; color: rgba(255,255,255,.3); transition: color .15s; }
+    .footer__links a:hover { color: rgba(255,255,255,.7); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .services__grid { grid-template-columns: 1fr 1fr; }
+      .why__grid { grid-template-columns: 1fr; }
+      .mosaic { grid-template-rows: 220px 140px; }
+    }
+    @media (max-width: 768px) {
+      .hero__nav-links { display: none; }
+      .timeline { grid-template-columns: 1fr 1fr; }
+      .timeline__line { display: none; }
+    }
+    @media (max-width: 640px) {
+      .sec { padding: 56px 0; }
+      .wrap { padding: 0 20px; }
+      .hero__nav { padding: 0 20px; }
+      .services__grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .trust__list { gap: 18px; }
+      .contact__chips { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO — nav inside, fullscreen carousel -->
+<section class="hero" id="start">
+  <div class="hero__carousel" aria-label="Pokaz slajdów" aria-roledescription="carousel">
+
+    <div class="hero__track" id="heroTrack">
+
+      <!-- Slide 1 -->
+      <div class="hero__slide hero__slide--1" role="group" aria-roledescription="slide" aria-label="Slajd 1">
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__slide-hint" aria-hidden="true">← Zdjęcie: rolety w aranżacji wnętrza</div>
+
+        <nav class="hero__nav" aria-label="Główna nawigacja">
+          <a href="#" class="hero__brand" aria-label="DMSolutions — strona główna">
+            <div class="hero__brand-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+            </div>
+            <span class="hero__brand-name">DMSolutions</span>
+          </a>
+          <ul class="hero__nav-links" role="list">
+            <li><a href="#uslugi">Usługi</a></li>
+            <li><a href="#jak-dzialamy">Jak działamy</a></li>
+            <li><a href="#dlaczego-my">Dlaczego my</a></li>
+          </ul>
+          <a href="#kontakt" class="btn btn--white hero__nav-cta">Bezpłatna wycena</a>
+        </nav>
+
+        <div class="hero__body">
+          <div class="hero__content">
+            <div class="hero__tag" aria-hidden="true"><span class="hero__tag-dot"></span>Olsztyn i powiat olsztyński</div>
+            <h1 class="hero__h1">Rolety na wymiar —<br /><em>każde okno, każda tkanina</em></h1>
+            <p class="hero__p">Wolnowiszące, przyszybowe i dzień&nbsp;&amp;&nbsp;noc. Przyjeżdżamy z próbkami tkanin — wybierasz kolor i materiał na miejscu.</p>
+            <div class="hero__btns">
+              <a href="#kontakt" class="btn btn--white">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                Umów bezpłatny pomiar
+              </a>
+              <a href="#uslugi" class="btn btn--outline">Zobacz ofertę</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero__slide hero__slide--2" role="group" aria-roledescription="slide" aria-label="Slajd 2">
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__slide-hint" aria-hidden="true">← Zdjęcie: żaluzje / plisy</div>
+
+        <nav class="hero__nav" aria-label="Główna nawigacja">
+          <a href="#" class="hero__brand" aria-label="DMSolutions — strona główna">
+            <div class="hero__brand-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+            </div>
+            <span class="hero__brand-name">DMSolutions</span>
+          </a>
+          <ul class="hero__nav-links" role="list">
+            <li><a href="#uslugi">Usługi</a></li>
+            <li><a href="#jak-dzialamy">Jak działamy</a></li>
+            <li><a href="#dlaczego-my">Dlaczego my</a></li>
+          </ul>
+          <a href="#kontakt" class="btn btn--white hero__nav-cta">Bezpłatna wycena</a>
+        </nav>
+
+        <div class="hero__body">
+          <div class="hero__content">
+            <div class="hero__tag" aria-hidden="true"><span class="hero__tag-dot"></span>Żaluzje · Plisy</div>
+            <h1 class="hero__h1">Żaluzje i plisy —<br /><em>kontrola światła i prywatności</em></h1>
+            <p class="hero__p">Aluminiowe, drewniane, pionowe. Plisy do łazienki, okien dachowych i góra-dół. Wszystko szyte pod Twoje okno.</p>
+            <div class="hero__btns">
+              <a href="#kontakt" class="btn btn--white">Umów bezpłatny pomiar</a>
+              <a href="#uslugi" class="btn btn--outline">Zobacz ofertę</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero__slide hero__slide--3" role="group" aria-roledescription="slide" aria-label="Slajd 3">
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__slide-hint" aria-hidden="true">← Zdjęcie: wizyta u klienta</div>
+
+        <nav class="hero__nav" aria-label="Główna nawigacja">
+          <a href="#" class="hero__brand" aria-label="DMSolutions — strona główna">
+            <div class="hero__brand-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+            </div>
+            <span class="hero__brand-name">DMSolutions</span>
+          </a>
+          <ul class="hero__nav-links" role="list">
+            <li><a href="#uslugi">Usługi</a></li>
+            <li><a href="#jak-dzialamy">Jak działamy</a></li>
+            <li><a href="#dlaczego-my">Dlaczego my</a></li>
+          </ul>
+          <a href="#kontakt" class="btn btn--white hero__nav-cta">Bezpłatna wycena</a>
+        </nav>
+
+        <div class="hero__body">
+          <div class="hero__content">
+            <div class="hero__tag" aria-hidden="true"><span class="hero__tag-dot"></span>Darmowy dojazd · Zero pomyłek</div>
+            <h1 class="hero__h1">Przyjeżdżamy do Ciebie —<br /><em>mierzymy, doradzamy, zamawiamy</em></h1>
+            <p class="hero__p">Katalogi z próbkami tkanin mamy ze sobą. Zamówienie składamy razem na miejscu — każda osłona produkowana jest pod Twoje okno.</p>
+            <div class="hero__btns">
+              <a href="#kontakt" class="btn btn--white">Umów bezpłatny pomiar</a>
+              <a href="#uslugi" class="btn btn--outline">Zobacz ofertę</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /track -->
+
+    <button class="hero__prev" id="heroPrev" aria-label="Poprzedni slajd">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="hero__next" id="heroNext" aria-label="Następny slajd">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="hero__dots" role="tablist" aria-label="Nawigacja slajdów">
+      <button class="hero__dot active" role="tab" aria-selected="true"  aria-label="Slajd 1" data-h="0"></button>
+      <button class="hero__dot"        role="tab" aria-selected="false" aria-label="Slajd 2" data-h="1"></button>
+      <button class="hero__dot"        role="tab" aria-selected="false" aria-label="Slajd 3" data-h="2"></button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TRUST -->
+<div class="trust" role="complementary" aria-label="Gwarancje">
+  <div class="wrap">
+    <ul class="trust__list" role="list">
+      <li class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        Darmowy dojazd i pomiar
+      </li>
+      <li class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Certyfikowany katalog Dekorama
+      </li>
+      <li class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Zamówienie na miejscu — zero pomyłek
+      </li>
+      <li class="trust__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Cały powiat olsztyński
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- SERVICES — 4 cards in row, photo top -->
+<section class="sec" id="uslugi" aria-labelledby="uslugi-h">
+  <div class="wrap">
+    <div class="services__head">
+      <span class="eyebrow">Oferta</span>
+      <h2 class="h2" id="uslugi-h">Cztery rodzaje osłon okiennych</h2>
+      <p class="lead">Każdy produkt wykonujemy na wymiar. Przywozimy próbki tkanin — wybierasz na miejscu, my zamawiamy bez pomyłek.</p>
+    </div>
+    <ul class="services__grid" role="list">
+      <li class="s-card">
+        <div class="s-card__photo s-card__photo--1" role="img" aria-label="Zdjęcie rolet"></div>
+        <div class="s-card__body">
+          <h3 class="s-card__title">Rolety</h3>
+          <p class="s-card__desc">Wolnowiszące, przyszybowe i dzień&nbsp;&amp;&nbsp;noc. Setki tkanin zaciemniających, półprzepuszczalnych i transparentnych.</p>
+          <ul class="s-card__tags" role="list"><li class="s-tag">Wolnowiszące</li><li class="s-tag">Przyszybowe</li><li class="s-tag">Dzień i noc</li></ul>
+        </div>
+      </li>
+      <li class="s-card">
+        <div class="s-card__photo s-card__photo--2" role="img" aria-label="Zdjęcie żaluzji"></div>
+        <div class="s-card__body">
+          <h3 class="s-card__title">Żaluzje</h3>
+          <p class="s-card__desc">Aluminiowe lub drewniane lamele do precyzyjnej kontroli światła. Pionowe z opcją motoryzacji.</p>
+          <ul class="s-card__tags" role="list"><li class="s-tag">Aluminiowe</li><li class="s-tag">Drewniane</li><li class="s-tag">Pionowe</li></ul>
+        </div>
+      </li>
+      <li class="s-card">
+        <div class="s-card__photo s-card__photo--3" role="img" aria-label="Zdjęcie plis"></div>
+        <div class="s-card__body">
+          <h3 class="s-card__title">Plisy</h3>
+          <p class="s-card__desc">Harmonijkowa tkanina do salonu, łazienki i okien dachowych. Wersja góra-dół dla pełnej prywatności.</p>
+          <ul class="s-card__tags" role="list"><li class="s-tag">Standardowe</li><li class="s-tag">Góra-dół</li><li class="s-tag">Dachowe</li></ul>
+        </div>
+      </li>
+      <li class="s-card">
+        <div class="s-card__photo s-card__photo--4" role="img" aria-label="Zdjęcie moskitier"></div>
+        <div class="s-card__body">
+          <h3 class="s-card__title">Moskitiery</h3>
+          <p class="s-card__desc">Ochrona przed owadami do każdego rodzaju stolarki — okna, drzwi balkonowe i wejściowe.</p>
+          <ul class="s-card__tags" role="list"><li class="s-tag">Ramkowe</li><li class="s-tag">Rolowane</li><li class="s-tag">Drzwiowe</li></ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- HOW — timeline -->
+<section class="sec sec--alt" id="jak-dzialamy" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="how__head">
+      <span class="eyebrow">Jak działamy</span>
+      <h2 class="h2" id="how-h">Cztery kroki do gotowych osłon</h2>
+      <p class="lead">Przejmuję całą organizację od pierwszego kontaktu po montaż.</p>
+    </div>
+    <ol class="timeline" role="list">
+      <div class="timeline__line" aria-hidden="true">
+        <div class="timeline__line-fill"></div>
+      </div>
+      <li class="tl-step">
+        <div class="tl-step__dot" aria-label="Krok 1">1</div>
+        <div class="tl-step__title">Kontakt</div>
+        <p class="tl-step__desc">Dzwonisz lub piszesz — ustalamy termin wizyty dopasowany do Twojego grafiku.</p>
+      </li>
+      <li class="tl-step">
+        <div class="tl-step__dot" aria-label="Krok 2">2</div>
+        <div class="tl-step__title">Wizyta i pomiar</div>
+        <p class="tl-step__desc">Przyjeżdżam z katalogami próbek. Mierzę okna i doradzam przy wyborze.</p>
+      </li>
+      <li class="tl-step">
+        <div class="tl-step__dot" aria-label="Krok 3">3</div>
+        <div class="tl-step__title">Zamówienie</div>
+        <p class="tl-step__desc">Składam zamówienie na miejscu — każda osłona produkowana pod Twoje okno.</p>
+      </li>
+      <li class="tl-step">
+        <div class="tl-step__dot" aria-label="Krok 4">4</div>
+        <div class="tl-step__title">Montaż</div>
+        <p class="tl-step__desc">Gdy produkt gotowy, wracam i montuję — szybko, schludnie, bez bałaganu.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+<!-- WHY — text left + photo mosaic right -->
+<section class="sec" id="dlaczego-my" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="why__grid">
+      <div>
+        <span class="eyebrow">Dlaczego my</span>
+        <h2 class="h2" id="why-h">Obsługa, która daje pewność wyboru</h2>
+        <p class="lead">Nie wysyłamy paczek. Przyjeżdżamy osobiście — z próbkami, miarą i doradztwo na miejscu.</p>
+        <ul class="why__list" role="list">
+          <li class="why__item">
+            <div class="why__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div>
+              <div class="why__title">Darmowy przyjazd i pomiar</div>
+              <p class="why__desc">Przyjeżdżamy do Twojego domu bez żadnych kosztów. Sami mierzymy i doradzamy.</p>
+            </div>
+          </li>
+          <li class="why__item">
+            <div class="why__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div>
+              <div class="why__title">Zamówienie składamy razem</div>
+              <p class="why__desc">Katalogi z próbkami mamy przy sobie. Zamawiamy na miejscu — zero pomyłek.</p>
+            </div>
+          </li>
+          <li class="why__item">
+            <div class="why__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="why__title">Certyfikowany katalog Dekorama</div>
+              <p class="why__desc">Sprawdzone tkaniny, trwałe mechanizmy, gwarancja jakości na każdy produkt.</p>
+            </div>
+          </li>
+          <li class="why__item">
+            <div class="why__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <div class="why__title">Indywidualne podejście</div>
+              <p class="why__desc">Wysoka kultura obsługi i osobisty kontakt — cały powiat olsztyński bez dopłat.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Photo mosaic -->
+      <div class="mosaic" aria-hidden="true">
+        <div class="mosaic__item mosaic__item--wide mosaic__item--1"></div>
+        <div class="mosaic__item mosaic__item--2"></div>
+        <div class="mosaic__item mosaic__item--3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT — centered -->
+<section class="sec sec--alt" id="kontakt" aria-labelledby="contact-h">
+  <div class="wrap">
+    <div class="contact__inner">
+      <div class="contact__head">
+        <span class="eyebrow">Kontakt</span>
+        <h2 class="h2" id="contact-h">Umów bezpłatny pomiar w domu</h2>
+        <p class="lead">Napisz lub zadzwoń — odpiszę w ciągu kilku godzin i ustalimy termin wizyty.</p>
+      </div>
+      <div class="contact__chips" role="list">
+        <div class="contact__chip" role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <a href="tel:+48883028324" class="contact__chip-val">883 028 324</a>
+        </div>
+        <div class="contact__chip" role="listitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:dmsolutions.olsztyn@gmail.com" class="contact__chip-val">dmsolutions.olsztyn@gmail.com</a>
+        </div>
+      </div>
+      <form action="#" method="post" novalidate>
+        <div class="form-row">
+          <div class="fg">
+            <label for="name">Imię i nazwisko <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Jan Kowalski" autocomplete="name" required />
+          </div>
+          <div class="fg">
+            <label for="phone">Telefon <span aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="883 028 324" autocomplete="tel" required />
+          </div>
+        </div>
+        <div class="fg">
+          <label for="product">Interesuje mnie</label>
+          <select id="product" name="product">
+            <option value="">Wybierz produkt…</option>
+            <option>Rolety</option><option>Żaluzje</option>
+            <option>Plisy</option><option>Moskitiery</option>
+            <option>Nie wiem — potrzebuję porady</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="msg">Wiadomość</label>
+          <textarea id="msg" name="msg" placeholder="Opisz czego szukasz lub podaj adres…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--green" style="width:100%;justify-content:center;">Wyślij zapytanie</button>
+      </form>
+      <div class="map-box" role="img" aria-label="Mapa Google Maps — Olsztyn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Google Maps — Olsztyn
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__inner">
+      <span class="footer__copy">© 2025 DMSolutions — Damian Macur, Olsztyn</span>
+      <nav class="footer__links" aria-label="Linki stopki">
+        <a href="#">Polityka prywatności</a>
+        <a href="#">Regulamin</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  (function () {
+    const track = document.getElementById('heroTrack');
+    const dots  = document.querySelectorAll('[data-h]');
+    const total = dots.length;
+    let cur = 0, timer;
+
+    function goTo(n) {
+      cur = (n + total) % total;
+      track.style.transform = `translateX(-${cur * 100}%)`;
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === cur);
+        d.setAttribute('aria-selected', i === cur);
+      });
+    }
+    function start() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(cur + 1), 5000);
+    }
+
+    document.getElementById('heroPrev').addEventListener('click', () => { goTo(cur - 1); start(); });
+    document.getElementById('heroNext').addEventListener('click', () => { goTo(cur + 1); start(); });
+    dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.h); start(); }));
+
+    let sx = 0;
+    track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+      if (Math.abs(e.changedTouches[0].clientX - sx) > 50) { goTo(e.changedTouches[0].clientX < sx ? cur + 1 : cur - 1); start(); }
+    });
+    track.addEventListener('mouseenter', () => clearInterval(timer));
+    track.addEventListener('mouseleave', start);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { goTo(cur - 1); start(); }
+      if (e.key === 'ArrowRight') { goTo(cur + 1); start(); }
+    });
+
+    start();
+  })();
+</script>
+
+</body>
+</html>

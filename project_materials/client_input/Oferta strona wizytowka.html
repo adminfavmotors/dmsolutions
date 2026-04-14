@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NODE48 — Oferta: Strona wizytówka</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #060d1f;
+    --bg2:       #0b1530;
+    --bg3:       #0f1e3d;
+    --blue:      #2563eb;
+    --blue-bright:#3b82f6;
+    --blue-glow: rgba(37,99,235,0.18);
+    --blue-line: rgba(59,130,246,0.25);
+    --text:      #e2e8f0;
+    --text-muted:#64748b;
+    --text-dim:  #94a3b8;
+    --border:    rgba(59,130,246,0.15);
+    --border2:   rgba(255,255,255,0.06);
+    --white:     #ffffff;
+    --accent:    #3b82f6;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 40px auto;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 80px rgba(37,99,235,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border2);
+    padding: 14px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--white);
+  }
+  .logo span { color: var(--blue-bright); }
+  .logo-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--blue-bright);
+    border-radius: 50%;
+    margin-left: 3px;
+    vertical-align: middle;
+    margin-bottom: 2px;
+  }
+  .topbar-right {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* HEADER */
+  .header {
+    padding: 56px 56px 48px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #060d1f 0%, #0b1a3e 60%, #0f2060 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue-bright), transparent);
+    opacity: 0.4;
+  }
+
+  .offer-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    border: 1px solid rgba(59,130,246,0.3);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    background: rgba(37,99,235,0.08);
+  }
+  .offer-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blue-bright);
+    animation: blink 2s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+
+  .header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .header h1 em { font-style: normal; color: var(--blue-bright); }
+
+  .header-sub {
+    color: var(--text-dim);
+    font-size: 14px;
+    max-width: 460px;
+    margin-bottom: 36px;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    width: fit-content;
+    background: rgba(255,255,255,0.03);
+  }
+  .meta-item {
+    padding: 12px 24px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .meta-item:last-child { border-right: none; }
+  .meta-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); }
+  .meta-value { font-size: 13px; color: var(--text); font-weight: 500; }
+
+  /* BODY */
+  .body { padding: 52px 56px; }
+
+  .intro {
+    border-left: 2px solid var(--blue);
+    padding-left: 20px;
+    margin-bottom: 52px;
+    color: var(--text-dim);
+    font-size: 13.5px;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after { content:''; flex:1; height:1px; background: var(--border); }
+
+  /* PRICE HERO */
+  .price-hero {
+    background: linear-gradient(135deg, #0f1e3d, #0a1628);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px 44px;
+    margin-bottom: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-hero::before {
+    content:'';
+    position:absolute;
+    top:-40px;right:-40px;
+    width:180px;height:180px;
+    background:radial-gradient(circle,rgba(37,99,235,0.12) 0%,transparent 70%);
+  }
+  .price-tag { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
+  .price-amount { font-family:'Space Grotesk',sans-serif; font-size:52px; font-weight:700; color:var(--white); line-height:1; margin-bottom:6px; }
+  .price-amount span { color:var(--blue-bright); }
+  .price-note { font-size:12px; color:var(--text-muted); }
+  .price-details { font-size:13px; color:var(--text-dim); max-width:260px; line-height:1.65; }
+
+  /* TABLES */
+  .data-table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:12px; }
+  .data-table thead tr { background:rgba(255,255,255,0.03); }
+  .data-table th { padding:11px 16px; text-align:left; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--text-muted); font-weight:500; border-bottom:1px solid var(--border); border-top:1px solid var(--border); }
+  .data-table td { padding:13px 16px; border-bottom:1px solid var(--border2); vertical-align:top; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(255,255,255,0.02); }
+  .td-name { font-weight:500; color:var(--text); margin-bottom:2px; }
+  .td-sub { font-size:12px; color:var(--text-muted); }
+  .td-price { font-weight:600; color:var(--text); white-space:nowrap; text-align:right; }
+
+  .badge { display:inline-block; font-size:10px; background:rgba(37,99,235,0.15); color:var(--blue-bright); border:1px solid rgba(59,130,246,0.3); padding:2px 9px; border-radius:20px; font-weight:500; white-space:nowrap; margin-left:6px; }
+  .badge-green { background:rgba(16,185,129,0.12); color:#34d399; border-color:rgba(16,185,129,0.3); }
+
+  /* INCLUDES GRID */
+  .includes-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:44px; }
+  .include-item { background:var(--bg2); padding:22px 24px; }
+  .include-item:hover { background:var(--bg3); }
+  .include-icon { width:30px;height:30px; background:rgba(37,99,235,0.12); border:1px solid rgba(59,130,246,0.2); border-radius:6px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+  .include-icon svg { width:14px;height:14px; stroke:var(--blue-bright); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .include-title { font-weight:600; font-size:13px; color:var(--text); margin-bottom:5px; }
+  .include-desc { font-size:12px; color:var(--text-muted); line-height:1.55; }
+
+  /* INFO BOX */
+  .info-box { background:rgba(37,99,235,0.07); border:1px solid rgba(59,130,246,0.2); border-left:3px solid var(--blue-bright); padding:16px 20px; margin-bottom:28px; font-size:13px; color:var(--text-dim); line-height:1.6; border-radius:0 2px 2px 0; }
+  .info-box strong { color:var(--blue-bright); }
+
+  .divider { border:none; border-top:1px solid var(--border2); margin:44px 0; }
+
+  /* CARDS */
+  .cards-grid { display:grid; gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:44px; }
+  .card { background:var(--bg2); padding:26px 28px; }
+  .card.featured { background:linear-gradient(135deg,#0f2060,#0a1840); border:1px solid rgba(59,130,246,0.3); margin:-1px; position:relative; z-index:1; }
+  .card-top { min-height:26px; display:flex; align-items:center; margin-bottom:8px; }
+  .card-price { font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:700; color:var(--white); margin-bottom:4px; }
+  .card-price span { color:var(--blue-bright); font-size:16px; font-weight:400; }
+  .card-name { font-weight:600; font-size:13px; color:var(--text); margin-bottom:10px; }
+  .card-list { list-style:none; display:flex; flex-direction:column; gap:5px; }
+  .card-list li { font-size:12px; color:var(--text-muted); display:flex; align-items:flex-start; gap:7px; }
+  .card-list li::before { content:'›'; color:var(--blue-bright); font-size:14px; line-height:1.3; flex-shrink:0; }
+
+  /* TIMELINE */
+  .timeline { display:flex; flex-direction:column; gap:0; margin-bottom:44px; }
+  .tl-item { display:flex; gap:18px; align-items:flex-start; }
+  .tl-line { display:flex; flex-direction:column; align-items:center; min-width:32px; }
+  .tl-dot { width:32px;height:32px; border-radius:50%; background:var(--bg3); border:1px solid var(--blue-bright); color:var(--blue-bright); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; flex-shrink:0; font-family:'Space Grotesk',sans-serif; }
+  .tl-dot.done { background:var(--blue); border-color:var(--blue); color:var(--white); }
+  .tl-connector { width:1px; flex:1; background:var(--border); margin:4px 0; min-height:24px; }
+  .tl-content { padding:5px 0 26px; }
+  .tl-step { font-weight:600; font-size:13.5px; color:var(--text); margin-bottom:4px; }
+  .tl-desc { font-size:12.5px; color:var(--text-muted); line-height:1.55; }
+  .tl-item:last-child .tl-connector { display:none; }
+  .tl-item:last-child .tl-content { padding-bottom:0; }
+
+  /* PAYMENT */
+  .payment-steps { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:16px; }
+  .pay-step { background:var(--bg2); padding:22px 20px; }
+  .pay-step.active { background:linear-gradient(135deg,#0f2060,#0a1840); }
+  .pay-num { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:10px; }
+  .pay-title { font-weight:600; font-size:13px; color:var(--text); margin-bottom:6px; }
+  .pay-desc { font-size:12px; color:var(--text-muted); line-height:1.55; }
+
+  /* RIGHTS */
+  .rights-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:20px; }
+  .rights-card { background:var(--bg2); padding:24px 22px; }
+  .rights-card.active { background:linear-gradient(135deg,#0f2060,#0a1840); border:1px solid rgba(59,130,246,0.3); margin:-1px; position:relative; z-index:1; }
+  .rights-type { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
+  .rights-name { font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:700; color:var(--text); margin-bottom:10px; }
+  .rights-desc { font-size:12px; color:var(--text-muted); line-height:1.55; margin-bottom:12px; }
+  .rights-tag { font-size:10px; padding:3px 10px; border-radius:20px; font-weight:500; display:inline-block; }
+  .tag-good { background:rgba(16,185,129,0.12); color:#34d399; border:1px solid rgba(16,185,129,0.3); }
+  .tag-neutral { background:rgba(245,158,11,0.1); color:#fbbf24; border:1px solid rgba(245,158,11,0.3); }
+  .tag-agency { background:rgba(139,92,246,0.1); color:#a78bfa; border:1px solid rgba(139,92,246,0.3); }
+
+  /* FOOTER */
+  .footer { background:var(--bg); border-top:1px solid var(--border); padding:36px 56px; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+  .footer-logo { font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:var(--white); letter-spacing:1px; margin-bottom:4px; }
+  .footer-logo span { color:var(--blue-bright); }
+  .footer-tagline { font-size:11px; color:var(--text-muted); }
+  .footer-right { display:flex; flex-direction:column; gap:5px; align-items:flex-end; }
+  .footer-contact-label { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); }
+  .footer-contact { font-size:13.5px; color:var(--text); font-weight:500; }
+  .footer-contact a { color:var(--blue-bright); text-decoration:none; }
+  .footer-name { font-size:11px; color:var(--text-muted); }
+
+  @media (max-width:640px) {
+    .page { margin:0; border-radius:0; }
+    .topbar,.header,.body,.footer { padding-left:24px; padding-right:24px; }
+    .includes-grid,.rights-cards,.payment-steps { grid-template-columns:1fr; }
+    .cards-grid { grid-template-columns:1fr !important; }
+    .header h1 { font-size:28px; }
+    .price-amount { font-size:38px; }
+    .footer-right { align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo">NODE<span>48</span><span class="logo-dot"></span></div>
+    <div class="topbar-right">Oferta handlowa &nbsp;·&nbsp; Dokument poufny</div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="offer-label">Oferta wstępna</div>
+    <h1>Strona wizytówka<br><em>one-page</em></h1>
+    <p class="header-sub">Prosta, szybka i profesjonalna strona, która działa jak Twój cyfrowy punkt kontaktowy — 24/7.</p>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Przygotował</span>
+        <span class="meta-value">Yury Luzhkouski</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Firma</span>
+        <span class="meta-value">NODE48</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Data</span>
+        <span class="meta-value" id="doc-date">—</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Ważność</span>
+        <span class="meta-value">14 dni</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <div class="intro">
+      Dziękuję za zainteresowanie i czas poświęcony na odpowiedź. Poniżej znajdziesz wstępną ofertę na stronę wizytówkę — z pełnym zakresem, cenami, opcjami dodatkowymi oraz informacją o przekazaniu praw autorskich. Wszystko przejrzyście, zanim zaczniemy.
+    </div>
+
+    <!-- PRICE -->
+    <div class="section-title">Cena podstawowa</div>
+    <div class="price-hero">
+      <div>
+        <div class="price-tag">Strona wizytówka one-page</div>
+        <div class="price-amount">od <span>1 490</span> zł</div>
+        <div class="price-note">netto &nbsp;·&nbsp; jednorazowo &nbsp;·&nbsp; stała cena po wycenie</div>
+      </div>
+      <div class="price-details">
+        Cena wyjściowa przy standardowym zakresie i gotowym materiale od klienta. Finalna kwota ustalana pisemnie po kwestionariuszu — bez niespodzianek w trakcie projektu.
+      </div>
+    </div>
+
+    <!-- AFFECTS PRICE -->
+    <div class="section-title">Co wpływa na cenę</div>
+    <div class="info-box">
+      Poniższe czynniki decydują o finalnej kwocie. <strong>Przed jakąkolwiek wpłatą</strong> — wypełniasz kwestionariusz, omawiamy szczegóły telefonicznie i otrzymujesz stałą wycenę na piśmie.
+    </div>
+    <table class="data-table" style="margin-bottom:12px;">
+      <thead>
+        <tr>
+          <th style="width:28%">Czynnik</th>
+          <th style="width:32%">Wariant podstawowy</th>
+          <th>Wariant rozszerzony</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="td-name">📄 Treści (teksty)</div></td>
+          <td><div class="td-sub">Klient dostarcza gotowe teksty</div></td>
+          <td><div class="td-sub">Copywriting po naszej stronie <span class="badge">+400–600 zł</span></div></td>
+        </tr>
+        <tr>
+          <td><div class="td-name">📷 Zdjęcia</div></td>
+          <td><div class="td-sub">Klient dostarcza własne materiały</div></td>
+          <td><div class="td-sub">Dobór zdjęć stockowych <span class="badge">+150–250 zł</span></div></td>
+        </tr>
+        <tr>
+          <td><div class="td-name">📐 Liczba sekcji</div></td>
+          <td><div class="td-sub">Standardowe 4–5 sekcji</div></td>
+          <td><div class="td-sub">Każda kolejna sekcja <span class="badge">+150–250 zł / szt.</span></div></td>
+        </tr>
+        <tr>
+          <td><div class="td-name">🎨 Złożoność designu</div></td>
+          <td><div class="td-sub">Nowoczesny, czysty design</div></td>
+          <td><div class="td-sub">Niestandardowa grafika, animacje <span class="badge">+250–500 zł</span></div></td>
+        </tr>
+        <tr>
+          <td><div class="td-name">🌍 Wersja językowa</div></td>
+          <td><div class="td-sub">Tylko po polsku</div></td>
+          <td><div class="td-sub">PL + EN lub DE <span class="badge">+400 zł</span></div></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:44px;">
+      💡 Przed startem wysyłam <strong style="color:var(--text-dim)">przygotowany kwestionariusz</strong> z pytaniami o projekt. Po jego wypełnieniu — krótka rozmowa telefoniczna i stała cena na piśmie.
+    </p>
+
+    <!-- INCLUDES -->
+    <div class="section-title">Co wchodzi w cenę</div>
+    <div class="includes-grid">
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+        <div class="include-title">Projekt graficzny</div>
+        <div class="include-desc">Indywidualny design dopasowany do branży. Żadnych szablonów — Twoje kolory, Twój styl.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="include-title">Do 5 sekcji treści</div>
+        <div class="include-desc">O firmie, usługi, opinie, kontakt — każda sekcja prowadzi odwiedzającego do działania.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="include-title">Formularz kontaktowy</div>
+        <div class="include-desc">Wiadomości trafiają prosto na Twoją skrzynkę. Zero konfiguracji z Twojej strony.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <div class="include-title">Responsywność mobile-first</div>
+        <div class="include-desc">Perfekcyjny wygląd na telefonie, tablecie i komputerze. Ponad 70% ruchu to smartfony.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+        <div class="include-title">Podstawy SEO</div>
+        <div class="include-desc">Poprawne nagłówki, meta tagi, tytuł strony — fundament widoczności w Google.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="include-title">Szybkość ładowania</div>
+        <div class="include-desc">Strona ładuje się poniżej 2 sekund. Wolne strony tracą ponad 50% odwiedzających.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <div class="include-title">2 rundy poprawek</div>
+        <div class="include-desc">Zgłaszasz uwagi po każdym etapie. Projekt kończymy razem, aż będziesz zadowolony.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="include-title">Google Maps — w cenie</div>
+        <div class="include-desc">Interaktywna mapa z lokalizacją firmy. Standard, którego każdy klient oczekuje.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="include-title">Google Analytics — w cenie</div>
+        <div class="include-desc">Wiesz ile osób odwiedza stronę i skąd przychodzą. Podstawa do oceny skuteczności.</div>
+      </div>
+      <div class="include-item">
+        <div class="include-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="include-title">Realizacja: 7–10 dni</div>
+        <div class="include-desc">Od wypełnienia kwestionariusza do strony online — bez przeciągania i milczenia.</div>
+      </div>
+    </div>
+
+    <!-- ADDONS -->
+    <div class="section-title">Usługi dodatkowe</div>
+    <div class="info-box">
+      Poniższe opcje możesz dokupić na etapie wyceny lub w dowolnym momencie po uruchomieniu strony. <strong>Każda wyceniana jest z góry</strong> — bez niespodzianek na fakturze.
+    </div>
+    <table class="data-table" style="margin-bottom:44px;">
+      <thead>
+        <tr><th>Usługa</th><th style="text-align:right;">Cena</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="td-name">Dodatkowe sekcje (powyżej 5)</div><div class="td-sub">Portfolio, galeria, FAQ, sekcja zespołu i inne</div></td>
+          <td class="td-price">150–250 zł / szt.</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Widget WhatsApp / Messenger</div><div class="td-sub">Klient klika jeden przycisk i od razu pisze do Ciebie</div></td>
+          <td class="td-price">od 150 zł</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Wersja dwujęzyczna (PL + EN lub DE)</div><div class="td-sub">Dla firm obsługujących klientów zagranicznych</div></td>
+          <td class="td-price">od 400 zł</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Blog / sekcja aktualności</div><div class="td-sub">Samodzielne dodawanie wpisów, wzmacnia pozycję w Google</div></td>
+          <td class="td-price">od 500 zł</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Animacje i efekty scroll</div><div class="td-sub">Subtelne animacje przy przewijaniu — strona ożywa bez spowolnienia</div></td>
+          <td class="td-price">od 250 zł</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Formularz zapisu / newsletter</div><div class="td-sub">Integracja z Mailchimp, Brevo lub innym narzędziem</div></td>
+          <td class="td-price">od 200 zł</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- HOSTING -->
+    <hr class="divider">
+    <div class="section-title">Hosting i domena</div>
+    <div class="info-box">
+      <strong>Hosting i domena nie są wliczone w cenę projektu.</strong> Możesz wybrać jeden z dwóch wariantów — omówimy to podczas rozmowy wstępnej.
+    </div>
+    <div class="cards-grid" style="grid-template-columns:1fr 1fr; margin-bottom:44px;">
+      <div class="card">
+        <div class="card-top"></div>
+        <div class="card-price" style="font-size:20px;margin-bottom:6px;">Twój hosting</div>
+        <div class="card-name">Własna domena i serwer</div>
+        <ul class="card-list">
+          <li>Kupujesz hosting samodzielnie (nazwa.pl, home.pl)</li>
+          <li>Koszt ok. 100–200 zł/rok</li>
+          <li>Wdrożenie po naszej stronie — gratis</li>
+          <li>Pełna niezależność od NODE48</li>
+        </ul>
+      </div>
+      <div class="card featured">
+        <div class="card-top"><span class="badge badge-green">Polecane</span></div>
+        <div class="card-price" style="font-size:20px;margin-bottom:6px;">Nasz hosting</div>
+        <div class="card-name">W ramach opieki technicznej</div>
+        <ul class="card-list">
+          <li>Hosting + domena + SSL w abonamencie</li>
+          <li>Monitoring 24/7 i kopie zapasowe</li>
+          <li>Zero formalności z Twojej strony</li>
+          <li>Szczegóły w pakietach poniżej</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MAINTENANCE -->
+    <div class="section-title">Opieka techniczna</div>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px;">Opcjonalny miesięczny abonament. Zdecydowanie polecam — żebyś nie musiał myśleć o hostingu, domenach i poprawkach.</p>
+    <div class="cards-grid" style="grid-template-columns:1fr 1fr 1fr; margin-bottom:44px;">
+      <div class="card">
+        <div class="card-top"></div>
+        <div class="card-price">149 <span>zł/mies.</span></div>
+        <div class="card-name">Podstawowy</div>
+        <ul class="card-list">
+          <li>Hosting + domena + SSL</li>
+          <li>Kopie zapasowe</li>
+          <li>Monitoring dostępności 24/7</li>
+          <li>2 poprawki w miesiącu</li>
+        </ul>
+      </div>
+      <div class="card featured">
+        <div class="card-top"><span class="badge badge-green">Polecane</span></div>
+        <div class="card-price">249 <span>zł/mies.</span></div>
+        <div class="card-name">Standard</div>
+        <ul class="card-list">
+          <li>Hosting + domena + SSL</li>
+          <li>Kopie zapasowe</li>
+          <li>5 poprawek w miesiącu</li>
+          <li>Priorytetowy kontakt — odpowiedź tego samego dnia</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-top"></div>
+        <div class="card-price">449 <span>zł/mies.</span></div>
+        <div class="card-name">Rozszerzony</div>
+        <ul class="card-list">
+          <li>Hosting + domena + SSL</li>
+          <li>Kopie zapasowe</li>
+          <li>10 poprawek w miesiącu</li>
+          <li>Miesięczny raport wyników</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <hr class="divider">
+    <div class="section-title">Jak wygląda współpraca</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot">1</div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-step">Kwestionariusz</div>
+          <div class="tl-desc">Wysyłam przygotowany kwestionariusz z pytaniami o firmę, styl, oczekiwania i materiały. Wypełniasz go w swoim czasie — bez presji i bez konieczności przygotowywania czegokolwiek z góry.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot">2</div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-step">Potwierdzenie telefoniczne i wycena</div>
+          <div class="tl-desc">Po analizie kwestionariusza — krótka rozmowa telefoniczna. Dostajesz stałą cenę na piśmie. Decydujesz czy zaczynamy. Dopiero wtedy pojawia się prośba o zaliczkę.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot">3</div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-step">Projekt graficzny — dzień 2–4</div>
+          <div class="tl-desc">Pokazuję jak będzie wyglądać strona zanim napiszę pierwszą linijkę kodu. Zatwierdzasz lub zgłaszasz zmiany.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot">4</div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-step">Kodowanie — dzień 5–8</div>
+          <div class="tl-desc">Buduję gotową stronę. Dostajesz link do podglądu — możesz sprawdzić jak wygląda i działa na różnych urządzeniach.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot">5</div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-step">Poprawki i finalizacja — dzień 9–10</div>
+          <div class="tl-desc">Ostatnie zmiany, testy na różnych urządzeniach i przeglądarkach. Kiedy wszystko zaakceptujesz — strona rusza online.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot done">✓</div></div>
+        <div class="tl-content">
+          <div class="tl-step">Strona online + przekazanie praw</div>
+          <div class="tl-desc">Od tego momentu Twoja firma jest w internecie. Otrzymujesz pełne prawa autorskie do strony oraz dostęp do wszystkich plików i kodu źródłowego.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMALITIES -->
+    <hr class="divider">
+    <div class="section-title">Zasady współpracy i formalności</div>
+    <div class="info-box">
+      <strong>Jak współpracujemy? (Formalności krok po kroku)</strong> Wszystkie zasady ustalamy jasno przed startem projektu — od podpisania umowy, przez zadatek i odbiór, aż po przekazanie praw autorskich.
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot">1</div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-step">Podpisanie umowy i start projektu</div>
+          <div class="tl-desc">Pracę nad projektem rozpoczynamy po dopełnieniu dwóch formalności: podpisaniu umowy oraz wpłacie zadatku w wysokości 50% wartości zlecenia. Umowę podpisujemy zdalnie — przez system Autenti lub Profil Zaufany. Nie musisz nic drukować — wystarczy smartfon i potwierdzenie kodem SMS.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot">2</div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-step">Zadatek i gwarancja terminu</div>
+          <div class="tl-desc">Pierwsza wpłata w wysokości 50% ma charakter zadatku. Potwierdza rezerwację czasu w moim grafiku i zabezpiecza realizację projektu w ustalonym terminie.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot">3</div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-step">Odbiór projektu i płatność końcowa</div>
+          <div class="tl-desc">Po zakończeniu prac i Twojej akceptacji podpisujemy Protokół Odbioru. Na tej podstawie następuje rozliczenie pozostałych 50% wynagrodzenia. Płatność przyjmuję przelewem lub gotówką za potwierdzeniem.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-line"><div class="tl-dot done">✓</div></div>
+        <div class="tl-content">
+          <div class="tl-step">Przekazanie praw autorskich (własność projektu)</div>
+          <div class="tl-desc">Z chwilą zaksięgowania pełnej wpłaty, autorskie prawa majątkowe do strony przechodzą na Ciebie. Stajesz się jej wyłącznym właścicielem. Jako autor zachowuję jedynie prawo do umieszczenia w stopce strony dyskretnego podpisu oraz do prezentacji projektu w moim portfolio.</div>
+        </div>
+      </div>
+    </div>
+    <div class="info-box" style="margin-top:16px;margin-bottom:0;">
+      <strong>W praktyce:</strong> po pełnym rozliczeniu projekt staje się Twoją własnością, a ja zachowuję wyłącznie prawo do dyskretnego podpisu w stopce oraz pokazania realizacji w portfolio.
+    </div>
+
+  </div><!-- end .body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-logo">NODE<span>48</span></div>
+      <div class="footer-tagline">Studio stron i produktów cyfrowych</div>
+      <div class="footer-name" style="margin-top:8px;">Yury Luzhkouski</div>
+    </div>
+    <div class="footer-right">
+      <span class="footer-contact-label">Kontakt</span>
+      <span class="footer-contact"><a href="mailto:contact@node48.pl">contact@node48.pl</a></span>
+      <span class="footer-contact">+48 788 554 887</span>
+      <span class="footer-name" style="margin-top:4px;">To oferta wstępna — nie zobowiązuje do niczego.</span>
+    </div>
+  </div>
+
+</div>
+<script>
+  const d = new Date();
+  document.getElementById('doc-date').textContent =
+    d.toLocaleDateString('pl-PL', {day:'2-digit', month:'2-digit', year:'numeric'});
+</script>
+</body>
+</html>

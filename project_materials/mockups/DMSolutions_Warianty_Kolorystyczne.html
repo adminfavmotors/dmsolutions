@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMSolutions — Warianty kolorystyczne</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* ── INTRO ── */
+.intro {
+  max-width: 780px;
+  margin: 60px auto 80px;
+  padding: 0 24px;
+  text-align: center;
+}
+.intro-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 16px;
+}
+.intro h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.intro p {
+  font-size: 15px;
+  color: #aaa;
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* ── VARIANT WRAPPER ── */
+.variant-block {
+  margin-bottom: 120px;
+}
+.variant-header {
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+}
+.variant-number {
+  font-size: 80px;
+  font-weight: 700;
+  color: #222;
+  line-height: 1;
+  font-family: 'Playfair Display', serif;
+}
+.variant-info h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.variant-info p {
+  font-size: 13px;
+  color: #777;
+  max-width: 440px;
+}
+.variant-palette {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.1);
+  position: relative;
+}
+.swatch-label {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #555;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+/* ── PREVIEW FRAME ── */
+.preview {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════
+   WARIANT A — Ciepły i Klasyczny
+   bg: #1c1208  accent: #b8924a  text: #f0e8d8
+═══════════════════════════════════════════════ */
+
+/* NAV A */
+.nav-a {
+  background: #1c1208;
+  padding: 18px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(184,146,74,0.2);
+}
+.nav-a .logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f0e8d8;
+  letter-spacing: 1px;
+}
+.nav-a .logo-text span { color: #b8924a; }
+.nav-a .nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-a .nav-links a {
+  font-size: 13px;
+  color: #9a8a72;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+.nav-a .nav-links a:hover { color: #b8924a; }
+.nav-a .nav-cta {
+  background: #b8924a;
+  color: #1c1208;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 9px 22px;
+  border-radius: 4px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+/* HERO A */
+.hero-a {
+  background: linear-gradient(120deg, #1c1208 0%, #2a1c0a 50%, #1c1208 100%);
+  padding: 80px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-a::before {
+  content: '';
+  position: absolute;
+  right: -100px;
+  top: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(184,146,74,0.08) 0%, transparent 70%);
+}
+.hero-a-text { flex: 1; max-width: 480px; }
+.hero-a-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #b8924a;
+  margin-bottom: 20px;
+}
+.hero-a h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  line-height: 1.15;
+  color: #f0e8d8;
+  margin-bottom: 20px;
+}
+.hero-a h1 em { font-style: normal; color: #b8924a; }
+.hero-a p {
+  font-size: 14px;
+  color: #9a8a72;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.hero-a .cta-group { display: flex; gap: 14px; align-items: center; }
+.btn-primary-a {
+  background: #b8924a;
+  color: #1c1208;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 13px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.btn-secondary-a {
+  font-size: 13px;
+  color: #9a8a72;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(154,138,114,0.4);
+  padding-bottom: 2px;
+}
+.hero-a-visual {
+  flex: 0 0 340px;
+  height: 260px;
+  background: linear-gradient(135deg, #2a1c0a, #3a2910);
+  border-radius: 8px;
+  border: 1px solid rgba(184,146,74,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero-a-visual .img-placeholder {
+  font-size: 11px;
+  color: #5a4a32;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.hero-a-visual .img-icon {
+  font-size: 32px;
+  opacity: 0.3;
+}
+
+/* SERVICES A */
+.services-a {
+  background: #160e04;
+  padding: 60px 48px;
+}
+.section-label-a {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #b8924a;
+  margin-bottom: 10px;
+}
+.section-title-a {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: #f0e8d8;
+  margin-bottom: 40px;
+}
+.cards-a {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.card-a {
+  background: #1c1208;
+  border: 1px solid rgba(184,146,74,0.12);
+  border-radius: 8px;
+  padding: 28px 22px;
+}
+.card-a-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(184,146,74,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+.card-a h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f0e8d8;
+  margin-bottom: 8px;
+}
+.card-a p {
+  font-size: 12px;
+  color: #7a6a52;
+  line-height: 1.6;
+}
+
+/* TRUST STRIP A */
+.trust-a {
+  background: #b8924a;
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.trust-item-a {
+  text-align: center;
+}
+.trust-item-a .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1c1208;
+}
+.trust-item-a .lbl {
+  font-size: 11px;
+  color: rgba(28,18,8,0.6);
+  letter-spacing: 1px;
+}
+
+/* ═══════════════════════════════════════════════
+   WARIANT B — Nowoczesny i Czysty
+   bg: #f7f5f2  accent: #1a5cb8  text: #1a1a2a
+═══════════════════════════════════════════════ */
+
+/* NAV B */
+.nav-b {
+  background: #ffffff;
+  padding: 18px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e4de;
+  box-shadow: 0 1px 0 #e8e4de;
+}
+.nav-b .logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2a;
+  letter-spacing: 1px;
+}
+.nav-b .logo-text span { color: #1a5cb8; }
+.nav-b .nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-b .nav-links a {
+  font-size: 13px;
+  color: #6b7280;
+  text-decoration: none;
+}
+.nav-b .nav-cta {
+  background: #1a5cb8;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 9px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* HERO B */
+.hero-b {
+  background: #f7f5f2;
+  padding: 80px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+.hero-b-text { flex: 1; max-width: 500px; }
+.hero-b-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #1a5cb8;
+  margin-bottom: 20px;
+}
+.hero-b h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  line-height: 1.15;
+  color: #1a1a2a;
+  margin-bottom: 20px;
+}
+.hero-b h1 em { font-style: normal; color: #1a5cb8; }
+.hero-b p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.hero-b .cta-group { display: flex; gap: 14px; align-items: center; }
+.btn-primary-b {
+  background: #1a5cb8;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 13px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.btn-secondary-b {
+  font-size: 13px;
+  color: #1a5cb8;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(26,92,184,0.3);
+  padding-bottom: 2px;
+}
+.hero-b-visual {
+  flex: 0 0 340px;
+  height: 260px;
+  background: #e8e4de;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero-b-visual .img-placeholder {
+  font-size: 11px;
+  color: #b0a89a;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* SERVICES B */
+.services-b {
+  background: #ffffff;
+  padding: 60px 48px;
+}
+.section-label-b {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #1a5cb8;
+  margin-bottom: 10px;
+}
+.section-title-b {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: #1a1a2a;
+  margin-bottom: 40px;
+}
+.cards-b {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.card-b {
+  background: #f7f5f2;
+  border: 1px solid #e8e4de;
+  border-radius: 10px;
+  padding: 28px 22px;
+  transition: box-shadow 0.2s;
+}
+.card-b:hover { box-shadow: 0 4px 20px rgba(26,92,184,0.08); }
+.card-b-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(26,92,184,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.card-b h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2a;
+  margin-bottom: 8px;
+}
+.card-b p {
+  font-size: 12px;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+/* TRUST STRIP B */
+.trust-b {
+  background: #1a1a2a;
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 24px;
+}
+.trust-item-b .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+.trust-item-b .lbl {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════════
+   WARIANT C — Elegancki i Premium
+   bg: #0d1a26  accent: #c97b4b  text: #ffffff
+═══════════════════════════════════════════════ */
+
+/* NAV C */
+.nav-c {
+  background: #0d1a26;
+  padding: 18px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(201,123,75,0.15);
+}
+.nav-c .logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.nav-c .logo-text span { color: #c97b4b; }
+.nav-c .nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-c .nav-links a {
+  font-size: 13px;
+  color: #7a9bb5;
+  text-decoration: none;
+}
+.nav-c .nav-cta {
+  border: 1px solid #c97b4b;
+  color: #c97b4b;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 22px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* HERO C */
+.hero-c {
+  background: linear-gradient(135deg, #0d1a26 0%, #132336 60%, #0d1a26 100%);
+  padding: 80px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-c::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(201,123,75,0.06) 0%, transparent 70%);
+}
+.hero-c-text { flex: 1; max-width: 500px; }
+.hero-c-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #c97b4b;
+  border: 1px solid rgba(201,123,75,0.25);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+.hero-c h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.hero-c h1 em { font-style: normal; color: #c97b4b; }
+.hero-c p {
+  font-size: 14px;
+  color: #7a9bb5;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.hero-c .cta-group { display: flex; gap: 14px; align-items: center; }
+.btn-primary-c {
+  background: #c97b4b;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 13px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.btn-secondary-c {
+  font-size: 13px;
+  color: #7a9bb5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(122,155,181,0.3);
+  padding-bottom: 2px;
+}
+.hero-c-visual {
+  flex: 0 0 340px;
+  height: 260px;
+  background: linear-gradient(135deg, #132336, #1a3050);
+  border-radius: 10px;
+  border: 1px solid rgba(201,123,75,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero-c-visual .img-placeholder {
+  font-size: 11px;
+  color: #2d4a66;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* SERVICES C */
+.services-c {
+  background: #091422;
+  padding: 60px 48px;
+}
+.section-label-c {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #c97b4b;
+  margin-bottom: 10px;
+}
+.section-title-c {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 40px;
+}
+.cards-c {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.card-c {
+  background: #0d1a26;
+  border: 1px solid rgba(201,123,75,0.1);
+  border-radius: 8px;
+  padding: 28px 22px;
+}
+.card-c-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: rgba(201,123,75,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(201,123,75,0.15);
+}
+.card-c h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.card-c p {
+  font-size: 12px;
+  color: #4a7090;
+  line-height: 1.6;
+}
+
+/* TRUST STRIP C */
+.trust-c {
+  background: #c97b4b;
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 24px;
+}
+.trust-item-c .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+.trust-item-c .lbl {
+  font-size: 11px;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #333, transparent);
+  max-width: 1100px;
+  margin: 80px auto;
+}
+
+/* ── OUTRO ── */
+.outro {
+  max-width: 780px;
+  margin: 0 auto 100px;
+  padding: 0 24px;
+  text-align: center;
+}
+.outro p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+}
+.outro strong { color: #888; }
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<section class="intro">
+  <p class="intro-label">DMSolutions · Propozycja graficzna · NODE48</p>
+  <h1>Wybierz klimat swojej strony</h1>
+  <p>Poniżej znajdziesz 3 różne warianty kolorystyczne dla Twojej strony. Każdy jest nowoczesny i profesjonalny — różnią się nastrojem. Wybierz ten, który najlepiej pasuje do Twojego stylu i przekaż mi numer (1, 2 lub 3).</p>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     WARIANT 1 — Ciepły i Klasyczny
+══════════════════════════════════════ -->
+<div class="variant-block">
+  <div class="variant-header">
+    <div class="variant-number">01</div>
+    <div class="variant-info">
+      <h2>Ciepły i Klasyczny</h2>
+      <p>Ciemne tło z ciepłymi odcieniami brązu i złota. Elegancki, ponadczasowy klimat — kojarzy się z jakością, rzemiosłem i zaufaniem.</p>
+      <div class="variant-palette">
+        <div class="swatch" style="background:#1c1208;"><span class="swatch-label">tło</span></div>
+        <div class="swatch" style="background:#b8924a;"><span class="swatch-label">akcent</span></div>
+        <div class="swatch" style="background:#f0e8d8;"><span class="swatch-label">tekst</span></div>
+        <div class="swatch" style="background:#9a8a72;"><span class="swatch-label">muted</span></div>
+        <div class="swatch" style="background:#2a1c0a;"><span class="swatch-label">karta</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview">
+    <!-- Nav -->
+    <nav class="nav-a">
+      <div class="logo-text">DM<span>Solutions</span></div>
+      <ul class="nav-links">
+        <li><a href="#">O firmie</a></li>
+        <li><a href="#">Usługi</a></li>
+        <li><a href="#">Galeria</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+      <a href="#" class="nav-cta">Bezpłatny pomiar</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-a">
+      <div class="hero-a-text">
+        <p class="hero-a-label">Olsztyn i okolice · Pomiar gratis</p>
+        <h1>Rolety, plisy i żaluzje<br><em>na wymiar</em></h1>
+        <p>Przyjeżdżam do Ciebie, mierzę, doradzam i składam zamówienie razem z Tobą. Każdy produkt szyty pod Twoje okno — bez kompromisów.</p>
+        <div class="cta-group">
+          <a href="#" class="btn-primary-a">Umów bezpłatny pomiar</a>
+          <a href="#" class="btn-secondary-a">Zobacz usługi</a>
+        </div>
+      </div>
+      <div class="hero-a-visual">
+        <div class="img-icon">🪟</div>
+        <div class="img-placeholder">zdjęcie produktu</div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-a">
+      <p class="section-label-a">Oferta</p>
+      <h2 class="section-title-a">Czym się zajmuję</h2>
+      <div class="cards-a">
+        <div class="card-a">
+          <div class="card-a-icon">🌇</div>
+          <h3>Rolety</h3>
+          <p>Wolnowiszące, przyszybowe i dzień-noc. Setki tkanin, każda na wymiar.</p>
+        </div>
+        <div class="card-a">
+          <div class="card-a-icon">🪗</div>
+          <h3>Plisy</h3>
+          <p>Elegancka harmonijka do każdego okna — w tym dachowego i łazienkowego.</p>
+        </div>
+        <div class="card-a">
+          <div class="card-a-icon">🏠</div>
+          <h3>Żaluzje</h3>
+          <p>Aluminiowe i drewniane. Poziome i pionowe. Precyzyjna kontrola światła.</p>
+        </div>
+        <div class="card-a">
+          <div class="card-a-icon">🦟</div>
+          <h3>Moskitiery</h3>
+          <p>Do okien i drzwi — ramkowe, rolowane, plisowane. Montaż w dniu wizyty.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust strip -->
+    <div class="trust-a">
+      <div class="trust-item-a">
+        <div class="num">100%</div>
+        <div class="lbl">Produkty na wymiar</div>
+      </div>
+      <div class="trust-item-a">
+        <div class="num">0 zł</div>
+        <div class="lbl">Przyjazd i pomiar</div>
+      </div>
+      <div class="trust-item-a">
+        <div class="num">4</div>
+        <div class="lbl">Kategorie produktów</div>
+      </div>
+      <div class="trust-item-a">
+        <div class="num">Dekorama</div>
+        <div class="lbl">Certyfikowany katalog</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════
+     WARIANT 2 — Nowoczesny i Czysty
+══════════════════════════════════════ -->
+<div class="variant-block">
+  <div class="variant-header">
+    <div class="variant-number">02</div>
+    <div class="variant-info">
+      <h2>Nowoczesny i Czysty</h2>
+      <p>Jasne tło, czyste linie, niebieski akcent. Profesjonalny i przejrzysty — buduje zaufanie i wygodę w odbiorze.</p>
+      <div class="variant-palette">
+        <div class="swatch" style="background:#f7f5f2; border-color:#ddd;"><span class="swatch-label">tło</span></div>
+        <div class="swatch" style="background:#1a5cb8;"><span class="swatch-label">akcent</span></div>
+        <div class="swatch" style="background:#1a1a2a;"><span class="swatch-label">tekst</span></div>
+        <div class="swatch" style="background:#6b7280;"><span class="swatch-label">muted</span></div>
+        <div class="swatch" style="background:#e8e4de; border-color:#ddd;"><span class="swatch-label">karta</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview">
+    <nav class="nav-b">
+      <div class="logo-text">DM<span>Solutions</span></div>
+      <ul class="nav-links">
+        <li><a href="#">O firmie</a></li>
+        <li><a href="#">Usługi</a></li>
+        <li><a href="#">Galeria</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+      <a href="#" class="nav-cta">Bezpłatny pomiar</a>
+    </nav>
+
+    <section class="hero-b">
+      <div class="hero-b-text">
+        <p class="hero-b-label">Olsztyn i okolice · Pomiar gratis</p>
+        <h1>Rolety, plisy i żaluzje<br><em>na wymiar</em></h1>
+        <p>Przyjeżdżam do Ciebie, mierzę, doradzam i składam zamówienie razem z Tobą. Każdy produkt szyty pod Twoje okno — bez kompromisów.</p>
+        <div class="cta-group">
+          <a href="#" class="btn-primary-b">Umów bezpłatny pomiar</a>
+          <a href="#" class="btn-secondary-b">Zobacz usługi</a>
+        </div>
+      </div>
+      <div class="hero-b-visual">
+        <div style="font-size:32px; opacity:0.3;">🪟</div>
+        <div class="img-placeholder">zdjęcie produktu</div>
+      </div>
+    </section>
+
+    <section class="services-b">
+      <p class="section-label-b">Oferta</p>
+      <h2 class="section-title-b">Czym się zajmuję</h2>
+      <div class="cards-b">
+        <div class="card-b">
+          <div class="card-b-icon">🌇</div>
+          <h3>Rolety</h3>
+          <p>Wolnowiszące, przyszybowe i dzień-noc. Setki tkanin, każda na wymiar.</p>
+        </div>
+        <div class="card-b">
+          <div class="card-b-icon">🪗</div>
+          <h3>Plisy</h3>
+          <p>Elegancka harmonijka do każdego okna — w tym dachowego i łazienkowego.</p>
+        </div>
+        <div class="card-b">
+          <div class="card-b-icon">🏠</div>
+          <h3>Żaluzje</h3>
+          <p>Aluminiowe i drewniane. Poziome i pionowe. Precyzyjna kontrola światła.</p>
+        </div>
+        <div class="card-b">
+          <div class="card-b-icon">🦟</div>
+          <h3>Moskitiery</h3>
+          <p>Do okien i drzwi — ramkowe, rolowane, plisowane. Montaż w dniu wizyty.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-b">
+      <div class="trust-item-b">
+        <div class="num">100%</div>
+        <div class="lbl">Produkty na wymiar</div>
+      </div>
+      <div class="trust-item-b">
+        <div class="num">0 zł</div>
+        <div class="lbl">Przyjazd i pomiar</div>
+      </div>
+      <div class="trust-item-b">
+        <div class="num">4</div>
+        <div class="lbl">Kategorie produktów</div>
+      </div>
+      <div class="trust-item-b">
+        <div class="num">Dekorama</div>
+        <div class="lbl">Certyfikowany katalog</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════
+     WARIANT 3 — Elegancki i Premium
+══════════════════════════════════════ -->
+<div class="variant-block">
+  <div class="variant-header">
+    <div class="variant-number">03</div>
+    <div class="variant-info">
+      <h2>Elegancki i Premium</h2>
+      <p>Głęboki granat z miedzianym akcentem. Prestiżowy, nowoczesny klimat — wyróżnia się na tle lokalnej konkurencji i buduje wizerunek premium.</p>
+      <div class="variant-palette">
+        <div class="swatch" style="background:#0d1a26;"><span class="swatch-label">tło</span></div>
+        <div class="swatch" style="background:#c97b4b;"><span class="swatch-label">akcent</span></div>
+        <div class="swatch" style="background:#ffffff;"><span class="swatch-label">tekst</span></div>
+        <div class="swatch" style="background:#7a9bb5;"><span class="swatch-label">muted</span></div>
+        <div class="swatch" style="background:#132336;"><span class="swatch-label">karta</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview">
+    <nav class="nav-c">
+      <div class="logo-text">DM<span>Solutions</span></div>
+      <ul class="nav-links">
+        <li><a href="#">O firmie</a></li>
+        <li><a href="#">Usługi</a></li>
+        <li><a href="#">Galeria</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+      <a href="#" class="nav-cta">Bezpłatny pomiar</a>
+    </nav>
+
+    <section class="hero-c">
+      <div class="hero-c-text">
+        <span class="hero-c-label">Olsztyn i okolice · Pomiar gratis</span>
+        <h1>Rolety, plisy i żaluzje<br><em>na wymiar</em></h1>
+        <p>Przyjeżdżam do Ciebie, mierzę, doradzam i składam zamówienie razem z Tobą. Każdy produkt szyty pod Twoje okno — bez kompromisów.</p>
+        <div class="cta-group">
+          <a href="#" class="btn-primary-c">Umów bezpłatny pomiar</a>
+          <a href="#" class="btn-secondary-c">Zobacz usługi</a>
+        </div>
+      </div>
+      <div class="hero-c-visual">
+        <div style="font-size:32px; opacity:0.25;">🪟</div>
+        <div class="img-placeholder">zdjęcie produktu</div>
+      </div>
+    </section>
+
+    <section class="services-c">
+      <p class="section-label-c">Oferta</p>
+      <h2 class="section-title-c">Czym się zajmuję</h2>
+      <div class="cards-c">
+        <div class="card-c">
+          <div class="card-c-icon">🌇</div>
+          <h3>Rolety</h3>
+          <p>Wolnowiszące, przyszybowe i dzień-noc. Setki tkanin, każda na wymiar.</p>
+        </div>
+        <div class="card-c">
+          <div class="card-c-icon">🪗</div>
+          <h3>Plisy</h3>
+          <p>Elegancka harmonijka do każdego okna — w tym dachowego i łazienkowego.</p>
+        </div>
+        <div class="card-c">
+          <div class="card-c-icon">🏠</div>
+          <h3>Żaluzje</h3>
+          <p>Aluminiowe i drewniane. Poziome i pionowe. Precyzyjna kontrola światła.</p>
+        </div>
+        <div class="card-c">
+          <div class="card-c-icon">🦟</div>
+          <h3>Moskitiery</h3>
+          <p>Do okien i drzwi — ramkowe, rolowane, plisowane. Montaż w dniu wizyty.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-c">
+      <div class="trust-item-c">
+        <div class="num">100%</div>
+        <div class="lbl">Produkty na wymiar</div>
+      </div>
+      <div class="trust-item-c">
+        <div class="num">0 zł</div>
+        <div class="lbl">Przyjazd i pomiar</div>
+      </div>
+      <div class="trust-item-c">
+        <div class="num">4</div>
+        <div class="lbl">Kategorie produktów</div>
+      </div>
+      <div class="trust-item-c">
+        <div class="num">Dekorama</div>
+        <div class="lbl">Certyfikowany katalog</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- OUTRO -->
+<section class="outro">
+  <p>To propozycja wstępna — kolory, układ i treści zostaną dopracowane po Twojej decyzji.<br>
+  <strong>Odpowiedz jedną cyfrą: 1, 2 lub 3.</strong> Możesz też powiedzieć co Ci się podoba z jednego wariantu, a nie podoba z innego — dostosujemy.</p>
+</section>
+
+</body>
+</html>

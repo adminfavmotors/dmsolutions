@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMSolutions — Wireframes</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #1a1f2e;
+  font-family: 'Courier New', monospace;
+  padding: 56px 24px 80px;
+}
+
+/* ── PAGE TITLE ── */
+.page-title {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #4a5568;
+  margin-bottom: 64px;
+}
+
+/* ── LAYOUT ── */
+.variants {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.variant {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.variant-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4a5568;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.frame {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.variant-desc {
+  font-size: 8px;
+  color: #374151;
+  text-align: center;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+/* ════════════════════════
+   COLOR PALETTE (C2)
+   White + Deep Indigo
+════════════════════════ */
+:root {
+  --white:       #FFFFFF;
+  --bg-light:    #F4F6FB;
+  --bg-section:  #EEF1F9;
+  --indigo:      #1B3A6B;
+  --indigo-mid:  #2C5282;
+  --indigo-light:#EBF0FB;
+  --indigo-muted:#C3CFEA;
+  --text-dark:   #1B2A45;
+  --text-mid:    #4A6080;
+  --text-light:  #8FA5C5;
+  --border:      #D8E0F0;
+  --card-bg:     #FFFFFF;
+  --accent:      #1B3A6B;
+}
+
+/* ── NAV ── */
+.wf-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 16px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.wf-logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.wf-logo-box {
+  width: 22px; height: 22px;
+  background: var(--indigo);
+  border-radius: 3px;
+}
+.wf-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.wf-logo-text span:first-child {
+  width: 36px; height: 5px;
+  background: var(--indigo);
+  border-radius: 1px;
+  display: block;
+}
+.wf-logo-text span:last-child {
+  width: 26px; height: 3px;
+  background: var(--indigo-muted);
+  border-radius: 1px;
+  display: block;
+}
+
+.wf-nav-links {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+.wf-nav-links li {
+  width: 24px; height: 4px;
+  background: var(--text-light);
+  border-radius: 1px;
+}
+
+.wf-nav-cta {
+  width: 52px; height: 20px;
+  background: var(--indigo);
+  border-radius: 3px;
+}
+
+/* ── TEXT SIMULATION ── */
+.t-h1 {
+  height: 14px;
+  background: var(--text-dark);
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+.t-h2 {
+  height: 10px;
+  background: var(--text-dark);
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+.t-h3 {
+  height: 7px;
+  background: var(--text-dark);
+  border-radius: 1px;
+  margin-bottom: 4px;
+}
+.t-body {
+  height: 5px;
+  background: var(--text-mid);
+  border-radius: 1px;
+  margin-bottom: 3px;
+  opacity: 0.7;
+}
+.t-sm {
+  height: 3px;
+  background: var(--text-light);
+  border-radius: 1px;
+  margin-bottom: 3px;
+  opacity: 0.6;
+}
+.t-label {
+  height: 3px;
+  background: var(--indigo-muted);
+  border-radius: 1px;
+  margin-bottom: 6px;
+  width: 40%;
+}
+
+/* White text variants (for dark bg) */
+.t-h1-w { background: rgba(255,255,255,0.9); }
+.t-h2-w { background: rgba(255,255,255,0.85); }
+.t-body-w { background: rgba(255,255,255,0.45); }
+.t-sm-w  { background: rgba(255,255,255,0.3); }
+.t-label-w { background: rgba(255,255,255,0.4); }
+
+/* ── PHOTO SIMULATION ── */
+.wf-photo {
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+/* Landscape/interior photo feel */
+.photo-interior {
+  background:
+    linear-gradient(180deg,
+      #C5D4E8 0%,
+      #B8C8E0 30%,
+      #D4C4A8 55%,
+      #C8B898 75%,
+      #BEB090 100%
+    );
+}
+/* Product/fabric photo feel */
+.photo-fabric {
+  background:
+    linear-gradient(135deg,
+      #D4E0F0 0%,
+      #B8CDE0 25%,
+      #A8BDD8 50%,
+      #C0D0E8 75%,
+      #D8E8F4 100%
+    );
+}
+/* Warm room photo feel */
+.photo-room {
+  background:
+    linear-gradient(160deg,
+      #E8DDD0 0%,
+      #D8C8B0 30%,
+      #C0B898 50%,
+      #B8A888 70%,
+      #C8C0B0 100%
+    );
+}
+/* Person photo feel */
+.photo-person {
+  background:
+    linear-gradient(180deg,
+      #C8D8EC 0%,
+      #B0C4E0 25%,
+      #E8D8C8 50%,
+      #D8C8B8 70%,
+      #C8B8A8 100%
+    );
+}
+
+/* Subtle photo grain overlay */
+.wf-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.015) 2px,
+    rgba(0,0,0,0.015) 3px
+  );
+}
+
+/* Photo grid strip */
+.photo-strip {
+  display: flex;
+  gap: 3px;
+}
+
+/* ── SECTION ── */
+.wf-section {
+  padding: 16px 14px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.wf-section-alt {
+  background: var(--bg-section);
+}
+.wf-section-dark {
+  background: var(--indigo);
+}
+.wf-section:last-child { border-bottom: none; }
+
+/* ── CARD ── */
+.wf-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 8px;
+  flex: 1;
+}
+.wf-card-dark {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 10px 8px;
+  flex: 1;
+}
+
+/* ── ICON ── */
+.wf-icon {
+  width: 22px; height: 22px;
+  border-radius: 5px;
+  background: var(--indigo-light);
+  border: 1px solid var(--indigo-muted);
+  flex-shrink: 0;
+  margin-bottom: 6px;
+}
+.wf-icon-sm {
+  width: 16px; height: 16px;
+  border-radius: 4px;
+  background: var(--indigo-light);
+  border: 1px solid var(--indigo-muted);
+  flex-shrink: 0;
+}
+.wf-icon-w {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* ── STEP NUMBER ── */
+.wf-step-n {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--indigo);
+  color: #fff;
+  font-size: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wf-step-n-outline {
+  background: transparent;
+  border: 1.5px solid var(--indigo-muted);
+  color: var(--indigo-muted);
+}
+
+/* ── BUTTON ── */
+.wf-btn {
+  height: 24px;
+  background: var(--indigo);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+}
+.wf-btn span {
+  width: 48px; height: 4px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 1px;
+}
+.wf-btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--indigo);
+}
+.wf-btn-outline span {
+  background: var(--indigo);
+  opacity: 0.8;
+}
+
+/* ── FORM ── */
+.wf-input {
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--white);
+  margin-bottom: 6px;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+}
+.wf-input::after {
+  content: '';
+  width: 40%;
+  height: 3px;
+  background: var(--text-light);
+  border-radius: 1px;
+  opacity: 0.5;
+}
+.wf-textarea {
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--white);
+  margin-bottom: 6px;
+}
+
+/* ── MAP ── */
+.wf-map {
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(90deg, rgba(180,200,220,0.3) 1px, transparent 1px) 0 0 / 12px 12px,
+    linear-gradient(0deg, rgba(180,200,220,0.3) 1px, transparent 1px) 0 0 / 12px 12px,
+    #EAF0F8;
+  position: relative;
+  overflow: hidden;
+}
+.wf-map::after {
+  content: '📍';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 16px;
+  filter: grayscale(0.5);
+}
+
+/* ── TRUST STRIP ── */
+.wf-trust {
+  background: var(--indigo);
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-around;
+}
+.wf-trust-item {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+}
+
+/* ── FOOTER ── */
+.wf-footer {
+  background: var(--text-dark);
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ── UTIL ── */
+.row { display: flex; gap: 6px; }
+.col { display: flex; flex-direction: column; }
+
+/* ══ VARIANT 2 — Classic Charcoal ══ */
+.variant:nth-child(2) {
+  --white:        #FFFFFF;
+  --bg-light:     #F5F5F5;
+  --bg-section:   #EEEEEE;
+  --indigo:       #1F1F1F;
+  --indigo-mid:   #3D3D3D;
+  --indigo-light: #EFEFEF;
+  --indigo-muted: #ABABAB;
+  --text-dark:    #111111;
+  --text-mid:     #555555;
+  --text-light:   #999999;
+  --border:       #DEDEDE;
+  --card-bg:      #FFFFFF;
+  --accent:       #1F1F1F;
+}
+.variant:nth-child(2) .sec-tag {
+  color: #1F1F1F;
+  background: #EBEBEB;
+  border-bottom-color: #D0D0D0;
+}
+.variant:nth-child(2) .sec-tag.sec-tag-dark {
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.08);
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+/* ══ VARIANT 3 — Forest Green ══ */
+.variant:nth-child(3) {
+  --white:        #FFFFFF;
+  --bg-light:     #F4F8F5;
+  --bg-section:   #EAF2ED;
+  --indigo:       #1A4731;
+  --indigo-mid:   #2D6A4F;
+  --indigo-light: #E2F0E8;
+  --indigo-muted: #9ABFAA;
+  --text-dark:    #0F2818;
+  --text-mid:     #3A6050;
+  --text-light:   #7AAA90;
+  --border:       #C8E0D2;
+  --card-bg:      #FFFFFF;
+  --accent:       #1A4731;
+}
+.variant:nth-child(3) .sec-tag {
+  color: #1A4731;
+  background: #D8EDE1;
+  border-bottom-color: #9ABFAA;
+}
+.variant:nth-child(3) .sec-tag.sec-tag-dark {
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.08);
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+/* ── SECTION TAG ── */
+.sec-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #1B3A6B;
+  background: #DDE6F5;
+  border-bottom: 1px solid #C3CFEA;
+  padding: 4px 14px;
+  display: block;
+}
+.sec-tag-dark {
+  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.08);
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+.sec-tag-hero {
+  color: rgba(255,255,255,0.65);
+  background: rgba(27,58,107,0.4);
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+</style>
+</head>
+<body>
+
+<p class="page-title">DMSolutions · Warianty układu · White + Deep Indigo</p>
+
+<div class="variants">
+
+  <!-- ══════════════════════════════════
+       WARIANT 1 — Hero centralny
+  ══════════════════════════════════ -->
+  <div class="variant">
+    <p class="variant-label">Wariant 1 — Hero centralny</p>
+    <div class="frame">
+
+      <!-- NAV -->
+      <div class="wf-nav">
+        <div class="wf-logo">
+          <div class="wf-logo-box"></div>
+          <div class="wf-logo-text"><span></span><span></span></div>
+        </div>
+        <ul class="wf-nav-links"><li></li><li></li><li></li><li></li></ul>
+        <div class="wf-nav-cta"></div>
+      </div>
+
+      <!-- HERO — centered, bg photo -->
+      <div style="position:relative; overflow:hidden; border-bottom:1px solid var(--border);">
+        <div class="wf-photo photo-interior" style="position:absolute;inset:0; opacity:0.18;"></div>
+        <div style="position:relative; padding:28px 20px; text-align:center;">
+          <div class="t-label" style="margin:0 auto 8px; width:35%;"></div>
+          <div class="t-h1" style="width:75%; margin:0 auto 4px;"></div>
+          <div class="t-h1" style="width:58%; margin:0 auto 10px;"></div>
+          <div class="t-body" style="width:82%; margin:0 auto 3px;"></div>
+          <div class="t-body" style="width:68%; margin:0 auto 3px;"></div>
+          <div class="t-sm"  style="width:55%; margin:0 auto 16px;"></div>
+          <div class="row" style="justify-content:center; gap:8px;">
+            <div class="wf-btn" style="width:84px;"><span></span></div>
+            <div class="wf-btn wf-btn-outline" style="width:72px;"><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRUST STRIP -->
+      <div class="wf-trust">
+        <div class="wf-trust-item">
+          <div class="t-h2 t-h2-w" style="width:28px; background:rgba(255,255,255,0.8);"></div>
+          <div class="t-sm t-sm-w"  style="width:38px; background:rgba(255,255,255,0.35);"></div>
+        </div>
+        <div class="wf-trust-item">
+          <div class="t-h2 t-h2-w" style="width:28px; background:rgba(255,255,255,0.8);"></div>
+          <div class="t-sm t-sm-w"  style="width:38px; background:rgba(255,255,255,0.35);"></div>
+        </div>
+        <div class="wf-trust-item">
+          <div class="t-h2 t-h2-w" style="width:28px; background:rgba(255,255,255,0.8);"></div>
+          <div class="t-sm t-sm-w"  style="width:38px; background:rgba(255,255,255,0.35);"></div>
+        </div>
+      </div>
+
+      <!-- OFERTA — 2×2 grid -->
+      <div class="wf-section">
+        <div class="t-label"></div>
+        <div class="t-h2" style="width:52%; margin-bottom:12px;"></div>
+        <div class="row" style="margin-bottom:6px;">
+          <div class="wf-card">
+            <div class="wf-icon"></div>
+            <div class="t-h3" style="width:70%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:75%;"></div>
+            <div class="t-sm" style="width:60%;"></div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-icon"></div>
+            <div class="t-h3" style="width:70%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:80%;"></div>
+            <div class="t-sm" style="width:55%;"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="wf-card">
+            <div class="wf-icon"></div>
+            <div class="t-h3" style="width:70%;"></div>
+            <div class="t-sm" style="width:85%;"></div>
+            <div class="t-sm" style="width:70%;"></div>
+            <div class="t-sm" style="width:50%;"></div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-icon"></div>
+            <div class="t-h3" style="width:70%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:75%;"></div>
+            <div class="t-sm" style="width:65%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JAK DZIAŁAM — 4 steps horizontal -->
+      <div class="wf-section wf-section-alt">
+        <div class="t-label"></div>
+        <div class="t-h2" style="width:48%; margin-bottom:12px;"></div>
+        <div class="row" style="align-items:flex-start;">
+          <div class="col" style="flex:1; align-items:center; gap:4px;">
+            <div class="wf-step-n">1</div>
+            <div class="t-h3" style="width:80%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:70%;"></div>
+          </div>
+          <div class="col" style="flex:1; align-items:center; gap:4px;">
+            <div class="wf-step-n">2</div>
+            <div class="t-h3" style="width:80%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:65%;"></div>
+          </div>
+          <div class="col" style="flex:1; align-items:center; gap:4px;">
+            <div class="wf-step-n">3</div>
+            <div class="t-h3" style="width:80%;"></div>
+            <div class="t-sm" style="width:85%;"></div>
+            <div class="t-sm" style="width:75%;"></div>
+          </div>
+          <div class="col" style="flex:1; align-items:center; gap:4px;">
+            <div class="wf-step-n">4</div>
+            <div class="t-h3" style="width:80%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:60%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DLACZEGO — photo left + bullets right -->
+      <div class="wf-section">
+        <div class="t-label"></div>
+        <div class="t-h2" style="width:60%; margin-bottom:12px;"></div>
+        <div class="row" style="gap:10px; align-items:flex-start;">
+          <div class="wf-photo photo-person" style="width:96px; height:108px; border-radius:4px;"></div>
+          <div class="col" style="flex:1; gap:8px;">
+            <div class="row" style="gap:5px; align-items:flex-start;">
+              <div class="wf-icon-sm"></div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:75%;"></div>
+                <div class="t-sm" style="width:90%;"></div>
+                <div class="t-sm" style="width:70%;"></div>
+              </div>
+            </div>
+            <div class="row" style="gap:5px; align-items:flex-start;">
+              <div class="wf-icon-sm"></div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:75%;"></div>
+                <div class="t-sm" style="width:85%;"></div>
+                <div class="t-sm" style="width:65%;"></div>
+              </div>
+            </div>
+            <div class="row" style="gap:5px; align-items:flex-start;">
+              <div class="wf-icon-sm"></div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:75%;"></div>
+                <div class="t-sm" style="width:90%;"></div>
+                <div class="t-sm" style="width:60%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- photo strip -->
+        <div class="photo-strip" style="margin-top:10px;">
+          <div class="wf-photo photo-fabric"   style="flex:1; height:36px; border-radius:3px;"></div>
+          <div class="wf-photo photo-interior" style="flex:1; height:36px; border-radius:3px;"></div>
+          <div class="wf-photo photo-room"     style="flex:1; height:36px; border-radius:3px;"></div>
+          <div class="wf-photo photo-fabric"   style="flex:1; height:36px; border-radius:3px;"></div>
+        </div>
+      </div>
+
+      <!-- KONTAKT — stacked -->
+      <div class="wf-section wf-section-alt">
+        <div class="t-label"></div>
+        <div class="t-h2" style="width:40%; margin-bottom:12px;"></div>
+        <div class="wf-input"></div>
+        <div class="wf-input"></div>
+        <div class="wf-textarea"></div>
+        <div class="wf-btn" style="width:88px; margin-bottom:10px;"><span></span></div>
+        <div class="wf-map" style="height:64px;"></div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="wf-footer">
+        <div class="row" style="gap:5px; align-items:center;">
+          <div style="width:16px;height:16px;background:var(--indigo);border-radius:2px;"></div>
+          <div style="width:30px;height:4px;background:rgba(255,255,255,0.4);border-radius:1px;"></div>
+        </div>
+        <div class="col" style="gap:3px; align-items:flex-end;">
+          <div style="width:60px;height:3px;background:rgba(255,255,255,0.2);border-radius:1px;"></div>
+          <div style="width:44px;height:3px;background:rgba(255,255,255,0.2);border-radius:1px;"></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="variant-desc">Hero centralny z tłem · Usługi 2×2<br>Kroki poziome · Kontakt pionowy</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       WARIANT 2 — Hero split
+  ══════════════════════════════════ -->
+  <div class="variant">
+    <p class="variant-label">Wariant 2 — Klasyczny Antracyt</p>
+    <div class="frame">
+
+      <!-- NAV -->
+      <div class="wf-nav">
+        <div class="wf-logo">
+          <div class="wf-logo-box"></div>
+          <div class="wf-logo-text"><span></span><span></span></div>
+        </div>
+        <ul class="wf-nav-links"><li></li><li></li><li></li><li></li></ul>
+        <div class="wf-nav-cta"></div>
+      </div>
+
+      <!-- HERO — text left, photo right -->
+      <div class="wf-section" style="padding:22px 14px;">
+        <div class="row" style="gap:10px; align-items:center;">
+          <div class="col" style="flex:1; gap:4px;">
+            <div class="t-label" style="width:50%;"></div>
+            <div class="t-h1" style="width:100%;"></div>
+            <div class="t-h1" style="width:82%;"></div>
+            <div class="t-h1" style="width:65%; margin-bottom:4px;"></div>
+            <div class="t-body" style="width:95%;"></div>
+            <div class="t-body" style="width:88%;"></div>
+            <div class="t-sm"   style="width:72%; margin-bottom:12px;"></div>
+            <div class="row" style="gap:6px;">
+              <div class="wf-btn" style="width:78px;"><span></span></div>
+              <div class="wf-btn wf-btn-outline" style="width:66px;"><span></span></div>
+            </div>
+          </div>
+          <div class="wf-photo photo-interior" style="width:108px; height:124px; border-radius:6px; flex-shrink:0;"></div>
+        </div>
+      </div>
+
+      <!-- TRUST STRIP -->
+      <div class="wf-trust">
+        <div class="wf-trust-item">
+          <div style="width:28px;height:8px;background:rgba(255,255,255,0.8);border-radius:2px;"></div>
+          <div style="width:38px;height:3px;background:rgba(255,255,255,0.35);border-radius:1px;"></div>
+        </div>
+        <div class="wf-trust-item">
+          <div style="width:28px;height:8px;background:rgba(255,255,255,0.8);border-radius:2px;"></div>
+          <div style="width:38px;height:3px;background:rgba(255,255,255,0.35);border-radius:1px;"></div>
+        </div>
+        <div class="wf-trust-item">
+          <div style="width:28px;height:8px;background:rgba(255,255,255,0.8);border-radius:2px;"></div>
+          <div style="width:38px;height:3px;background:rgba(255,255,255,0.35);border-radius:1px;"></div>
+        </div>
+      </div>
+
+      <!-- OFERTA — carousel cards with photo top -->
+      <div class="wf-section wf-section-alt">
+        <div class="t-label"></div>
+        <div class="t-h2" style="width:55%; margin-bottom:12px;"></div>
+        <div class="row">
+          <div class="wf-card">
+            <div class="wf-photo photo-fabric" style="width:100%; height:48px; border-radius:3px; margin-bottom:8px;"></div>
+            <div class="t-h3" style="width:75%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:70%;"></div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-photo photo-room" style="width:100%; height:48px; border-radius:3px; margin-bottom:8px;"></div>
+            <div class="t-h3" style="width:75%;"></div>
+            <div class="t-sm" style="width:85%;"></div>
+            <div class="t-sm" style="width:65%;"></div>
+          </div>
+          <div class="wf-card" style="opacity:0.4;">
+            <div class="wf-photo photo-interior" style="width:100%; height:48px; border-radius:3px; margin-bottom:8px;"></div>
+            <div class="t-h3" style="width:75%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:60%;"></div>
+          </div>
+        </div>
+        <!-- dots -->
+        <div style="display:flex;justify-content:center;gap:4px;margin-top:8px;">
+          <div style="width:14px;height:4px;border-radius:2px;background:var(--indigo);"></div>
+          <div style="width:5px;height:4px;border-radius:2px;background:var(--indigo-muted);"></div>
+          <div style="width:5px;height:4px;border-radius:2px;background:var(--indigo-muted);"></div>
+          <div style="width:5px;height:4px;border-radius:2px;background:var(--indigo-muted);"></div>
+        </div>
+      </div>
+
+      <!-- JAK DZIAŁAM — steps list + photo -->
+      <div class="wf-section">
+        <div class="t-label"></div>
+        <div class="row" style="gap:10px; align-items:flex-start;">
+          <div class="col" style="flex:1;">
+            <div class="t-h2" style="width:70%; margin-bottom:10px;"></div>
+            <div class="row" style="gap:6px; align-items:flex-start; margin-bottom:8px;">
+              <div class="wf-step-n">1</div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:70%;"></div>
+                <div class="t-sm" style="width:90%;"></div>
+                <div class="t-sm" style="width:75%;"></div>
+              </div>
+            </div>
+            <div class="row" style="gap:6px; align-items:flex-start; margin-bottom:8px;">
+              <div class="wf-step-n">2</div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:70%;"></div>
+                <div class="t-sm" style="width:90%;"></div>
+                <div class="t-sm" style="width:65%;"></div>
+              </div>
+            </div>
+            <div class="row" style="gap:6px; align-items:flex-start; margin-bottom:8px;">
+              <div class="wf-step-n">3</div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:70%;"></div>
+                <div class="t-sm" style="width:85%;"></div>
+                <div class="t-sm" style="width:70%;"></div>
+              </div>
+            </div>
+            <div class="row" style="gap:6px; align-items:flex-start;">
+              <div class="wf-step-n">4</div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:70%;"></div>
+                <div class="t-sm" style="width:90%;"></div>
+                <div class="t-sm" style="width:55%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="wf-photo photo-room" style="width:90px; height:130px; border-radius:4px; flex-shrink:0;"></div>
+        </div>
+      </div>
+
+      <!-- DLACZEGO — dark section -->
+      <div class="wf-section" style="background:var(--indigo);">
+        <div class="t-label" style="background:rgba(255,255,255,0.3); width:35%;"></div>
+        <div class="t-h2" style="width:60%; background:rgba(255,255,255,0.85); margin-bottom:12px;"></div>
+        <div class="row" style="gap:6px; margin-bottom:8px;">
+          <div class="wf-card-dark">
+            <div class="wf-icon wf-icon-w" style="margin-bottom:6px;"></div>
+            <div class="t-h3" style="width:75%; background:rgba(255,255,255,0.8);"></div>
+            <div class="t-sm" style="width:90%; background:rgba(255,255,255,0.3);"></div>
+            <div class="t-sm" style="width:70%; background:rgba(255,255,255,0.3);"></div>
+          </div>
+          <div class="wf-card-dark">
+            <div class="wf-icon wf-icon-w" style="margin-bottom:6px;"></div>
+            <div class="t-h3" style="width:75%; background:rgba(255,255,255,0.8);"></div>
+            <div class="t-sm" style="width:85%; background:rgba(255,255,255,0.3);"></div>
+            <div class="t-sm" style="width:65%; background:rgba(255,255,255,0.3);"></div>
+          </div>
+          <div class="wf-card-dark">
+            <div class="wf-icon wf-icon-w" style="margin-bottom:6px;"></div>
+            <div class="t-h3" style="width:75%; background:rgba(255,255,255,0.8);"></div>
+            <div class="t-sm" style="width:90%; background:rgba(255,255,255,0.3);"></div>
+            <div class="t-sm" style="width:60%; background:rgba(255,255,255,0.3);"></div>
+          </div>
+        </div>
+        <div class="photo-strip">
+          <div class="wf-photo photo-fabric"   style="flex:1; height:32px; border-radius:3px; opacity:0.7;"></div>
+          <div class="wf-photo photo-interior" style="flex:1; height:32px; border-radius:3px; opacity:0.7;"></div>
+          <div class="wf-photo photo-room"     style="flex:1; height:32px; border-radius:3px; opacity:0.7;"></div>
+          <div class="wf-photo photo-fabric"   style="flex:1; height:32px; border-radius:3px; opacity:0.7;"></div>
+        </div>
+      </div>
+
+      <!-- KONTAKT — 2 columns -->
+      <div class="wf-section wf-section-alt">
+        <div class="t-label"></div>
+        <div class="t-h2" style="width:42%; margin-bottom:12px;"></div>
+        <div class="row" style="gap:10px; align-items:flex-start;">
+          <div class="col" style="flex:1;">
+            <div class="wf-input"></div>
+            <div class="wf-input"></div>
+            <div class="wf-textarea"></div>
+            <div class="wf-btn" style="width:100%;"><span></span></div>
+          </div>
+          <div class="col" style="flex:1; gap:7px;">
+            <div class="row" style="gap:5px; align-items:center;">
+              <div class="wf-icon-sm"></div>
+              <div class="t-body" style="flex:1;"></div>
+            </div>
+            <div class="row" style="gap:5px; align-items:center;">
+              <div class="wf-icon-sm"></div>
+              <div class="t-body" style="flex:1;"></div>
+            </div>
+            <div class="wf-map" style="height:60px; margin-top:2px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="wf-footer">
+        <div class="row" style="gap:5px; align-items:center;">
+          <div style="width:16px;height:16px;background:var(--indigo);border-radius:2px;"></div>
+          <div style="width:30px;height:4px;background:rgba(255,255,255,0.4);border-radius:1px;"></div>
+        </div>
+        <div class="col" style="gap:3px; align-items:flex-end;">
+          <div style="width:60px;height:3px;background:rgba(255,255,255,0.2);border-radius:1px;"></div>
+          <div style="width:44px;height:3px;background:rgba(255,255,255,0.2);border-radius:1px;"></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="variant-desc">Hero split · Usługi karuzela z foto<br>Kroki z obrazem · Dlaczego — dark · Kontakt 2-col</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       WARIANT 3 — Hero fullscreen
+  ══════════════════════════════════ -->
+  <div class="variant">
+    <p class="variant-label">Wariant 3 — Klasyczna Zieleń</p>
+    <div class="frame">
+
+      <!-- HERO fullscreen — nav inside -->
+      <div style="position:relative; overflow:hidden; border-bottom:1px solid var(--border);">
+        <div class="wf-photo photo-interior" style="position:absolute;inset:0;opacity:0.55;"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg, rgba(27,58,107,0.75) 0%, rgba(27,58,107,0.5) 100%);"></div>
+        <!-- nav inside hero -->
+        <div style="position:relative; display:flex; align-items:center; justify-content:space-between; padding:11px 14px; border-bottom:1px solid rgba(255,255,255,0.1);">
+          <div class="row" style="gap:5px; align-items:center;">
+            <div style="width:20px;height:20px;background:rgba(255,255,255,0.9);border-radius:3px;"></div>
+            <div class="col" style="gap:3px;">
+              <div style="width:34px;height:4px;background:rgba(255,255,255,0.9);border-radius:1px;"></div>
+              <div style="width:24px;height:3px;background:rgba(255,255,255,0.45);border-radius:1px;"></div>
+            </div>
+          </div>
+          <div class="row" style="gap:8px;">
+            <div style="width:22px;height:3px;background:rgba(255,255,255,0.5);border-radius:1px;"></div>
+            <div style="width:22px;height:3px;background:rgba(255,255,255,0.5);border-radius:1px;"></div>
+            <div style="width:22px;height:3px;background:rgba(255,255,255,0.5);border-radius:1px;"></div>
+          </div>
+          <div style="width:52px;height:20px;border:1.5px solid rgba(255,255,255,0.6);border-radius:3px;"></div>
+        </div>
+        <!-- hero text -->
+        <div style="position:relative; padding:26px 18px 28px; text-align:center;">
+          <div style="width:38%;height:3px;background:rgba(255,255,255,0.45);border-radius:1px;margin:0 auto 8px;"></div>
+          <div style="width:80%;height:13px;background:rgba(255,255,255,0.9);border-radius:2px;margin:0 auto 5px;"></div>
+          <div style="width:65%;height:13px;background:rgba(255,255,255,0.85);border-radius:2px;margin:0 auto 10px;"></div>
+          <div style="width:82%;height:4px;background:rgba(255,255,255,0.4);border-radius:1px;margin:0 auto 3px;"></div>
+          <div style="width:68%;height:4px;background:rgba(255,255,255,0.4);border-radius:1px;margin:0 auto 16px;"></div>
+          <div style="width:84px;height:24px;background:rgba(255,255,255,0.95);border-radius:3px;margin:0 auto;"></div>
+        </div>
+      </div>
+
+      <!-- TRUST STRIP -->
+      <div class="wf-trust">
+        <div class="wf-trust-item">
+          <div style="width:28px;height:8px;background:rgba(255,255,255,0.8);border-radius:2px;"></div>
+          <div style="width:38px;height:3px;background:rgba(255,255,255,0.35);border-radius:1px;"></div>
+        </div>
+        <div class="wf-trust-item">
+          <div style="width:28px;height:8px;background:rgba(255,255,255,0.8);border-radius:2px;"></div>
+          <div style="width:38px;height:3px;background:rgba(255,255,255,0.35);border-radius:1px;"></div>
+        </div>
+        <div class="wf-trust-item">
+          <div style="width:28px;height:8px;background:rgba(255,255,255,0.8);border-radius:2px;"></div>
+          <div style="width:38px;height:3px;background:rgba(255,255,255,0.35);border-radius:1px;"></div>
+        </div>
+      </div>
+
+      <!-- OFERTA — 4 cards in row -->
+      <div class="wf-section">
+        <div style="text-align:center; margin-bottom:12px;">
+          <div class="t-label" style="margin:0 auto 5px;"></div>
+          <div class="t-h2" style="width:48%; margin:0 auto;"></div>
+        </div>
+        <div class="row">
+          <div class="wf-card">
+            <div class="wf-photo photo-fabric" style="width:100%;height:40px;border-radius:2px;margin-bottom:6px;"></div>
+            <div class="t-h3" style="width:80%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:65%;"></div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-photo photo-room" style="width:100%;height:40px;border-radius:2px;margin-bottom:6px;"></div>
+            <div class="t-h3" style="width:80%;"></div>
+            <div class="t-sm" style="width:85%;"></div>
+            <div class="t-sm" style="width:70%;"></div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-photo photo-interior" style="width:100%;height:40px;border-radius:2px;margin-bottom:6px;"></div>
+            <div class="t-h3" style="width:80%;"></div>
+            <div class="t-sm" style="width:90%;"></div>
+            <div class="t-sm" style="width:60%;"></div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-photo photo-fabric" style="width:100%;height:40px;border-radius:2px;margin-bottom:6px;"></div>
+            <div class="t-h3" style="width:80%;"></div>
+            <div class="t-sm" style="width:80%;"></div>
+            <div class="t-sm" style="width:55%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JAK DZIAŁAM — timeline -->
+      <div class="wf-section wf-section-alt">
+        <div class="t-label"></div>
+        <div class="t-h2" style="width:50%; margin-bottom:14px;"></div>
+        <div style="position:relative; padding:0 4px;">
+          <div style="position:absolute;top:9px;left:18px;right:18px;height:2px;background:var(--indigo-muted);border-radius:1px;"></div>
+          <div class="row" style="justify-content:space-between; position:relative;">
+            <div class="col" style="align-items:center; gap:5px; width:52px;">
+              <div style="width:18px;height:18px;border-radius:50%;background:var(--indigo);border:2px solid var(--white);z-index:1;"></div>
+              <div class="t-h3" style="width:44px;"></div>
+              <div class="t-sm" style="width:44px;"></div>
+            </div>
+            <div class="col" style="align-items:center; gap:5px; width:52px;">
+              <div style="width:18px;height:18px;border-radius:50%;background:var(--indigo);border:2px solid var(--white);z-index:1;"></div>
+              <div class="t-h3" style="width:44px;"></div>
+              <div class="t-sm" style="width:44px;"></div>
+            </div>
+            <div class="col" style="align-items:center; gap:5px; width:52px;">
+              <div style="width:18px;height:18px;border-radius:50%;background:var(--indigo);border:2px solid var(--white);z-index:1;"></div>
+              <div class="t-h3" style="width:44px;"></div>
+              <div class="t-sm" style="width:44px;"></div>
+            </div>
+            <div class="col" style="align-items:center; gap:5px; width:52px;">
+              <div style="width:18px;height:18px;border-radius:50%;background:var(--indigo);border:2px solid var(--white);z-index:1;"></div>
+              <div class="t-h3" style="width:44px;"></div>
+              <div class="t-sm" style="width:44px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DLACZEGO — photo mosaic + text -->
+      <div class="wf-section">
+        <div class="t-label"></div>
+        <div class="t-h2" style="width:58%; margin-bottom:12px;"></div>
+        <div class="row" style="gap:8px; align-items:flex-start;">
+          <div class="col" style="flex:1; gap:7px;">
+            <div class="row" style="gap:5px; align-items:flex-start;">
+              <div class="wf-icon-sm"></div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:70%;"></div>
+                <div class="t-sm" style="width:90%;"></div>
+              </div>
+            </div>
+            <div class="row" style="gap:5px; align-items:flex-start;">
+              <div class="wf-icon-sm"></div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:70%;"></div>
+                <div class="t-sm" style="width:85%;"></div>
+              </div>
+            </div>
+            <div class="row" style="gap:5px; align-items:flex-start;">
+              <div class="wf-icon-sm"></div>
+              <div class="col" style="flex:1;">
+                <div class="t-h3" style="width:70%;"></div>
+                <div class="t-sm" style="width:90%;"></div>
+              </div>
+            </div>
+          </div>
+          <!-- mosaic -->
+          <div style="flex:0 0 100px; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:56px 36px; gap:3px;">
+            <div class="wf-photo photo-interior" style="grid-column:1/-1; border-radius:3px;"></div>
+            <div class="wf-photo photo-fabric"   style="border-radius:3px;"></div>
+            <div class="wf-photo photo-room"     style="border-radius:3px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KONTAKT — centered CTA + form -->
+      <div class="wf-section wf-section-alt">
+        <div style="text-align:center; margin-bottom:10px;">
+          <div class="t-label" style="margin:0 auto 5px;"></div>
+          <div class="t-h2" style="width:50%; margin:0 auto 5px;"></div>
+          <div class="t-body" style="width:75%; margin:0 auto 12px;"></div>
+        </div>
+        <div class="row" style="justify-content:center; gap:14px; margin-bottom:12px;">
+          <div class="row" style="gap:5px; align-items:center;">
+            <div class="wf-icon-sm"></div>
+            <div class="t-body" style="width:56px;"></div>
+          </div>
+          <div class="row" style="gap:5px; align-items:center;">
+            <div class="wf-icon-sm"></div>
+            <div class="t-body" style="width:56px;"></div>
+          </div>
+        </div>
+        <div class="wf-input"></div>
+        <div class="wf-input"></div>
+        <div class="wf-textarea" style="height:36px;"></div>
+        <div class="wf-btn" style="width:100%; margin-bottom:10px;"><span></span></div>
+        <div class="wf-map" style="height:56px;"></div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="wf-footer">
+        <div class="row" style="gap:5px; align-items:center;">
+          <div style="width:16px;height:16px;background:var(--indigo);border-radius:2px;"></div>
+          <div style="width:30px;height:4px;background:rgba(255,255,255,0.4);border-radius:1px;"></div>
+        </div>
+        <div class="col" style="gap:3px; align-items:flex-end;">
+          <div style="width:60px;height:3px;background:rgba(255,255,255,0.2);border-radius:1px;"></div>
+          <div style="width:44px;height:3px;background:rgba(255,255,255,0.2);border-radius:1px;"></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="variant-desc">Hero fullscreen · Usługi 4 karty · Oś czasu<br>Mozaika foto · Kontakt centralny</p>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.frame').forEach(frame => {
+  const children = Array.from(frame.children);
+  const isV3 = !children[0].classList.contains('wf-nav');
+
+  const labelsV1V2 = [
+    'Nawigacja',
+    '01 · Nagłówek',
+    'Pasek zaufania',
+    '02 · Nasze usługi',
+    '03 · Jak działam',
+    '04 · Dlaczego my',
+    '05 · Kontakt',
+    'Stopka'
+  ];
+  const labelsV3 = [
+    'Nawigacja + 01 · Nagłówek',
+    'Pasek zaufania',
+    '02 · Nasze usługi',
+    '03 · Jak działam',
+    '04 · Dlaczego my',
+    '05 · Kontakt',
+    'Stopka'
+  ];
+
+  const labels = isV3 ? labelsV3 : labelsV1V2;
+
+  children.forEach((child, i) => {
+    if (i >= labels.length) return;
+    const tag = document.createElement('div');
+    tag.className = 'sec-tag';
+    tag.textContent = labels[i];
+
+    const isDark =
+      child.classList.contains('wf-trust') ||
+      child.classList.contains('wf-footer') ||
+      (child.style.background || '').includes('var(--indigo)') ||
+      (child.getAttribute('style') || '').includes('rgba(27,58,107');
+
+    if (isDark) tag.classList.add('sec-tag-dark');
+
+    const isHero = !isV3 && i === 1 || (isV3 && i === 0);
+    if (isHero && isDark) tag.classList.add('sec-tag-hero');
+
+    child.insertBefore(tag, child.firstChild);
+  });
+});
+</script>
+
+</body>
+</html>
