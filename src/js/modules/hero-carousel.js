@@ -9,18 +9,17 @@ export function initHeroCarousel() {
   const slideCount = dots.length;
   let current = 0;
   let autoPlayId = null;
+  let isScrolling = false;
 
-  // Touch drag state
-  let dragStartX = 0;
-  let dragDelta = 0;
-  let isDragging = false;
-
-  // --- Core ---
+  // --- Navigation ---
 
   const goTo = (index) => {
     current = (index + slideCount) % slideCount;
-    track.style.transition = 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)';
-    track.style.transform = `translateX(-${current * 100}%)`;
+    const slideWidth = track.offsetWidth;
+
+    isScrolling = true;
+    track.scrollTo({ left: current * slideWidth, behavior: 'smooth' });
+
     dots.forEach((dot, i) => {
       const active = i === current;
       dot.classList.toggle('is-active', active);
@@ -39,6 +38,32 @@ export function initHeroCarousel() {
     autoPlayId = setInterval(() => goTo(current + 1), 5000);
   };
 
+  // --- Sync dots after native scroll (swipe on mobile) ---
+
+  const syncDots = () => {
+    const slideWidth = track.offsetWidth;
+    const snapped = Math.round(track.scrollLeft / slideWidth);
+    if (snapped !== current) {
+      current = snapped;
+      dots.forEach((dot, i) => {
+        const active = i === current;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', String(active));
+      });
+      startAutoPlay();
+    }
+    isScrolling = false;
+  };
+
+  track.addEventListener('scrollend', syncDots, { passive: true });
+
+  // Fallback for browsers without scrollend (Safari < 16.4)
+  let scrollTimer = null;
+  track.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(syncDots, 80);
+  }, { passive: true });
+
   // --- Controls ---
 
   prevBtn.addEventListener('click', () => { goTo(current - 1); startAutoPlay(); });
@@ -46,33 +71,6 @@ export function initHeroCarousel() {
   dots.forEach((dot) => {
     dot.addEventListener('click', () => { goTo(Number(dot.dataset.hero)); startAutoPlay(); });
   });
-
-  // --- Touch drag (live feedback while swiping) ---
-
-  track.addEventListener('touchstart', (e) => {
-    dragStartX = e.touches[0].clientX;
-    dragDelta = 0;
-    isDragging = true;
-    track.style.transition = 'none';
-  }, { passive: true });
-
-  track.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-    dragDelta = e.touches[0].clientX - dragStartX;
-    const base = -(current * 100);
-    const offset = (dragDelta / track.offsetWidth) * 100;
-    track.style.transform = `translateX(calc(${base}% + ${dragDelta}px))`;
-  }, { passive: true });
-
-  track.addEventListener('touchend', () => {
-    if (!isDragging) return;
-    isDragging = false;
-    const threshold = track.offsetWidth * 0.2;
-    if (dragDelta < -threshold) goTo(current + 1);
-    else if (dragDelta > threshold) goTo(current - 1);
-    else goTo(current); // snap back
-    startAutoPlay();
-  }, { passive: true });
 
   // --- Pause on hover ---
 
@@ -86,8 +84,15 @@ export function initHeroCarousel() {
     if (e.key === 'ArrowRight') { goTo(current + 1); startAutoPlay(); }
   });
 
+  // --- Resize: re-snap to current slide without animation ---
+
+  const resizeObserver = new ResizeObserver(() => {
+    track.scrollTo({ left: current * track.offsetWidth, behavior: 'instant' });
+  });
+  resizeObserver.observe(track);
+
   // --- Init ---
 
-  goTo(0);
+  track.scrollTo({ left: 0, behavior: 'instant' });
   startAutoPlay();
 }
