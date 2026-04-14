@@ -24,22 +24,23 @@
   padding: clamp(3rem, 5vw, 4.5rem) 1.25rem;
 }
 
-.hero__slide--1 {
-  background:
-    linear-gradient(180deg, rgba(27, 42, 69, 0.45) 0%, rgba(27, 42, 69, 0.62) 100%),
-    url('../../assets/images/hero-rolety.jpg') center center / cover no-repeat;
+.hero__slide--1 { background: linear-gradient(160deg, #1b2a45 0%, #2a4e8f 60%, #1b3a6b 100%); }
+.hero__slide--2 { background: linear-gradient(160deg, #1b3a6b 0%, #243558 60%, #1b2a45 100%); }
+.hero__slide--3 { background: linear-gradient(160deg, #1f304a 0%, #2c5282 55%, #1b2a45 100%); }
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
 }
 
-.hero__slide--2 {
-  background:
-    linear-gradient(180deg, rgba(27, 42, 69, 0.45) 0%, rgba(27, 42, 69, 0.62) 100%),
-    url('../../assets/images/hero-zaluzje.jpg') center center / cover no-repeat;
-}
-
-.hero__slide--3 {
-  background:
-    linear-gradient(180deg, rgba(27, 42, 69, 0.45) 0%, rgba(27, 42, 69, 0.62) 100%),
-    url('../../assets/images/hero-moskitiery-plisy.jpg') center center / cover no-repeat;
+@media (max-width: 48rem) {
+  .hero__bg {
+    object-position: center center;
+  }
 }
 
 .hero__slide-overlay {

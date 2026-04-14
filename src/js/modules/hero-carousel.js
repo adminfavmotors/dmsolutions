@@ -1,96 +1,93 @@
 export function initHeroCarousel() {
   const track = document.getElementById('heroTrack');
-  const prevButton = document.getElementById('heroPrev');
-  const nextButton = document.getElementById('heroNext');
+  const prevBtn = document.getElementById('heroPrev');
+  const nextBtn = document.getElementById('heroNext');
   const dots = Array.from(document.querySelectorAll('[data-hero]'));
 
-  if (!track || !prevButton || !nextButton || dots.length === 0) {
-    return;
-  }
+  if (!track || !prevBtn || !nextBtn || dots.length === 0) return;
 
   const slideCount = dots.length;
-  let currentIndex = 0;
+  let current = 0;
   let autoPlayId = null;
-  let touchStartX = 0;
 
-  const setSlide = (index) => {
-    currentIndex = (index + slideCount) % slideCount;
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+  // Touch drag state
+  let dragStartX = 0;
+  let dragDelta = 0;
+  let isDragging = false;
 
-    dots.forEach((dot, dotIndex) => {
-      const isActive = dotIndex === currentIndex;
-      dot.classList.toggle('is-active', isActive);
-      dot.setAttribute('aria-selected', String(isActive));
+  // --- Core ---
+
+  const goTo = (index) => {
+    current = (index + slideCount) % slideCount;
+    track.style.transition = 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)';
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((dot, i) => {
+      const active = i === current;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-selected', String(active));
     });
   };
 
+  // --- Autoplay ---
+
   const stopAutoPlay = () => {
-    if (autoPlayId) {
-      window.clearInterval(autoPlayId);
-      autoPlayId = null;
-    }
+    if (autoPlayId) { clearInterval(autoPlayId); autoPlayId = null; }
   };
 
   const startAutoPlay = () => {
     stopAutoPlay();
-    autoPlayId = window.setInterval(() => {
-      setSlide(currentIndex + 1);
-    }, 5000);
+    autoPlayId = setInterval(() => goTo(current + 1), 5000);
   };
 
-  prevButton.addEventListener('click', () => {
-    setSlide(currentIndex - 1);
-    startAutoPlay();
-  });
+  // --- Controls ---
 
-  nextButton.addEventListener('click', () => {
-    setSlide(currentIndex + 1);
-    startAutoPlay();
-  });
-
+  prevBtn.addEventListener('click', () => { goTo(current - 1); startAutoPlay(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); startAutoPlay(); });
   dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      setSlide(Number(dot.dataset.hero));
-      startAutoPlay();
-    });
+    dot.addEventListener('click', () => { goTo(Number(dot.dataset.hero)); startAutoPlay(); });
   });
 
-  track.addEventListener(
-    'touchstart',
-    (event) => {
-      touchStartX = event.touches[0].clientX;
-    },
-    { passive: true }
-  );
+  // --- Touch drag (live feedback while swiping) ---
 
-  track.addEventListener(
-    'touchend',
-    (event) => {
-      const deltaX = event.changedTouches[0].clientX - touchStartX;
+  track.addEventListener('touchstart', (e) => {
+    dragStartX = e.touches[0].clientX;
+    dragDelta = 0;
+    isDragging = true;
+    track.style.transition = 'none';
+  }, { passive: true });
 
-      if (Math.abs(deltaX) > 50) {
-        setSlide(deltaX < 0 ? currentIndex + 1 : currentIndex - 1);
-        startAutoPlay();
-      }
-    },
-    { passive: true }
-  );
+  track.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    dragDelta = e.touches[0].clientX - dragStartX;
+    const base = -(current * 100);
+    const offset = (dragDelta / track.offsetWidth) * 100;
+    track.style.transform = `translateX(calc(${base}% + ${dragDelta}px))`;
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    const threshold = track.offsetWidth * 0.2;
+    if (dragDelta < -threshold) goTo(current + 1);
+    else if (dragDelta > threshold) goTo(current - 1);
+    else goTo(current); // snap back
+    startAutoPlay();
+  }, { passive: true });
+
+  // --- Pause on hover ---
 
   track.addEventListener('mouseenter', stopAutoPlay);
   track.addEventListener('mouseleave', startAutoPlay);
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') {
-      setSlide(currentIndex - 1);
-      startAutoPlay();
-    }
+  // --- Keyboard ---
 
-    if (event.key === 'ArrowRight') {
-      setSlide(currentIndex + 1);
-      startAutoPlay();
-    }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  { goTo(current - 1); startAutoPlay(); }
+    if (e.key === 'ArrowRight') { goTo(current + 1); startAutoPlay(); }
   });
 
-  setSlide(0);
+  // --- Init ---
+
+  goTo(0);
   startAutoPlay();
 }
