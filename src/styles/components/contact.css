@@ -36,9 +36,8 @@
   background: var(--color-primary-soft);
 }
 
-.contact-info__icon svg {
-  width: 1rem;
-  height: 1rem;
+.contact-info__icon i {
+  font-size: 1.1rem;
 }
 
 .contact-form {
