@@ -38,9 +38,9 @@
 
 .service-card__icon {
   display: block;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: var(--space-4);
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: var(--space-5);
 }
 
 .service-card__icon img {
