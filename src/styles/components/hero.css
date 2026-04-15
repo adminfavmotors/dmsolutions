@@ -35,9 +35,9 @@
   padding: clamp(3rem, 5vw, 4.5rem) 1.25rem;
 }
 
-.hero__slide--1 { background: linear-gradient(160deg, #1b2a45 0%, #2a4e8f 60%, #1b3a6b 100%); }
-.hero__slide--2 { background: linear-gradient(160deg, #1b3a6b 0%, #243558 60%, #1b2a45 100%); }
-.hero__slide--3 { background: linear-gradient(160deg, #1f304a 0%, #2c5282 55%, #1b2a45 100%); }
+.hero__slide--1 { background: linear-gradient(160deg, var(--color-primary-dark) 0%, var(--color-primary-mid) 60%, var(--color-primary) 100%); }
+.hero__slide--2 { background: linear-gradient(160deg, var(--color-primary) 0%, var(--color-primary-mid) 60%, var(--color-primary-dark) 100%); }
+.hero__slide--3 { background: linear-gradient(160deg, var(--color-primary) 0%, var(--color-primary-mid) 55%, var(--color-primary-dark) 100%); }
 
 .hero__bg {
   position: absolute;
@@ -97,7 +97,7 @@
   background: rgba(195, 207, 234, 0.14);
   font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
 }
 

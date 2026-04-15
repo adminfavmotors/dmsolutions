@@ -52,7 +52,15 @@ Dziennik zmian. Każdy wpis = jeden commit.
 - `trust.css`: ikony SVG → `--color-accent` (zamiast zimnego `--color-accent-soft`)
 - `process.css`: pierścień kółka kroku → `--color-accent`
 
-### [bieżący] — P0 (9.1/9.2): typography tokens + gitignore cleanup
+### [bieżący] — Tokenizacja: hero/services/contact/trust/header
+- `hero.css`: hardcoded hex (#1b2a45, #2a4e8f, #1b3a6b, #243558, #1f304a, #2c5282) → `--color-primary*` tokeny; `letter-spacing: 0.12em` → `--tracking-wide`
+- `services.css`: font-size'y i line-height'y, paddingi, gap'y → tokeny `--text-*`/`--space-*`/`--leading-*`
+- `services.css`: `.services-note` gradient rgba → `var(--color-primary-soft)`
+- `contact.css`: pełna migracja na tokeny, placeholder color `#8fa0bf` → `var(--color-text-muted)` z opacity; reassurance bg `rgba(255,255,255,0.75)` → `var(--color-surface)`
+- `trust.css`: `1.25rem`/`1rem`/`2rem`/`0.65rem`/`0.9rem` → tokeny
+- `header.css`: `1.2rem`/`0.3rem`/`0.75rem`/`1rem`/`1.25rem` → tokeny
+
+### f3fa9a9 — P0 (9.1/9.2): typography tokens + gitignore cleanup
 - `.gitignore`: dodano `.claude/`, `*.png`/`*.jpg` (z wyjątkiem `src/assets/**`), `ai-dev-prompt.md`
 - usunięto z repo: ChatGPT/Gemini PNG, `ai-dev-prompt.md`, `.claude/settings.local.json`
 - `variables.css`: dodano skalę `--text-xs/sm/body-sm/base/md/lg/xl/h3/h2/h1`
