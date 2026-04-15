@@ -52,7 +52,16 @@ Dziennik zmian. Każdy wpis = jeden commit.
 - `trust.css`: ikony SVG → `--color-accent` (zamiast zimnego `--color-accent-soft`)
 - `process.css`: pierścień kółka kroku → `--color-accent`
 
-### [bieżący] — Design polish: spacing, contact width, heading rhythm
+### [bieżący] — P0: remove placeholder-driven "Dlaczego my" architecture
+- `index.html`: usunięto `.why-media` (pusty prostokąt 30rem) i `.photo-strip` (4 puste kwadraty)
+- `index.html`: sekcja "Dlaczego my" → `section-heading--center` + `benefit-list` (spójna z innymi sekcjami)
+- `why.css`: usunięto `.why-grid`, `.why-media*`, `.photo-strip*` — martwy kod po usunięciu plejshólderów
+- `why.css`: `.benefit-list` → 2-kolumnowy grid na desktopie, 1 kolumna <48rem
+- `why.css`: magiczne liczby (1.2rem, 1.75rem, 0.9rem, 0.3rem) → tokeny `--space-*`
+- `why.css`: `.benefit-item h3` `1rem` → `1.15rem` (Lora czytelnie)
+- Sekcja działa bez zdjęć klienta, gotowa na wstawienie galerii gdy zdjęcia nadejdą
+
+### a1d0000 — Design polish: spacing, contact width, heading rhythm
 - `variables.css`: dodano `--contact-shell-max: 46rem`
 - `services.css`: gap kart `1.25rem` → `var(--space-6)` (1.5rem)
 - `contact.css`: szerokość formularza `40rem` → `var(--contact-shell-max)`
