@@ -13,6 +13,7 @@
   --color-text-muted: #5a6a8a;
   --color-text-inverse: #ffffff;
   --color-accent: #b07d50;
+  --color-accent-hover: #8f6440;
   --color-accent-bg: #f5ede4;
   --color-focus: #2a4e8f;
   --color-success: #1a5c36;
@@ -77,4 +78,6 @@
 
   --transition-fast: 180ms ease;
   --transition-base: 240ms ease;
+
+  /* Breakpoints — używane w @media; CSS nie interpoluje customów w @media, więc traktujemy je jako udokumentowaną konwencję wartości: 40rem (mobile), 48rem (tablet), 56.25rem (nav/desktop), 64rem (wide) */
 }

@@ -52,7 +52,13 @@ Dziennik zmian. Każdy wpis = jeden commit.
 - `trust.css`: ikony SVG → `--color-accent` (zamiast zimnego `--color-accent-soft`)
 - `process.css`: pierścień kółka kroku → `--color-accent`
 
-### [bieżący] — Tokenizacja: hero/services/contact/trust/header
+### [bieżący] — P1/P2: hover states + accent-hover token + breakpoint docs
+- `variables.css`: dodano `--color-accent-hover: #8f6440` (ciemniejszy akcent do hover)
+- `variables.css`: udokumentowano konwencję breakpoints (40/48/56.25/64 rem)
+- `contact.css`: linki telefon/e-mail — hover `color → --color-accent-hover` z transition
+- `footer.css`: linki stopki — hover `color → --color-text-inverse` z transition
+
+### 6736134 — Tokenizacja: hero/services/contact/trust/header
 - `hero.css`: hardcoded hex (#1b2a45, #2a4e8f, #1b3a6b, #243558, #1f304a, #2c5282) → `--color-primary*` tokeny; `letter-spacing: 0.12em` → `--tracking-wide`
 - `services.css`: font-size'y i line-height'y, paddingi, gap'y → tokeny `--text-*`/`--space-*`/`--leading-*`
 - `services.css`: `.services-note` gradient rgba → `var(--color-primary-soft)`

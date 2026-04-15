@@ -15,6 +15,14 @@
   font-size: var(--text-sm);
 }
 
+.site-footer__links a {
+  transition: color var(--transition-fast);
+}
+
+.site-footer__links a:hover {
+  color: var(--color-text-inverse);
+}
+
 .site-footer__links {
   display: flex;
   flex-wrap: wrap;

@@ -22,6 +22,11 @@
 .contact-info__item a,
 .contact-info__item span {
   color: inherit;
+  transition: color var(--transition-fast);
+}
+
+.contact-info__item a:hover {
+  color: var(--color-accent-hover);
 }
 
 .contact-info__icon {
