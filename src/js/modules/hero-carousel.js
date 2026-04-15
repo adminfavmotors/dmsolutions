@@ -13,12 +13,16 @@ export function initHeroCarousel() {
 
   // --- Navigation ---
 
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const scrollBehavior = () => prefersReduced.matches ? 'instant' : 'smooth';
+
   const goTo = (index) => {
     current = (index + slideCount) % slideCount;
     const slideWidth = track.offsetWidth;
 
     isScrolling = true;
-    track.scrollTo({ left: current * slideWidth, behavior: 'smooth' });
+    track.scrollTo({ left: current * slideWidth, behavior: scrollBehavior() });
 
     dots.forEach((dot, i) => {
       const active = i === current;
@@ -94,5 +98,5 @@ export function initHeroCarousel() {
   // --- Init ---
 
   track.scrollTo({ left: 0, behavior: 'instant' });
-  startAutoPlay();
+  if (!prefersReduced.matches) startAutoPlay();
 }

@@ -29,10 +29,17 @@ Dziennik zmian. Każdy wpis = jeden commit.
 - `process.css`: `.process-step__number` — `position: relative; z-index: 1`
 - `why.css`: `.photo-strip__item` — `min-height: 9rem` → `aspect-ratio: 4/3`
 
-### [bieżący] — Fix: tokeny, magiczne liczby, metodologia
+### d1e5f6a — Fix: tokeny, magiczne liczby, metodologia
 - `variables.css`: dodano `--color-success`, `--color-error` i warianty bg/border
 - `variables.css`: dodano `--process-step-size`, `--hero-dot-width`, `--hero-dot-height`
 - `contact.css`: hardcoded kolory → tokeny CSS
 - `process.css`: `3.4rem` → `var(--process-step-size)`
 - `hero.css`: `scaleX(0.367)` → `calc(var(--hero-dot-height) / var(--hero-dot-width))`
 - Dodano `PLAN.md` i `LOG.md`
+
+### [bieżący] — A11y + trust icons + prefers-reduced-motion
+- `index.html`: dodano `inputmode="tel"` na polu telefonu
+- `trust.css`: ikony SVG `1rem` → `1.25rem`
+- `base.css`: `.skip-link:focus` → `:focus-visible`
+- `hero-carousel.js`: `scrollBehavior()` respektuje `prefers-reduced-motion`,
+  autoplay wyłączony gdy użytkownik preferuje brak animacji
