@@ -201,12 +201,12 @@
 }
 
 .hero__dot {
-  width: 1.5rem;
-  height: 0.55rem;
+  width: var(--hero-dot-width);
+  height: var(--hero-dot-height);
   padding: 0;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.35);
-  transform: scaleX(0.367);
+  transform: scaleX(calc(var(--hero-dot-height) / var(--hero-dot-width)));
   transform-origin: left;
   transition: transform var(--transition-base), background-color var(--transition-fast);
 }

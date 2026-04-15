@@ -13,6 +13,17 @@
   --color-text-muted: #5a6a8a;
   --color-text-inverse: #ffffff;
   --color-focus: #2a4e8f;
+  --color-success: #1a5c36;
+  --color-success-bg: #e6f4ed;
+  --color-success-border: #a3d4b8;
+  --color-error: #7a1c1c;
+  --color-error-bg: #fdecea;
+  --color-error-border: #f0b0a8;
+
+  --process-step-size: 3.4rem;
+
+  --hero-dot-width: 1.5rem;
+  --hero-dot-height: 0.55rem;
 
   --font-heading: 'Lora', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
