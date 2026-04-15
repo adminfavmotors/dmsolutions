@@ -36,6 +36,25 @@
   --shadow-sm: 0 2px 12px rgba(27, 42, 69, 0.08);
   --shadow-md: 0 12px 32px rgba(27, 42, 69, 0.14);
 
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-body-sm: 0.92rem;
+  --text-base: 1rem;
+  --text-md: 1.15rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.4rem;
+  --text-h3: 1.15rem;
+  --text-h2: clamp(1.6rem, 3vw, 2.2rem);
+  --text-h1: clamp(1.9rem, 4vw, 3rem);
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.4;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.68;
+  --leading-loose: 1.75;
+
+  --tracking-wide: 0.12em;
+
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;

@@ -3,3 +3,9 @@ dist
 .vercel
 .DS_Store
 *.log
+.claude/
+*.png
+*.jpg
+!src/assets/**/*.jpg
+!src/assets/**/*.png
+ai-dev-prompt.md

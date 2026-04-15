@@ -25,18 +25,18 @@
 }
 
 .benefit-item__icon i {
-  font-size: 1.4rem;
+  font-size: var(--text-xl);
 }
 
 .benefit-item h3 {
   margin-bottom: var(--space-2);
-  font-size: 1.15rem;
+  font-size: var(--text-h3);
 }
 
 .benefit-item p {
   color: var(--color-text-muted);
-  font-size: 0.92rem;
-  line-height: 1.68;
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-relaxed);
 }
 
 @media (max-width: 48rem) {

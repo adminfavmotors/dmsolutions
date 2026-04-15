@@ -52,7 +52,19 @@ Dziennik zmian. Każdy wpis = jeden commit.
 - `trust.css`: ikony SVG → `--color-accent` (zamiast zimnego `--color-accent-soft`)
 - `process.css`: pierścień kółka kroku → `--color-accent`
 
-### [bieżący] — P0: remove placeholder-driven "Dlaczego my" architecture
+### [bieżący] — P0 (9.1/9.2): typography tokens + gitignore cleanup
+- `.gitignore`: dodano `.claude/`, `*.png`/`*.jpg` (z wyjątkiem `src/assets/**`), `ai-dev-prompt.md`
+- usunięto z repo: ChatGPT/Gemini PNG, `ai-dev-prompt.md`, `.claude/settings.local.json`
+- `variables.css`: dodano skalę `--text-xs/sm/body-sm/base/md/lg/xl/h3/h2/h1`
+- `variables.css`: dodano `--leading-tight/snug/normal/relaxed/loose` i `--tracking-wide`
+- `base.css`: `1rem` → `--text-base`, `1.6` → `--leading-normal`, `1.2` → `--leading-tight`
+- `sections.css`: eyebrow font-size/letter-spacing → tokeny; h2 → `--text-h2`; section-copy line-height → `--leading-loose`; usunięto martwy `.section-placeholder` (80% pliku)
+- `sections.css`: section-copy margin-top `0.9rem` → `--space-3` wspólnie dla wszystkich section-heading
+- `why.css`: font-size'y i line-height'y → tokeny
+- `process.css`: gap'y, font-size'y, line-height'y, magiczne odstępy → tokeny
+- `footer.css`: `0.875rem` → `--text-sm`
+
+### 4b8faae — P0 (4.1): remove placeholder-driven "Dlaczego my" architecture
 - `index.html`: usunięto `.why-media` (pusty prostokąt 30rem) i `.photo-strip` (4 puste kwadraty)
 - `index.html`: sekcja "Dlaczego my" → `section-heading--center` + `benefit-list` (spójna z innymi sekcjami)
 - `why.css`: usunięto `.why-grid`, `.why-media*`, `.photo-strip*` — martwy kod po usunięciu plejshólderów
