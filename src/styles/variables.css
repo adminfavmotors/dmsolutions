@@ -12,6 +12,8 @@
   --color-text: #1b2a45;
   --color-text-muted: #5a6a8a;
   --color-text-inverse: #ffffff;
+  --color-accent: #b07d50;
+  --color-accent-bg: #f5ede4;
   --color-focus: #2a4e8f;
   --color-success: #1a5c36;
   --color-success-bg: #e6f4ed;
@@ -26,7 +28,7 @@
   --hero-dot-height: 0.55rem;
 
   --font-heading: 'Lora', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-body: 'Figtree', system-ui, sans-serif;
 
   --radius-sm: 0.5rem;
   --radius-md: 1rem;

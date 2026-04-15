@@ -3,10 +3,10 @@
   align-items: center;
   min-height: 2rem;
   padding: 0.2rem 0.75rem;
-  border: 1px solid var(--color-accent-soft);
+  border: 1px solid var(--color-accent);
   border-radius: 999px;
-  color: var(--color-primary);
-  background: var(--color-primary-soft);
+  color: var(--color-accent);
+  background: var(--color-accent-bg);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;

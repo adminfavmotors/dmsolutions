@@ -32,7 +32,7 @@
   border-radius: 999px;
   color: var(--color-text-inverse);
   background: var(--color-primary);
-  box-shadow: 0 0 0 2px var(--color-accent-soft);
+  box-shadow: 0 0 0 2px var(--color-accent);
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;

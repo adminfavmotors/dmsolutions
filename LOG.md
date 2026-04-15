@@ -37,9 +37,17 @@ Dziennik zmian. Każdy wpis = jeden commit.
 - `hero.css`: `scaleX(0.367)` → `calc(var(--hero-dot-height) / var(--hero-dot-width))`
 - Dodano `PLAN.md` i `LOG.md`
 
-### [bieżący] — A11y + trust icons + prefers-reduced-motion
+### 9d78352 — A11y + trust icons + prefers-reduced-motion
 - `index.html`: dodano `inputmode="tel"` na polu telefonu
 - `trust.css`: ikony SVG `1rem` → `1.25rem`
 - `base.css`: `.skip-link:focus` → `:focus-visible`
 - `hero-carousel.js`: `scrollBehavior()` respektuje `prefers-reduced-motion`,
   autoplay wyłączony gdy użytkownik preferuje brak animacji
+
+### [bieżący] — Design: Figtree + warm accent color
+- `index.html`: Google Fonts Inter → Figtree
+- `variables.css`: `--font-body` → Figtree; dodano `--color-accent: #b07d50`,
+  `--color-accent-bg: #f5ede4`
+- `sections.css`: eyebrow pill → warm accent (border, kolor tekstu, tło)
+- `trust.css`: ikony SVG → `--color-accent` (zamiast zimnego `--color-accent-soft`)
+- `process.css`: pierścień kółka kroku → `--color-accent`
