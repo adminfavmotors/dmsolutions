@@ -49,6 +49,7 @@
   --space-20: 5rem;
 
   --container-max: 72rem;
+  --contact-shell-max: 46rem;
   --header-height: 4.5rem;
   --hero-stage-height-desktop: clamp(30rem, 52svh, 38rem);
   --hero-stage-height-tablet: clamp(28rem, 58svh, 35rem);

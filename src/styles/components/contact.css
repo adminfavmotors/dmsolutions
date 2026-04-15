@@ -1,5 +1,5 @@
 .contact-shell {
-  width: min(100%, 40rem);
+  width: min(100%, var(--contact-shell-max));
   margin-inline: auto;
 }
 

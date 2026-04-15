@@ -44,10 +44,16 @@ Dziennik zmian. Każdy wpis = jeden commit.
 - `hero-carousel.js`: `scrollBehavior()` respektuje `prefers-reduced-motion`,
   autoplay wyłączony gdy użytkownik preferuje brak animacji
 
-### [bieżący] — Design: Figtree + warm accent color
+### 75ac3ab — Design: Figtree + warm accent color
 - `index.html`: Google Fonts Inter → Figtree
 - `variables.css`: `--font-body` → Figtree; dodano `--color-accent: #b07d50`,
   `--color-accent-bg: #f5ede4`
 - `sections.css`: eyebrow pill → warm accent (border, kolor tekstu, tło)
 - `trust.css`: ikony SVG → `--color-accent` (zamiast zimnego `--color-accent-soft`)
 - `process.css`: pierścień kółka kroku → `--color-accent`
+
+### [bieżący] — Design polish: spacing, contact width, heading rhythm
+- `variables.css`: dodano `--contact-shell-max: 46rem`
+- `services.css`: gap kart `1.25rem` → `var(--space-6)` (1.5rem)
+- `contact.css`: szerokość formularza `40rem` → `var(--contact-shell-max)`
+- `base.css`: `line-height` nagłówków `1.15` → `1.2` (czytelność Lory)
