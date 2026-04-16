@@ -1,102 +1,26 @@
+import Splide from '@splidejs/splide';
+
 export function initHeroCarousel() {
-  const track = document.getElementById('heroTrack');
-  const prevBtn = document.getElementById('heroPrev');
-  const nextBtn = document.getElementById('heroNext');
-  const dots = Array.from(document.querySelectorAll('[data-hero]'));
+  const el = document.querySelector('.hero__carousel');
+  if (!el) return;
 
-  if (!track || !prevBtn || !nextBtn || dots.length === 0) return;
-
-  const slideCount = dots.length;
-  let current = 0;
-  let autoPlayId = null;
-  let isScrolling = false;
-
-  // --- Navigation ---
-
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  const scrollBehavior = () => prefersReduced.matches ? 'instant' : 'smooth';
-
-  const goTo = (index) => {
-    current = (index + slideCount) % slideCount;
-    const slideWidth = track.offsetWidth;
-
-    isScrolling = true;
-    track.scrollTo({ left: current * slideWidth, behavior: scrollBehavior() });
-
-    dots.forEach((dot, i) => {
-      const active = i === current;
-      dot.classList.toggle('is-active', active);
-      dot.setAttribute('aria-selected', String(active));
-    });
-  };
-
-  // --- Autoplay ---
-
-  const stopAutoPlay = () => {
-    if (autoPlayId) { clearInterval(autoPlayId); autoPlayId = null; }
-  };
-
-  const startAutoPlay = () => {
-    stopAutoPlay();
-    autoPlayId = setInterval(() => goTo(current + 1), 5000);
-  };
-
-  // --- Sync dots after native scroll (swipe on mobile) ---
-
-  const syncDots = () => {
-    const slideWidth = track.offsetWidth;
-    const snapped = Math.round(track.scrollLeft / slideWidth);
-    if (snapped !== current) {
-      current = snapped;
-      dots.forEach((dot, i) => {
-        const active = i === current;
-        dot.classList.toggle('is-active', active);
-        dot.setAttribute('aria-selected', String(active));
-      });
-      startAutoPlay();
-    }
-    isScrolling = false;
-  };
-
-  track.addEventListener('scrollend', syncDots, { passive: true });
-
-  // Fallback for browsers without scrollend (Safari < 16.4)
-  let scrollTimer = null;
-  track.addEventListener('scroll', () => {
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(syncDots, 80);
-  }, { passive: true });
-
-  // --- Controls ---
-
-  prevBtn.addEventListener('click', () => { goTo(current - 1); startAutoPlay(); });
-  nextBtn.addEventListener('click', () => { goTo(current + 1); startAutoPlay(); });
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => { goTo(Number(dot.dataset.hero)); startAutoPlay(); });
-  });
-
-  // --- Pause on hover ---
-
-  track.addEventListener('mouseenter', stopAutoPlay);
-  track.addEventListener('mouseleave', startAutoPlay);
-
-  // --- Keyboard ---
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft')  { goTo(current - 1); startAutoPlay(); }
-    if (e.key === 'ArrowRight') { goTo(current + 1); startAutoPlay(); }
-  });
-
-  // --- Resize: re-snap to current slide without animation ---
-
-  const resizeObserver = new ResizeObserver(() => {
-    track.scrollTo({ left: current * track.offsetWidth, behavior: 'instant' });
-  });
-  resizeObserver.observe(track);
-
-  // --- Init ---
-
-  track.scrollTo({ left: 0, behavior: 'instant' });
-  if (!prefersReduced.matches) startAutoPlay();
+  new Splide(el, {
+    type: 'loop',
+    autoplay: true,
+    interval: 5000,
+    pauseOnHover: true,
+    resetProgress: false,
+    speed: 600,
+    reducedMotion: {
+      speed: 0,
+      rewindSpeed: 0,
+      autoplay: 'pause',
+    },
+    i18n: {
+      prev: 'Poprzedni slajd',
+      next: 'Następny slajd',
+      slideX: 'Slajd %s',
+      pageX: 'Strona %s',
+    },
+  }).mount();
 }
