@@ -36,3 +36,37 @@ Plan pracy nad stroną wizytówką. Aktualizowany na bieżąco.
 - [ ] og:image
 - [ ] Weryfikacja Lighthouse (performance, a11y, SEO)
 - [ ] Vercel deploy test
+
+### Faza 5 — Wymogi prawne (PL + UE)
+
+#### Od klienta potrzebne:
+- [ ] NIP firmy → dodać do stopki (obowiązek ustawowy)
+- [ ] Adres siedziby → dodać do stopki
+- [ ] Email do spraw RODO → do Polityki prywatności
+
+#### Do zrobienia technicznie:
+- [ ] Przenieść Google Fonts na self-hosted (Inter + Lora)
+      → eliminuje konieczność cookie bannera dla czcionek
+      → szybsze ładowanie, brak transferu IP do Google
+      → narzędzie: https://gwfh.mranftl.com (google-webfonts-helper)
+- [ ] Polityka prywatności (`/polityka-prywatnosci`)
+      → administrator danych (imię, adres, NIP)
+      → cel przetwarzania (odpowiedź na zapytanie)
+      → czas przechowywania
+      → prawa użytkownika (dostęp, usunięcie, sprzeciw)
+      → kontakt RODO
+- [ ] Zgoda na przetwarzanie danych w formularzu
+      → checkbox NIE zaznaczony domyślnie
+      → tekst: "Wyrażam zgodę na przetwarzanie moich danych osobowych..."
+      → link do Polityki prywatności
+- [ ] Cookie banner (jeśli zostanie CDN Google Fonts lub Google Analytics)
+      → przyciski: Akceptuj / Tylko niezbędne / Ustawienia
+      → nie ukrywać przycisku odrzucenia
+- [ ] Wzmianka o braku prawa odstąpienia
+      → usługi "na miarę" są wyłączone z 14-dniowego zwrotu
+      → można dodać do stopki lub regulaminu
+
+#### Uwaga prawna:
+Brak danych rejestrowych (NIP, adres) na stronie to naruszenie
+Ustawy o świadczeniu usług drogą elektroniczną (Art. 5).
+Priorytet: zrobić zaraz po otrzymaniu NIP od klienta.
