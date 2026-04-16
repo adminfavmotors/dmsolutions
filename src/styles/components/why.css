@@ -20,10 +20,6 @@
   text-transform: uppercase;
 }
 
-.why-content .section-copy {
-  margin-top: var(--space-3);
-}
-
 .benefit-list {
   display: flex;
   flex-direction: column;
