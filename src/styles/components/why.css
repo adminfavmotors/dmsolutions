@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
+  align-items: center;
 }
 
 .why-media__main {
@@ -38,7 +38,6 @@
 }
 
 .benefit-item > div {
-  flex: 1 1 0;
   min-width: 0;
 }
 
