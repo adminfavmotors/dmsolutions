@@ -25,7 +25,9 @@ Plan pracy nad stroną wizytówką. Aktualizowany na bieżąco.
 - [x] photo-strip: min-height → aspect-ratio 4/3
 - [x] Hardcoded kolory → tokeny w variables.css
 - [x] Magiczne liczby → zmienne CSS
-- [ ] Trust bar: ikony SVG 1rem → 1.25rem
+- [x] Trust bar: ikony SVG 1rem → 1.25rem
+- [x] services-note: akcentowa listwa + CTA-link + przepisany tekst
+- [x] Favicon: żaluzje + monogram DM
 - [ ] prefers-reduced-motion w JS karuzeli
 - [ ] Accessibility: aria-hidden na SVG w trust-bar
 - [ ] inputmode="tel" na polu telefonu

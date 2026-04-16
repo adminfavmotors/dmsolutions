@@ -4,6 +4,17 @@ Dziennik zmian. Każdy wpis = jeden commit.
 
 ---
 
+## 2026-04-16
+
+### 99c8e30 — services-note: akcentowa listwa + CTA + przepisany tekst
+- `index.html`: przepisany tekst na bardziej pewny ton; dodano link `.services-note__cta` → `#kontakt`
+- `services.css`: `border` → lewa listwa `3px solid var(--color-accent)`; tło → `--color-accent-bg`; badge → kolor akcentu; tekst `color-text-muted` → `color-text`; dodano styl `.services-note__cta` z hover (przesunięcie strzałki)
+
+### be5a2c5 — design: nowa favikona — żaluzje + monogram DM
+- `public/favicon.svg`: 4 poziome listwy (gradient biel→niebieski) + tekst „DM" na dole; zastępuje niejasny podwójny kształt litery D
+
+---
+
 ## 2026-04-15
 
 ### a231456 — Fix h3 font inconsistency
