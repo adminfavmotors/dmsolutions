@@ -1,6 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title>DMSolutions</title>
-  <rect width="64" height="64" rx="14" fill="#1b3a6b"/>
-  <path d="M16 18h16c10 0 16 5 16 14s-6 14-16 14H16z" fill="none" stroke="#fff" stroke-width="5"/>
-  <path d="M34 18h6c9 0 14 5 14 14s-5 14-14 14h-6z" fill="none" stroke="#c3cfea" stroke-width="5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="fav-title">
+  <title id="fav-title">DMSolutions</title>
+
+  <!-- tło -->
+  <rect width="64" height="64" rx="12" fill="#1b3a6b"/>
+
+  <!-- ikona żaluzji — 4 poziome listwy -->
+  <rect x="14" y="11" width="36" height="4.5" rx="2.2" fill="#ffffff"/>
+  <rect x="14" y="18.5" width="36" height="4.5" rx="2.2" fill="#c8d5ee"/>
+  <rect x="14" y="26" width="36" height="4.5" rx="2.2" fill="#9aafd8"/>
+  <rect x="14" y="33.5" width="20" height="4.5" rx="2.2" fill="#6e8ec4"/>
+
+  <!-- litera D -->
+  <text
+    x="32"
+    y="56"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="15"
+    font-weight="700"
+    fill="#ffffff"
+    text-anchor="middle"
+    letter-spacing="0.5"
+  >DM</text>
 </svg>
