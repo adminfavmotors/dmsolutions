@@ -5,12 +5,18 @@
   align-items: center;
 }
 
+.why-media {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
 .why-media__main {
   display: block;
   width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  height: 32rem;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .benefit-list {
@@ -135,7 +141,7 @@
   }
 
   .why-media__main {
-    min-height: 20rem;
+    height: 24rem;
   }
 }
 
