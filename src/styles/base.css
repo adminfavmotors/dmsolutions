@@ -29,9 +29,6 @@ h3 {
   text-wrap: balance;
 }
 
-p {
-  max-width: 100%;
-}
 
 :focus-visible {
   outline: 3px solid var(--color-focus);
