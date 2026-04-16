@@ -84,29 +84,6 @@
   text-align: center;
 }
 
-.hero__tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 2.25rem;
-  margin-bottom: var(--space-5);
-  padding: 0.35rem 1rem;
-  border: 1px solid rgba(195, 207, 234, 0.28);
-  border-radius: 999px;
-  color: var(--color-accent-soft);
-  background: rgba(195, 207, 234, 0.14);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-}
-
-.hero__tag-dot {
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 999px;
-  background: currentColor;
-}
 
 .hero__heading {
   margin-bottom: 1rem;
