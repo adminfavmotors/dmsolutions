@@ -30,7 +30,7 @@ h3 {
 }
 
 p {
-  max-width: 68ch;
+  max-width: 100%;
 }
 
 :focus-visible {
