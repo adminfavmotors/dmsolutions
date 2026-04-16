@@ -98,11 +98,13 @@
 
     <main id="main-content">
       <section class="hero" id="start" aria-labelledby="hero-heading">
-        <div class="hero__carousel splide" aria-label="Pokaz slajdów">
-          <div class="splide__track">
-          <ul class="splide__list">
-            <li
-              class="splide__slide hero__slide hero__slide--1"
+        <div class="hero__carousel" aria-label="Pokaz slajdów" aria-roledescription="carousel">
+          <div class="hero__track" id="heroTrack">
+            <article
+              class="hero__slide hero__slide--1"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slajd 1 — Rolety"
             >
               <img
                 class="hero__bg"
@@ -132,10 +134,13 @@
                   <li>Dobór rozwiązania do wnętrza</li>
                 </ul>
               </div>
-            </li>
+            </article>
 
-            <li
-              class="splide__slide hero__slide hero__slide--2"
+            <article
+              class="hero__slide hero__slide--2"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slajd 2 — Żaluzje i plisy"
             >
               <img
                 class="hero__bg"
@@ -165,10 +170,13 @@
                   <li>Komfort na co dzień</li>
                 </ul>
               </div>
-            </li>
+            </article>
 
-            <li
-              class="splide__slide hero__slide hero__slide--3"
+            <article
+              class="hero__slide hero__slide--3"
+              role="group"
+              aria-roledescription="slide"
+              aria-label="Slajd 3 — Obsługa"
             >
               <img
                 class="hero__bg"
@@ -198,8 +206,24 @@
                   <li>Obsługa od pomiaru po montaż</li>
                 </ul>
               </div>
-            </li>
-          </ul>
+            </article>
+          </div>
+
+          <button class="hero__control hero__control--prev" id="heroPrev" aria-label="Poprzedni slajd">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button class="hero__control hero__control--next" id="heroNext" aria-label="Następny slajd">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+
+          <div class="hero__dots" role="tablist" aria-label="Nawigacja slajdów">
+            <button class="hero__dot is-active" type="button" role="tab" aria-selected="true" aria-label="Slajd 1" data-hero="0"></button>
+            <button class="hero__dot" type="button" role="tab" aria-selected="false" aria-label="Slajd 2" data-hero="1"></button>
+            <button class="hero__dot" type="button" role="tab" aria-selected="false" aria-label="Slajd 3" data-hero="2"></button>
           </div>
         </div>
       </section>
