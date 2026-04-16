@@ -6,6 +6,13 @@ Dziennik zmian. Każdy wpis = jeden commit.
 
 ## 2026-04-16
 
+### bf7e89d — feat: замена кастомной карусели на Splide
+- Установлен `@splidejs/splide` (~15kb gz)
+- `hero-carousel.js`: весь кастомный код (~100 строк) → 20 строк через `new Splide().mount()`
+- `index.html`: структура слайдов переведена на `.splide__track / .splide__list / .splide__slide`; убраны кастомные кнопки и dots
+- `hero.css`: убраны `.hero__control` и `.hero__dot`; добавлены overrides для `.splide__arrow` и `.splide__pagination__page` (акцент + expand на активной)
+- `main.css`: добавлен `@import '@splidejs/splide/css/core'`
+
 ### 9da572c — copy: шаг 1 процесса — расширен текст
 - `index.html`: текст шага 1 дополнен ("jakie masz okna") — визуальный баланс с шагами 2–4
 
