@@ -6,6 +6,9 @@ Dziennik zmian. Każdy wpis = jeden commit.
 
 ## 2026-04-16
 
+### ecac07d — hero dots: kontур для неактивных + акцентная активная
+- `hero.css`: неактивные точки — прозрачный фон + белый контур `65%`; активная — заливка `--color-accent` (#b07d50)
+
 ### 99c8e30 — services-note: akcentowa listwa + CTA + przepisany tekst
 - `index.html`: przepisany tekst na bardziej pewny ton; dodano link `.services-note__cta` → `#kontakt`
 - `services.css`: `border` → lewa listwa `3px solid var(--color-accent)`; tło → `--color-accent-bg`; badge → kolor akcentu; tekst `color-text-muted` → `color-text`; dodano styl `.services-note__cta` z hover (przesunięcie strzałki)
