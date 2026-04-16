@@ -37,6 +37,10 @@
   align-items: flex-start;
 }
 
+.benefit-item > div {
+  min-width: 0;
+}
+
 .benefit-item__icon {
   display: inline-flex;
   align-items: center;
