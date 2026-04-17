@@ -178,21 +178,17 @@
 }
 
 .hero__dot {
-  width: var(--hero-dot-width);
-  height: var(--hero-dot-height);
+  width: 0.55rem;
+  height: 0.55rem;
   padding: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.0);
-  border: 1.5px solid rgba(255, 255, 255, 0.65);
-  transform: scaleX(calc(var(--hero-dot-height) / var(--hero-dot-width)));
-  transform-origin: left;
-  transition: transform var(--transition-base), background-color var(--transition-fast), border-color var(--transition-fast);
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  transition: background-color var(--transition-fast);
 }
 
 .hero__dot.is-active {
-  transform: scaleX(1);
-  background: var(--color-accent);
-  border-color: var(--color-accent);
+  background: #fff;
 }
 
 @media (max-width: 64rem) {
