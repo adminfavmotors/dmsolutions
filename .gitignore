@@ -8,4 +8,6 @@ dist
 *.jpg
 !src/assets/**/*.jpg
 !src/assets/**/*.png
+!public/*.jpg
+!public/*.png
 ai-dev-prompt.md
