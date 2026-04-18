@@ -50,7 +50,8 @@
 }
 
 .benefit-item__icon i {
-  font-size: var(--text-xl);
+  font-size: 1.4rem;
+  line-height: 1;
 }
 
 .benefit-item h3 {
@@ -142,6 +143,11 @@
 
   .why-media__main {
     height: 24rem;
+  }
+
+  .benefit-item__icon {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
 

@@ -1,74 +1,51 @@
 # PLAN.md — DMSolutions
 
-Plan pracy nad stroną wizytówką. Aktualizowany na bieżąco.
+Aktualny plan utrzymania i doprowadzenia strony do publikacji.
 
-## Fazy
+## Stan systemu
 
-### Faza 1 — Funkcjonalne komponenty ✅
-- [x] Formularz kontaktowy (Web3Forms, stany loading/success/error)
-- [x] Google Maps iframe (Olsztyn)
-- [x] Footer — weryfikacja current-year JS
+### Rdzeń strony
+- [x] One-page site na `Vite + Vanilla HTML/CSS/JS`
+- [x] Własna karuzela hero oparta o CSS scroll snap
+- [x] Sekcje: hero, trust bar, oferta, proces, dlaczego my, kontakt, footer
+- [x] Zdjęcia realizacji i główne zdjęcie sekcji „Dlaczego my”
+- [x] Formularz kontaktowy z obsługą stanów loading/success/error
+- [x] Polityka prywatności jako osobna strona w `public/`
 
-### Faza 2 — Materiały klienta ⏳ (czeka)
-- [ ] Logo → podmiana tekstu DMSolutions w headerze
-- [ ] Zdjęcia → why-media__main + photo-strip
-- [ ] Klucz Web3Forms API → formularz gotowy do wysyłki
-- [ ] Pełna lista usług + teksty
+### Blokery od klienta
+- [ ] Klucz Web3Forms → aktywacja formularza
+- [ ] Logo (`.svg/.ai/.eps`) → podmiana tekstu `DMSolutions` w headerze
+- [ ] Domena → `robots.txt`, `sitemap.xml`, `og:url`
+- [ ] Pełne dane firmy: adres, NIP, e-mail do spraw RODO
 
-### Faza 3 — Wizualny audyt i polish ✅ / 🔄
-- [x] why-grid: równe kolumny 1fr / 1fr
-- [x] h2: clamp(3rem) → clamp(2.2rem)
-- [x] h3: usunięto font-body override (process, why)
-- [x] hero__lead: max-width 42ch
-- [x] hero__dot: width → transform scaleX (compositor)
-- [x] process: linia łącząca kroki
-- [x] photo-strip: min-height → aspect-ratio 4/3
-- [x] Hardcoded kolory → tokeny w variables.css
-- [x] Magiczne liczby → zmienne CSS
-- [x] Trust bar: ikony SVG 1rem → 1.25rem
-- [x] services-note: akcentowa listwa + CTA-link + przepisany tekst
-- [x] Favicon: żaluzje + monogram DM
-- [ ] prefers-reduced-motion w JS karuzeli
-- [ ] Accessibility: aria-hidden na SVG w trust-bar
-- [ ] inputmode="tel" na polu telefonu
-- [ ] skip-link: :focus → :focus-visible
+## Priorytety techniczne
 
-### Faza 4 — Gotowość do wdrożenia
-- [ ] robots.txt + sitemap.xml
-- [ ] og:image
-- [ ] Weryfikacja Lighthouse (performance, a11y, SEO)
-- [ ] Vercel deploy test
+### P0 — integralność systemu
+- [x] Usunięcie nieużywanego źródła treści (`src/content/services.md`)
+- [x] Usunięcie martwych selektorów CSS i osieroconych assetów
+- [x] Synchronizacja `PLAN.md` i `LOG.md` z aktualnym stanem repo
 
-### Faza 5 — Wymogi prawne (PL + UE)
+### P1 — spójność działania
+- [x] Ograniczyć skróty klawiaturowe karuzeli do kontekstu hero, nie całego dokumentu
+- [x] Naprawić `current-year` na stronie polityki prywatności przez usunięcie zależności od osobnego JS
+- [x] Ujednolicić kontrakt breakpointów między CSS a `mobile-nav.js`
 
-#### Od klienta potrzebne:
-- [ ] NIP firmy → dodać do stopki (obowiązek ustawowy)
-- [ ] Adres siedziby → dodać do stopki
-- [ ] Email do spraw RODO → do Polityki prywatności
+### P2 — performance i release hardening
+- [x] Zoptymalizować hero image (`WebP/AVIF`, mniejsze pliki, ewentualnie `<picture>`)
+- [x] Ograniczyć zależność od zewnętrznych CDN-ów (Google Fonts, Phosphor Icons)
+- [ ] Dodać `robots.txt` i `sitemap.xml` po poznaniu domeny
+- [ ] Uzupełnić dane prawne i biznesowe po otrzymaniu danych od klienta
 
-#### Do zrobienia technicznie:
-- [ ] Przenieść Google Fonts na self-hosted (Inter + Lora)
-      → eliminuje konieczność cookie bannera dla czcionek
-      → szybsze ładowanie, brak transferu IP do Google
-      → narzędzie: https://gwfh.mranftl.com (google-webfonts-helper)
-- [ ] Polityka prywatności (`/polityka-prywatnosci`)
-      → administrator danych (imię, adres, NIP)
-      → cel przetwarzania (odpowiedź na zapytanie)
-      → czas przechowywania
-      → prawa użytkownika (dostęp, usunięcie, sprzeciw)
-      → kontakt RODO
-- [ ] Zgoda na przetwarzanie danych w formularzu
-      → checkbox NIE zaznaczony domyślnie
-      → tekst: "Wyrażam zgodę na przetwarzanie moich danych osobowych..."
-      → link do Polityki prywatności
-- [ ] Cookie banner (jeśli zostanie CDN Google Fonts lub Google Analytics)
-      → przyciski: Akceptuj / Tylko niezbędne / Ustawienia
-      → nie ukrywać przycisku odrzucenia
-- [ ] Wzmianka o braku prawa odstąpienia
-      → usługi "na miarę" są wyłączone z 14-dniowego zwrotu
-      → można dodać do stopki lub regulaminu
+## Weryfikacja po zmianach
+- [x] `npm run build`
+- [x] `npm run lint`
+- [x] Kontrola martwego kodu / osieroconych assetów
+- [x] Przegląd mobile → tablet → laptop → desktop
+- [x] Kontrola pierwszego ekranu bez zależności od JS
 
-#### Uwaga prawna:
-Brak danych rejestrowych (NIP, adres) na stronie to naruszenie
-Ustawy o świadczeniu usług drogą elektroniczną (Art. 5).
-Priorytet: zrobić zaraz po otrzymaniu NIP od klienta.
+Uwagi po przeglądzie:
+- Viewport review przeszedł: desktop, laptop, tablet, mobile i strona prywatności renderują się bez overlayu i bez błędów w konsoli.
+- No-JS baseline został naprawiony przez odpięcie bazowego CSS od inicjalizacji JS: pierwszy ekran renderuje się poprawnie jeszcze przed uruchomieniem `main.js`.
+- Hero korzysta teraz z responsywnych wariantów `768w/1536w` (`webp` + `jpg`) generowanych skryptem `npm run images:hero`; desktop ładuje `1536w.webp`, mobile `768w.webp`.
+- Google Fonts zostały usunięte z runtime, a Phosphor wrócił jako lokalnie vendoryzowany `Phosphor-Bold`: obie strony ładują lokalne fonty z `/fonts/fonts.css`, główna strona bierze ikony z lokalnego `ph-bold`, a `public/icons.svg` został zredukowany do małych ikon inline używanych w CTA.
+- ESLint działa jako podstawowy quality gate dla `src/js` i `scripts/`; aktualny stan przechodzi `npm run lint`.

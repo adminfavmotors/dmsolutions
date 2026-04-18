@@ -5,14 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polityka prywatności — DMSolutions</title>
     <meta name="robots" content="noindex,follow" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Lora:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <script type="module" src="/src/js/modules/current-year.js"></script>
     <style>
       *, *::before, *::after { box-sizing: border-box; }
       * { margin: 0; }
@@ -142,14 +136,20 @@
       <p>
         Strona nie wykorzystuje plików cookie ani żadnych technologii śledzących.
         Nie korzystamy z Google Analytics, Meta Pixel ani podobnych narzędzi.
-        Jedyne zewnętrzne zasoby ładowane przez stronę to czcionki Google Fonts oraz
-        ikony Phosphor Icons — są to żądania techniczne, które mogą rejestrować adres IP
-        w logach serwerów tych dostawców.
+        Strona korzysta z lokalnie hostowanych czcionek i ikon, więc nie wysyła żądań do
+        zewnętrznych CDN-ów tylko po to, aby wyrenderować interfejs. Zewnętrzne połączenia mogą
+        pojawić się wyłącznie wtedy, gdy użyjesz osadzonej mapy Google lub wyślesz formularz do
+        Web3Forms.
       </p>
     </main>
 
     <footer class="footer">
       <p>&copy; <span data-current-year></span> DMSolutions — <a href="/">Wróć na stronę główną</a></p>
     </footer>
+    <script>
+      document.querySelectorAll('[data-current-year]').forEach((node) => {
+        node.textContent = String(new Date().getFullYear());
+      });
+    </script>
   </body>
 </html>

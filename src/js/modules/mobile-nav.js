@@ -1,4 +1,5 @@
 export function initMobileNav() {
+  const desktopNavMediaQuery = window.matchMedia('(min-width: 56.25rem)');
   const toggle = document.querySelector('.menu-toggle');
   const panel = document.querySelector('.nav-panel');
   const links = document.querySelectorAll('.nav-panel a');
@@ -23,9 +24,17 @@ export function initMobileNav() {
     });
   });
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 900) {
+  const closeMenuOnDesktop = () => {
+    if (desktopNavMediaQuery.matches) {
       setExpanded(false);
     }
-  });
+  };
+
+  if (typeof desktopNavMediaQuery.addEventListener === 'function') {
+    desktopNavMediaQuery.addEventListener('change', closeMenuOnDesktop);
+  } else {
+    desktopNavMediaQuery.addListener(closeMenuOnDesktop);
+  }
+
+  closeMenuOnDesktop();
 }

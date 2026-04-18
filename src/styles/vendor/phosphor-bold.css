@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'Phosphor-Bold';
+  src:
+    url('/phosphor/Phosphor-Bold.woff2') format('woff2'),
+    url('/phosphor/Phosphor-Bold.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+.ph-bold {
+  font-family: 'Phosphor-Bold' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  letter-spacing: 0;
+  -webkit-font-feature-settings: 'liga';
+  -moz-font-feature-settings: 'liga=1';
+  -moz-font-feature-settings: 'liga';
+  -ms-font-feature-settings: 'liga' 1;
+  font-feature-settings: 'liga';
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ph-bold.ph-car::before {
+  content: '\e112';
+}
+
+.ph-bold.ph-ruler::before {
+  content: '\e6b8';
+}
+
+.ph-bold.ph-seal-check::before {
+  content: '\e606';
+}
+
+.ph-bold.ph-handshake::before {
+  content: '\e582';
+}
+
+.ph-bold.ph-phone::before {
+  content: '\e3b8';
+}
+
+.ph-bold.ph-envelope::before {
+  content: '\e214';
+}
+
+.ph-bold.ph-map-pin::before {
+  content: '\e316';
+}

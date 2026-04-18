@@ -1,118 +1,120 @@
 # LOG.md — DMSolutions
 
-Dziennik zmian. Każdy wpis = jeden commit.
+Dziennik zmian dla aktualnego stanu kodu i architektury.
+Po commicie: jeden wpis = jeden commit.
+Dopóki zmiany są tylko w working tree, opisujemy je osobno w sekcji `Pending workspace updates`, żeby kolejna sesja AI miała prawdziwy kontekst zamiast zgadywania.
+
+---
+
+## Pending workspace updates (not committed yet)
+
+- none
+
+---
+
+## 2026-04-18
+
+### upcoming commit — stabilize runtime, verification, assets, and icon system
+- P0 cleanup: usunięte równoległe i martwe warstwy (`src/content/services.md`, osierocone obrazy, martwe selektory CSS, katalog `site/`, robocze artefakty graficzne i screenshoty)
+- P1 fixes: skróty klawiaturowe karuzeli działają tylko w hero, `mobile-nav.js` używa tego samego breakpointu co CSS, privacy page ma własny year script bez zależności od `/src`
+- No-JS baseline: bazowy CSS został odpięty od inicjalizacji JS; pierwszy ekran renderuje się poprawnie jeszcze przed uruchomieniem `main.js`
+- P2 assets/runtime: hero przeszedł na responsywne warianty `768w/1536w` (`webp` + `jpg`) generowane przez `npm run images:hero`
+- Runtime dependencies: Google Fonts zostały usunięte z runtime; lokalne fonty idą z `/fonts/fonts.css`, a główna strona korzysta z lokalnie vendoryzowanego `Phosphor-Bold` bez zewnętrznego CDN
+- Icons regression fix: sekcje „Dlaczego my” i „Kontakt” wróciły z ręcznie rysowanego sprite do lokalnie podpiętego `ph-bold`; `public/icons.svg` został ograniczony do małych ikon CTA
+- Verification pipeline: dodany ESLint (`eslint.config.js`, `npm run lint`) dla browser JS w `src/js` i skryptów node w `scripts`
+- Hero mobile composition i carousel: zmniejszony mobile stage, poprawiony loading slajdów hero i wygładzona synchronizacja karuzeli
+- Dokumentacja projektu (`PLAN.md`, `README.md`, `CLAUDE.md`, `tests/checklist.md`) została zsynchronizowana z aktualną architekturą i faktycznymi ograniczeniami
+
+---
+
+## 2026-04-17
+
+### ccad5f9 — design: uproszczony indykator karuzeli — białe kropki
+- `hero.css`: aktywny i nieaktywny stan dots uproszczony do lekkiej, bardziej neutralnej wersji
 
 ---
 
 ## 2026-04-16
 
-### bf7e89d — feat: замена кастомной карусели на Splide
-- Установлен `@splidejs/splide` (~15kb gz)
-- `hero-carousel.js`: весь кастомный код (~100 строк) → 20 строк через `new Splide().mount()`
-- `index.html`: структура слайдов переведена на `.splide__track / .splide__list / .splide__slide`; убраны кастомные кнопки и dots
-- `hero.css`: убраны `.hero__control` и `.hero__dot`; добавлены overrides для `.splide__arrow` и `.splide__pagination__page` (акцент + expand на активной)
-- `main.css`: добавлен `@import '@splidejs/splide/css/core'`
+### 7d7e1e4 — revert: przywrócenie własnej karuzeli, usunięcie Splide
+- `hero-carousel.js`: powrót do własnej implementacji opartej o scroll snap
+- `index.html`: przywrócone własne strzałki i dots (`hero__control`, `hero__dot`)
+- usunięta równoległa ścieżka oparta o Splide
 
-### 9da572c — copy: шаг 1 процесса — расширен текст
-- `index.html`: текст шага 1 дополнен ("jakie masz okna") — визуальный баланс с шагами 2–4
+### 7005595 — fix: przywrócenie poprawnej wysokości hero po migracji na Splide
+- `variables.css` / `hero.css`: korekta wysokości stage po nieudanej migracji karuzeli
 
-### ecac07d — hero dots: kontур для неактивных + акцентная активная
-- `hero.css`: неактивные точки — прозрачный фон + белый контур `65%`; активная — заливка `--color-accent` (#b07d50)
+### bf7e89d — feat: migracja karuzeli hero na Splide
+- historyczna próba uproszczenia karuzeli przez bibliotekę zewnętrzną
+- później cofnięta w `7d7e1e4`, zostaje w logu jako kontekst decyzji
 
-### 99c8e30 — services-note: akcentowa listwa + CTA + przepisany tekst
-- `index.html`: przepisany tekst na bardziej pewny ton; dodano link `.services-note__cta` → `#kontakt`
-- `services.css`: `border` → lewa listwa `3px solid var(--color-accent)`; tło → `--color-accent-bg`; badge → kolor akcentu; tekst `color-text-muted` → `color-text`; dodano styl `.services-note__cta` z hover (przesunięcie strzałki)
+### bb72253 — feat: dodanie zdjęć realizacji do `photo-strip`
+- `index.html`: sekcja „Dlaczego my” przestała być placeholderem, dostała realne zdjęcia realizacji
+- `src/assets/images/realizacja-1..4.jpg`: wpięte do sekcji
 
-### be5a2c5 — design: nowa favikona — żaluzje + monogram DM
-- `public/favicon.svg`: 4 poziome listwy (gradient biel→niebieski) + tekst „DM" na dole; zastępuje niejasny podwójny kształt litery D
+### 18c09d5 — feat: usunięcie `hero__tag` ze wszystkich slajdów
+- `index.html`: uproszczenie struktury hero, mniej dekoracyjnego DOM
+
+### 9da572c — copy: rozszerzenie tekstu kroku 1 procesu
+- `index.html`: krok „Kontakt” doprecyzowany o kontekst okien i potrzeb klienta
+
+### 99c8e30 — feat: `services-note` — akcentowa listwa, CTA, poprawiony copy
+- `index.html`: przepisany tekst sekcji i dodane CTA do kontaktu
+- `services.css`: nota dostała wyraźniejszy akcent i lepszą hierarchię
+
+### be5a2c5 — design: nowy favicon — żaluzje + monogram DM
+- `public/favicon.svg`: zastąpienie wcześniejszej, mniej czytelnej wersji
 
 ---
 
 ## 2026-04-15
 
-### a231456 — Fix h3 font inconsistency
-- `process.css`: usunięto `font-family: var(--font-body)` z `.process-step h3`
-- `why.css`: usunięto `font-family: var(--font-body)` z `.benefit-item h3`
-- Wszystkie h3 teraz jednolicie używają `var(--font-heading)` (Lora)
+### 21ebede — P1/P2: hover states dla linków tekstowych + `accent-hover`
+- `variables.css`: dodany `--color-accent-hover`
+- `contact.css`, `footer.css`: czytelniejsze stany hover dla linków
 
-### a1f5855 — Phase 1 + visual audit: form, map, proportions
-- `contact-form.js`: nowy moduł, async fetch → Web3Forms, stany loading/success/error
-- `main.js`: dodano `initContactForm()`
-- `index.html`: formularz bez `action="#"`, `form-status` z `aria-live`, iframe Google Maps
-- `contact.css`: `.map-wrap` zastępuje `.map-placeholder`, style stanów formularza
-- `why.css`: `grid-template-columns` → `1fr 1fr` (było: `minmax(0, 24rem) 1fr`)
-- `sections.css`: h2 `clamp(1.9rem, 4vw, 3rem)` → `clamp(1.6rem, 3vw, 2.2rem)`
-- Dodano `CLAUDE.md` i `potrzebne-od-klienta.docx`
+### a231456 — fix: spójne fonty `h3`
+- `process.css`, `why.css`: usunięte lokalne override `font-body`
+- wszystkie `h3` wróciły do `var(--font-heading)`
 
-### 6f94088 — Fix hero: lead max-width + dot compositor-friendly animation
-- `hero.css`: `.hero__lead` dodano `max-width: 42ch`
-- `hero.css`: `.hero__dot` animacja `width` → `transform: scaleX()` (compositor thread)
+### a1f5855 — phase 1: formularz, mapa, proporcje sekcji
+- `contact-form.js`: obsługa wysyłki przez Web3Forms ze stanami formularza
+- `index.html`: formularz bez `action="#"`, `aria-live`, mapa Google
+- `contact.css`: style dla formularza i mapy
 
-### 41a30f2 — Visual: process connector line + photo-strip aspect-ratio
-- `process.css`: `.process-grid::before` — linia łącząca kółka kroków, ukryta na tablet/mobile
-- `process.css`: `.process-step__number` — `position: relative; z-index: 1`
-- `why.css`: `.photo-strip__item` — `min-height: 9rem` → `aspect-ratio: 4/3`
+### 6f94088 — fix hero: max-width leadu + lżejsza animacja dots
+- `hero.css`: ograniczenie szerokości leadu i poprawa czytelności hero copy
 
-### d1e5f6a — Fix: tokeny, magiczne liczby, metodologia
-- `variables.css`: dodano `--color-success`, `--color-error` i warianty bg/border
-- `variables.css`: dodano `--process-step-size`, `--hero-dot-width`, `--hero-dot-height`
-- `contact.css`: hardcoded kolory → tokeny CSS
-- `process.css`: `3.4rem` → `var(--process-step-size)`
-- `hero.css`: `scaleX(0.367)` → `calc(var(--hero-dot-height) / var(--hero-dot-width))`
-- Dodano `PLAN.md` i `LOG.md`
+### 41a30f2 — visual: linia procesu + proporcje `photo-strip`
+- `process.css`: linia łącząca kroki procesu na desktopie
+- `why.css`: `photo-strip` przeszedł z `min-height` na `aspect-ratio`
 
-### 9d78352 — A11y + trust icons + prefers-reduced-motion
-- `index.html`: dodano `inputmode="tel"` na polu telefonu
-- `trust.css`: ikony SVG `1rem` → `1.25rem`
-- `base.css`: `.skip-link:focus` → `:focus-visible`
-- `hero-carousel.js`: `scrollBehavior()` respektuje `prefers-reduced-motion`,
-  autoplay wyłączony gdy użytkownik preferuje brak animacji
+### d1e5f6a — fix: tokeny, magiczne liczby, metodologia
+- `variables.css`: nowe tokeny kolorów i wymiarów
+- `contact.css`, `process.css`, `hero.css`: migracja z magicznych wartości do tokenów
+- dodane `PLAN.md` i `LOG.md`
 
-### 75ac3ab — Design: Figtree + warm accent color
-- `index.html`: Google Fonts Inter → Figtree
-- `variables.css`: `--font-body` → Figtree; dodano `--color-accent: #b07d50`,
-  `--color-accent-bg: #f5ede4`
-- `sections.css`: eyebrow pill → warm accent (border, kolor tekstu, tło)
-- `trust.css`: ikony SVG → `--color-accent` (zamiast zimnego `--color-accent-soft`)
-- `process.css`: pierścień kółka kroku → `--color-accent`
+### 9d78352 — a11y + trust icons + prefers-reduced-motion
+- `index.html`: `inputmode="tel"` w formularzu
+- `base.css`: `skip-link` przeniesiony na `:focus-visible`
+- `hero-carousel.js`: respektowanie `prefers-reduced-motion`
 
-### [bieżący] — P1/P2: hover states + accent-hover token + breakpoint docs
-- `variables.css`: dodano `--color-accent-hover: #8f6440` (ciemniejszy akcent do hover)
-- `variables.css`: udokumentowano konwencję breakpoints (40/48/56.25/64 rem)
-- `contact.css`: linki telefon/e-mail — hover `color → --color-accent-hover` z transition
-- `footer.css`: linki stopki — hover `color → --color-text-inverse` z transition
+### 75ac3ab — design: Figtree + cieplejszy akcent
+- `index.html`: zmiana body font na Figtree
+- `variables.css`: dodane akcentowe kolory dla cieplejszego charakteru marki
 
-### 6736134 — Tokenizacja: hero/services/contact/trust/header
-- `hero.css`: hardcoded hex (#1b2a45, #2a4e8f, #1b3a6b, #243558, #1f304a, #2c5282) → `--color-primary*` tokeny; `letter-spacing: 0.12em` → `--tracking-wide`
-- `services.css`: font-size'y i line-height'y, paddingi, gap'y → tokeny `--text-*`/`--space-*`/`--leading-*`
-- `services.css`: `.services-note` gradient rgba → `var(--color-primary-soft)`
-- `contact.css`: pełna migracja na tokeny, placeholder color `#8fa0bf` → `var(--color-text-muted)` z opacity; reassurance bg `rgba(255,255,255,0.75)` → `var(--color-surface)`
-- `trust.css`: `1.25rem`/`1rem`/`2rem`/`0.65rem`/`0.9rem` → tokeny
-- `header.css`: `1.2rem`/`0.3rem`/`0.75rem`/`1rem`/`1.25rem` → tokeny
+### 6736134 — tokenizacja hero / services / contact / trust / header
+- migracja hardcoded wartości do wspólnych tokenów w `variables.css`
+- porządkowanie spacingu, kolorów i typografii w sekcjach
 
-### f3fa9a9 — P0 (9.1/9.2): typography tokens + gitignore cleanup
-- `.gitignore`: dodano `.claude/`, `*.png`/`*.jpg` (z wyjątkiem `src/assets/**`), `ai-dev-prompt.md`
-- usunięto z repo: ChatGPT/Gemini PNG, `ai-dev-prompt.md`, `.claude/settings.local.json`
-- `variables.css`: dodano skalę `--text-xs/sm/body-sm/base/md/lg/xl/h3/h2/h1`
-- `variables.css`: dodano `--leading-tight/snug/normal/relaxed/loose` i `--tracking-wide`
-- `base.css`: `1rem` → `--text-base`, `1.6` → `--leading-normal`, `1.2` → `--leading-tight`
-- `sections.css`: eyebrow font-size/letter-spacing → tokeny; h2 → `--text-h2`; section-copy line-height → `--leading-loose`; usunięto martwy `.section-placeholder` (80% pliku)
-- `sections.css`: section-copy margin-top `0.9rem` → `--space-3` wspólnie dla wszystkich section-heading
-- `why.css`: font-size'y i line-height'y → tokeny
-- `process.css`: gap'y, font-size'y, line-height'y, magiczne odstępy → tokeny
-- `footer.css`: `0.875rem` → `--text-sm`
+### f3fa9a9 — P0: tokeny typografii + porządki w repo
+- `variables.css`: skala tekstu, leading i tracking
+- `.gitignore`: czyszczenie repo z assetów roboczych i plików sesyjnych
+- `sections.css`: usunięcie martwego `.section-placeholder`
 
-### 4b8faae — P0 (4.1): remove placeholder-driven "Dlaczego my" architecture
-- `index.html`: usunięto `.why-media` (pusty prostokąt 30rem) i `.photo-strip` (4 puste kwadraty)
-- `index.html`: sekcja "Dlaczego my" → `section-heading--center` + `benefit-list` (spójna z innymi sekcjami)
-- `why.css`: usunięto `.why-grid`, `.why-media*`, `.photo-strip*` — martwy kod po usunięciu plejshólderów
-- `why.css`: `.benefit-list` → 2-kolumnowy grid na desktopie, 1 kolumna <48rem
-- `why.css`: magiczne liczby (1.2rem, 1.75rem, 0.9rem, 0.3rem) → tokeny `--space-*`
-- `why.css`: `.benefit-item h3` `1rem` → `1.15rem` (Lora czytelnie)
-- Sekcja działa bez zdjęć klienta, gotowa na wstawienie galerii gdy zdjęcia nadejdą
+### 4b8faae — P0: usunięcie placeholder-driven architektury sekcji „Dlaczego my”
+- `index.html`, `why.css`: sekcja uproszczona do realnej struktury bez pustych boksów
 
-### a1d0000 — Design polish: spacing, contact width, heading rhythm
-- `variables.css`: dodano `--contact-shell-max: 46rem`
-- `services.css`: gap kart `1.25rem` → `var(--space-6)` (1.5rem)
-- `contact.css`: szerokość formularza `40rem` → `var(--contact-shell-max)`
-- `base.css`: `line-height` nagłówków `1.15` → `1.2` (czytelność Lory)
+### b935794 — design polish: spacing, szerokość kontaktu, rytm nagłówków
+- `variables.css`: dodany `--contact-shell-max`
+- `services.css`, `contact.css`, `base.css`: korekty rytmu i proporcji

@@ -32,15 +32,18 @@
       name="twitter:description"
       content="Rolety, żaluzje, plisy i moskitiery na wymiar. Darmowy pomiar i dojazd na terenie Olsztyna oraz powiatu olsztyńskiego."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Lora:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href="./src/assets/images/hero-rolety.jpg" as="image" fetchpriority="high" />
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+    <link
+      rel="preload"
+      href="./src/assets/images/hero-rolety-1536w.webp"
+      as="image"
+      type="image/webp"
+      imagesrcset="./src/assets/images/hero-rolety-768w.webp 768w, ./src/assets/images/hero-rolety-1536w.webp 1536w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -110,14 +113,25 @@
               aria-roledescription="slide"
               aria-label="Slajd 1 — Rolety"
             >
-              <img
-                class="hero__bg"
-                src="./src/assets/images/hero-rolety.jpg"
-                alt=""
-                aria-hidden="true"
-                fetchpriority="high"
-                decoding="async"
-              />
+              <picture class="hero__media">
+                <source
+                  type="image/webp"
+                  srcset="./src/assets/images/hero-rolety-768w.webp 768w, ./src/assets/images/hero-rolety-1536w.webp 1536w"
+                  sizes="100vw"
+                />
+                <img
+                  class="hero__bg"
+                  src="./src/assets/images/hero-rolety-1536w.jpg"
+                  srcset="./src/assets/images/hero-rolety-768w.jpg 768w, ./src/assets/images/hero-rolety-1536w.jpg 1536w"
+                  sizes="100vw"
+                  alt=""
+                  aria-hidden="true"
+                  width="1536"
+                  height="1024"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
               <div class="hero__slide-overlay" aria-hidden="true"></div>
               <div class="hero__content">
                 <h1 class="hero__heading" id="hero-heading">
@@ -146,14 +160,24 @@
               aria-roledescription="slide"
               aria-label="Slajd 2 — Żaluzje i plisy"
             >
-              <img
-                class="hero__bg"
-                src="./src/assets/images/hero-zaluzje.jpg"
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-              />
+              <picture class="hero__media">
+                <source
+                  type="image/webp"
+                  srcset="./src/assets/images/hero-zaluzje-768w.webp 768w, ./src/assets/images/hero-zaluzje-1536w.webp 1536w"
+                  sizes="100vw"
+                />
+                <img
+                  class="hero__bg"
+                  src="./src/assets/images/hero-zaluzje-1536w.jpg"
+                  srcset="./src/assets/images/hero-zaluzje-768w.jpg 768w, ./src/assets/images/hero-zaluzje-1536w.jpg 1536w"
+                  sizes="100vw"
+                  alt=""
+                  aria-hidden="true"
+                  width="1536"
+                  height="1024"
+                  decoding="async"
+                />
+              </picture>
               <div class="hero__slide-overlay" aria-hidden="true"></div>
               <div class="hero__content">
                 <h2 class="hero__heading">
@@ -182,14 +206,24 @@
               aria-roledescription="slide"
               aria-label="Slajd 3 — Obsługa"
             >
-              <img
-                class="hero__bg"
-                src="./src/assets/images/hero-moskitiery-plisy.jpg"
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                decoding="async"
-              />
+              <picture class="hero__media">
+                <source
+                  type="image/webp"
+                  srcset="./src/assets/images/hero-moskitiery-plisy-768w.webp 768w, ./src/assets/images/hero-moskitiery-plisy-1536w.webp 1536w"
+                  sizes="100vw"
+                />
+                <img
+                  class="hero__bg"
+                  src="./src/assets/images/hero-moskitiery-plisy-1536w.jpg"
+                  srcset="./src/assets/images/hero-moskitiery-plisy-768w.jpg 768w, ./src/assets/images/hero-moskitiery-plisy-1536w.jpg 1536w"
+                  sizes="100vw"
+                  alt=""
+                  aria-hidden="true"
+                  width="1536"
+                  height="1024"
+                  decoding="async"
+                />
+              </picture>
               <div class="hero__slide-overlay" aria-hidden="true"></div>
               <div class="hero__content">
                 <h2 class="hero__heading">
@@ -351,7 +385,9 @@
             </p>
             <a href="#kontakt" class="services-note__cta">
               Umów bezpłatną wizytę
-              <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
+              <svg class="icon" aria-hidden="true" focusable="false">
+                <use href="/icons.svg#icon-arrow-right"></use>
+              </svg>
             </a>
           </aside>
         </div>

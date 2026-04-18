@@ -73,8 +73,10 @@
   --header-height: 4.5rem;
   --hero-stage-height-desktop: clamp(28rem, 50svh, 36rem);
   --hero-stage-height-tablet: clamp(26rem, 56svh, 33rem);
-  --hero-stage-height-mobile: clamp(24rem, 62svh, 30rem);
+  --hero-stage-height-mobile: clamp(23rem, 115vw, 29rem);
   --hero-content-max-width: 48rem;
+  --hero-image-focus-y: 40%;
+  --hero-image-focus-y-mobile: 30%;
 
   --transition-fast: 180ms ease;
   --transition-base: 240ms ease;

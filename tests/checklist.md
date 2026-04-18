@@ -1,4 +1,4 @@
-# DMSolutions — Test Checklist
+# DMSolutions — Release Checklist
 
 Run this checklist before every client review and before final handoff.
 
@@ -6,88 +6,80 @@ Run this checklist before every client review and before final handoff.
 
 ## Responsive / Device
 
-| Test | 375px | 768px | 1024px | 1440px | 1920px |
-|---|---|---|---|---|---|
-| Nav renders correctly | | | | | |
-| Hero readable, CTA visible | | | | | |
-| Carousel works (swipe/drag) | | | | | |
-| Gallery grid looks correct | | | | | |
-| Contact form fits without overflow | | | | | |
-| Footer not broken | | | | | |
-| No horizontal scroll | | | | | |
-
-## Cross-Browser
-
-| Test | Chrome | Firefox | Edge | Safari |
+| Test | 390px | 768px | 1024px | 1440px |
 |---|---|---|---|---|
-| Layout correct | | | | |
-| Carousel works | | | | |
-| Animations play | | | | |
-| Form submits | | | | |
-| Map loads | | | | |
+| Header and nav render correctly | | | | |
+| Hero copy is readable and CTA is visible | | | | |
+| Carousel controls / dots behave correctly | | | | |
+| Services grid keeps correct spacing | | | | |
+| `Dlaczego my` layout and photo strip are intact | | | | |
+| `Dlaczego my` / `Kontakt` icons match the local Phosphor style | | | | |
+| Contact form fits without overflow | | | | |
+| Footer is intact and aligned | | | | |
+| No horizontal scroll | | | | |
+
+## Progressive Enhancement
+
+- [ ] First screen renders correctly with JavaScript disabled
+- [ ] Hero heading and CTA stay above the fold without JavaScript
+- [ ] Privacy policy page renders correctly without any `/src` dependency
 
 ## Functionality
 
-- [ ] Contact form submits — email received at dmsolutions.olsztyn@gmail.com
-- [ ] Form shows success state after submit
-- [ ] Form honeypot field hidden and not submitted
-- [ ] All anchor links (#about, #services, etc.) scroll to correct section
-- [ ] Mobile nav opens and closes
-- [ ] Mobile nav closes on link click
-- [ ] Cookie consent banner appears on first visit
-- [ ] GA fires only after consent given
-- [ ] All external links open in new tab
+- [ ] Anchor links scroll to the correct sections
+- [ ] Mobile nav opens, closes, and closes on link click
+- [ ] Carousel advances with controls and dots
+- [ ] Keyboard arrows change slides only inside the hero context
+- [ ] Contact form shows loading / success / error state correctly
+- [ ] Form submission works after inserting the real Web3Forms key
 - [ ] Google Maps embed loads
+- [ ] Privacy policy footer shows the current year
 
 ## Content
 
-- [ ] No placeholder text (Lorem ipsum, TODO, [INSERT])
-- [ ] All images load (no broken src)
-- [ ] Logo displays correctly on all backgrounds
-- [ ] Phone number is clickable (tel: link) on mobile
-- [ ] Email is clickable (mailto: link)
-- [ ] Favicon shows in browser tab
+- [ ] No placeholder text (`TODO`, `INSERT`, unfinished client data) on public pages
+- [ ] All images load correctly
+- [ ] Phone number is clickable (`tel:`)
+- [ ] Email is clickable (`mailto:`)
+- [ ] Privacy policy reflects the current technical setup
+- [ ] Full legal/business data is filled in after the client provides it
 
-## Performance (Lighthouse — all must be ≥ 90)
+## Performance
 
-| Metric | Score | Pass? |
-|---|---|---|
-| Performance | | |
-| Accessibility | | |
-| Best Practices | | |
-| SEO | | |
+- [ ] `npm run images:hero` has been run after changing hero masters
+- [ ] Browser loads responsive hero variants (`768w` / `1536w`) instead of original JPG masters
+- [ ] No external requests to Google Fonts / `unpkg` are made during page render
+- [ ] Lighthouse run captured for homepage
 
-## SEO
+## SEO / Metadata
 
-- [ ] `<title>` present and descriptive
-- [ ] `<meta description>` present (150–160 chars)
-- [ ] Open Graph tags present
-- [ ] `canonical` link present
-- [ ] `robots.txt` accessible at /robots.txt
-- [ ] `sitemap.xml` accessible at /sitemap.xml
-- [ ] LocalBusiness JSON-LD present in `<head>`
-- [ ] All images have `alt` attributes
+- [ ] `<title>` is present and descriptive
+- [ ] `<meta name="description">` is present
+- [ ] Open Graph tags are present
+- [ ] LocalBusiness JSON-LD is present in `<head>`
+- [ ] `robots.txt` is available after domain setup
+- [ ] `sitemap.xml` is available after domain setup
+- [ ] `og:url` is filled after domain setup
 
-## Security
+## Security / Privacy
 
-- [ ] No API keys or sensitive data in JS files
-- [ ] All external links have `rel="noopener noreferrer"`
-- [ ] CSP meta tag present
-- [ ] Form honeypot in place
+- [ ] No secrets or production keys are exposed in source files
+- [ ] External links that open new tabs use `rel="noopener"`
+- [ ] Privacy policy still matches actual external services in use (`Web3Forms`, Google Maps)
 
 ## Code Quality
 
-- [ ] No console errors on page load
+- [ ] `npm run build` passes
+- [ ] `npm run lint` passes
+- [ ] No console errors on load
 - [ ] No console errors during interaction
-- [ ] HTML validates at validator.w3.org
-- [ ] No unused CSS files
-- [ ] `dist/` builds without errors (`npm run build`)
+- [ ] No dead assets / files created during the work session
+- [ ] `PLAN.md`, `README.md`, and `CLAUDE.md` reflect the current system state
 
 ---
 
-**Sign-off before handoff:**
+## Sign-off
 
-- [ ] All items above checked
-- [ ] LOG.md updated with final test results
-- [ ] DEPLOY.md written and reviewed
-- [ ] Client reviewed and approved
+- [ ] All applicable items above are checked
+- [ ] `LOG.md` is updated if a commit-worthy architectural change was made
+- [ ] Client blockers are listed clearly before handoff

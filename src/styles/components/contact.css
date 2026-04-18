@@ -42,7 +42,8 @@
 }
 
 .contact-info__icon i {
-  font-size: var(--text-xl);
+  font-size: 1.4rem;
+  line-height: 1;
 }
 
 .contact-form {

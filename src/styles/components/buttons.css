@@ -33,17 +33,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-.button--secondary {
-  color: var(--color-primary);
-  background: transparent;
-  border-color: var(--color-primary);
-}
-
-.button--secondary:hover {
-  color: var(--color-text-inverse);
-  background: var(--color-primary);
-}
-
 .button--light {
   color: var(--color-primary);
   background: var(--color-surface);
