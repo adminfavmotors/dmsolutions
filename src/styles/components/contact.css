@@ -76,7 +76,7 @@
   width: 100%;
   min-height: 3rem;
   padding: var(--space-3) var(--space-4);
-  border: 1.5px solid var(--color-border);
+  border: var(--border-width-form) solid var(--color-border);
   border-radius: var(--radius-sm);
   color: var(--color-text);
   background: var(--color-surface);
@@ -98,7 +98,7 @@
 .form-field select:focus,
 .form-field textarea:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px rgba(42, 78, 143, 0.1);
+  box-shadow: var(--shadow-focus);
 }
 
 .contact-form__submit {

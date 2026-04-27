@@ -44,7 +44,7 @@
   --text-md: 1.15rem;
   --text-lg: 1.25rem;
   --text-xl: 1.4rem;
-  --text-h3: 1.15rem;
+  --text-h3: clamp(1.05rem, 1.8vw, 1.15rem);
   --text-h2: clamp(1.6rem, 3vw, 2.2rem);
   --text-h1: clamp(1.9rem, 4vw, 3rem);
 
@@ -82,4 +82,35 @@
   --transition-base: 240ms ease;
 
   /* Breakpoints — używane w @media; CSS nie interpoluje customów w @media, więc traktujemy je jako udokumentowaną konwencję wartości: 40rem (mobile), 48rem (tablet), 56.25rem (nav/desktop), 64rem (wide) */
+
+  /* Radius */
+  --radius-pill: 999px;
+
+  /* Glass blur */
+  --blur-glass-sm: 6px;
+  --blur-glass-md: 8px;
+  --blur-glass-lg: 12px;
+
+  /* Icon sizes */
+  --icon-sm: 1.15rem;
+  --icon-md: 1.25rem;
+  --icon-lg: 1.4rem;
+
+  /* Form border */
+  --border-width-form: 1.5px;
+
+  /* Photo transition */
+  --transition-photo: 320ms ease;
+
+  /* Hero micro-spacing */
+  --space-hero-gap-sm: 0.45rem;
+  --space-hero-gap-md: 0.7rem;
+  --space-hero-gap-lg: 0.9rem;
+
+  /* Focus ring */
+  --shadow-focus: 0 0 0 4px rgba(42, 78, 143, 0.1);
+
+  /* Why section image heights */
+  --why-image-height-desktop: 32rem;
+  --why-image-height-tablet: 24rem;
 }

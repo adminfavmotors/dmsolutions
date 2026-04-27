@@ -14,7 +14,7 @@
 .why-media__main {
   display: block;
   width: 100%;
-  height: 32rem;
+  height: var(--why-image-height-desktop);
   object-fit: cover;
   object-position: center top;
 }
@@ -82,7 +82,7 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: transform 320ms ease, box-shadow 320ms ease;
+  transition: transform var(--transition-photo), box-shadow var(--transition-photo);
 }
 
 .photo-strip > li:hover {
@@ -95,7 +95,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 320ms ease;
+  transition: transform var(--transition-photo);
 }
 
 .photo-strip > li:hover .photo-strip__item {
@@ -142,7 +142,7 @@
   }
 
   .why-media__main {
-    height: 24rem;
+    height: var(--why-image-height-tablet);
   }
 
   .benefit-item__icon {
